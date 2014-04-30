@@ -44,10 +44,11 @@ class Administrador extends CI_Controller {
         $this->load->model('docente_model', 'docente');
         $output = $this->docente->gestion_docente();
         $this->_docentes_output($output);
+        $this->data['vistas'] = array('administrador/docentes');
+        $this->load->view('home', $this->data);
     }
 
     private function _docentes_output($output = null) {
         $this->load->view('administrador/docentes.php', $output);
     }
-
 }

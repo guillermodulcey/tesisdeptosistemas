@@ -5,12 +5,13 @@
     ?>
     <fieldset>
         <p>Bienvenido</p>
-        <div class="form">
-            <label for="email">Login:</label>
+        <div class="form login">
+            <label for="email">Usuario:</label>
             <input type="text" name="email" id="email" value="<?php echo set_value('email'); ?>" />
+            <p>@unicauca.edu.co</p>
         </div>
         <div class="form">
-            <label for="password">Password:</label>
+            <label for="password">Contraseña:</label>
             <input type="password" name="password" id="password" value="<?php echo set_value('password'); ?>"/>
         </div>
         <?php

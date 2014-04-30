@@ -43,9 +43,9 @@ body {
 }
 #logo{
 		float: left;
-		height: 523px;
+		height: 240px;
 		width: 183px;
-		background: url("../img/menu-pri-fon.png") no-repeat 0 497px;
+		background: url("../img/menu-pri-fon.png") no-repeat 0 214px;
 	}
 		#logo div.logo {
 			height: 226px;
@@ -62,7 +62,7 @@ body {
 	margin-top: 10px;
 	padding: 17px 26px 9px 33px;
 	width: 848px;
-	height: 387px;
+	height: 104px;
 	background-color: #DFE8F4;
 }
 	#menuPrincipal {
@@ -213,7 +213,7 @@ body {
 		background-color: #FFFFFF;
 		border: 1px solid #CDCDCD;
 		border-radius: 10px;
-		margin: 90px auto;		
+		margin: 0 auto;		
 	}
 	#restablecer_contrasena form, #restablecer_contrasena form fieldset {
 		width: 510px;
@@ -321,6 +321,9 @@ div.listaUsu {
 	font-size: 30px;
 	color: #0B2972;
 }
+.flexigrid {
+    width: 80%;
+}
 .flexigrid div.fbutton span.add, .flexigrid div.fbutton span.export, .flexigrid div.fbutton span.print {
 	font-size: 16px;
 }
@@ -341,6 +344,7 @@ div.listaUsu {
 }
 .flexigrid div.pDiv {
 	padding-top: 6px;
+        width: 100%;
 }
 
 /**** estilos ver docente ****/
