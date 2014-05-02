@@ -33,6 +33,10 @@ class Gestorsesiones_model extends CI_Model {
         }
         return FALSE;
     }
+    
+    public function get_email(){
+        return $this->session->userdata('email');
+    }
 
     public function esta_conectado($email) {
         $email_cookie = $this->session->userdata('email');

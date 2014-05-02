@@ -1,4 +1,16 @@
-<?php
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+/*
+| -------------------------------------------------------------------------
+| Email
+| -------------------------------------------------------------------------
+| This file lets you define parameters for sending emails.
+| Please see the user guide for info:
+|
+|	http://codeigniter.com/user_guide/libraries/email.html
+|
+*/
+
 $config['useragent'] = 'CodeIgniter';//	None	The "user agent".
 $config['protocol'] = 'smtp';//	mail, sendmail, or smtp	The mail sending protocol.
 //$config['mailpath'] = 'C:/xampp/htdocs/trueque_10/base_datos';//	None	The server path to Sendmail.
@@ -18,4 +30,6 @@ $config['newline'] = "\r\n";//	"\r\n" or "\n" or "\r"	Newline character. (Use "\
 $config['bcc_batch_mode'] = FALSE;//	TRUE or FALSE (boolean)	Enable BCC Batch Mode.
 $config['bcc_batch_size'] = 200;//	None	Number of emails in each BCC batch.
 
-?>
+
+/* End of file email.php */
+/* Location: ./application/config/email.php */

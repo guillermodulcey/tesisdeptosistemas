@@ -65,7 +65,10 @@ class Seguridad_model extends CI_Model {
     public function roles() {
         return $this->sesion->roles();
     }
-
+    
+    public function get_email(){
+        return $this->sesion->get_email();
+    }
 }
 
 ?>
