@@ -20,6 +20,7 @@ class Docente extends CI_Controller {
 
         $this->load->model('docente_model', 'docente');
         $this->load->model('seguridad_model', 'seguridad');
+        $this->load->model('dao_model', 'dao');
     }
 
     public function tmp($func = 'index') {
@@ -43,10 +44,14 @@ class Docente extends CI_Controller {
         $this->_producciones_output();
     }
 
-    private function monografia() {
+    public function monografia() {
+        //$email = $this->seguridad->get_email();
+        //$codigo = $this->dao->get_codigo_usuario($email);
+        $codigo = 3;
+        
         $produccion = new Produccion_model();
 
-        $output = $produccion->gestion_monografia();
+        $output = $produccion->gestion_monografia($codigo);
 
         $this->_monografia_output($output);
     }

@@ -17,11 +17,27 @@ class Produccion_model extends CI_Model {
         /* ------------------ */ 
  
         $this->load->library('grocery_CRUD');
+        $this->load->model('dao_model', 'dao');
     }
     
-    public function gestion_monografia(){
+    public function gestion_monografia($codigo){
         $crud = new grocery_CRUD();
         //$crud->set_theme('datatables');
+        $query = $this->dao->get_producciones_docente($codigo);
+        if($query->num_rows() == 0){
+            $crud->where('PROD_CODIGO','');
+        }
+        $contador = 1;
+        foreach ($query->result_array() as $row){
+            $valor = $row['PROD_CODIGO'];
+            if(contador == 1){
+                $crud->where('PROD_CODIGO',$valor);
+            }
+            else{
+                $crud->or_where('PROD_CODIGO',$valor);
+            }
+            $contador++;
+        }
         $crud->set_table('produccion')->set_subject('Monografia');
         //$crud->set_relation_n_n('Roles', 'usuario_rol', 'rol','USU_CODIGO','ROL_CODIGO','ROL_NOMBRE');      
         

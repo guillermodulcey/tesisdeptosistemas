@@ -56,6 +56,22 @@ class DAO_model extends CI_Model {
         }
         return $result;
     }
+    
+    function get_codigo_usuario($email){
+        $valor = '';
+        $consulta = 'select USU_CODIGO from usuario where USU_EMAIL="'.$email.'"';
+        $query = $this->db->query($consulta);
+        foreach ($query->result_array() as $row){
+            $valor = $row['USU_CODIGO'];
+        }
+        return $valor;
+    }
+    
+    function get_producciones_docente($codigo){
+        $consulta = 'select PROD_CODIGO from usuario_produccion where USU_CODIGO='.$codigo;
+        $query = $this->db->query($consulta);
+        return $query;
+    }
 
 }
 
