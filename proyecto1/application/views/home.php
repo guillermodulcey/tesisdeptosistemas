@@ -28,9 +28,7 @@
     <body>
         <div id="pagina">
             <?php
-            if (isset($iniciar_sesion)) {
-                $this->load->view($iniciar_sesion);
-            }
+            $this->load->view('iniciar_sesion');
             ?>
 
             <div id="header">
@@ -42,7 +40,7 @@
                 </div>
             </div>		
             <div id="conSuperior">
-                
+
                 <ul id="menuPrincipal">
                     <li class="inicio">
                         <a href="#">Inicio</a>
@@ -63,7 +61,9 @@
                 <?php
                 if (isset($vistas)) {
                     foreach ($vistas as $value) {
-                        $this->load->view($value);
+                        $view = $value['view'];
+                        $vars = $value['vars'];
+                        $this->load->view($view, $vars);
                     }
                 }
                 ?>

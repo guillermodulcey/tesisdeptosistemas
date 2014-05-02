@@ -1,7 +1,11 @@
 <div id="inicioSesion">
-    <a href="<?php echo site_url('usuario/vista_login'); ?>">
-        Iniciar Sesión
-    </a>
+    <?php
+    if ($this->tank_auth->is_logged_in()) {
+        echo anchor(site_url('usuario/logout'), 'Cerrar Sesión');
+    } else {
+        echo anchor(site_url('usuario/login'), 'Iniciar Sesión');
+    }
+    ?> 
 </div>
 
 
