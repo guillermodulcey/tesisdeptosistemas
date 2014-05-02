@@ -14,7 +14,7 @@ $submit = array(
     'restablecer' => '',
 );
 if ($this->config->item('use_username', 'tank_auth')) {
-    $login_label = 'Escriba Usuario o correo: ';
+    $login_label = 'Correo electrónico: ';
 } else {
     $login_label = 'Email';
 }

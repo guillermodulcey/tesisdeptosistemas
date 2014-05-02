@@ -43,20 +43,20 @@ $captcha = array(
         </div>
         <div class="form">
 
-            <?php echo form_label('Password', $password['id']); ?>
+            <?php echo form_label('Contraseña', $password['id']); ?>
             <?php echo form_password($password); ?>
 
         </div>
 
         <?php echo form_checkbox($remember); ?>
         <?php echo form_label('Recordar Datos', $remember['id']); ?>
-        <?php echo anchor('/usuario/forgot_password/', '¿Olvidó su password?'); ?>
+        <?php echo anchor('/usuario/forgot_password/', '¿Olvidó su Contraseña?'); ?>
         <?php
         if ($this->config->item('allow_registration', 'tank_auth'))
-            echo anchor('/usuario/register/', 'Register');
+            echo anchor('/usuario/register/', 'Registrarse');
         ?>
-
-        <?php echo form_submit('submit', 'Ingresar'); ?>
+        
+        <input id="sendLogin" type="submit" name="enviar_login" value="Ingresar" />
 
         <?php echo form_error($login['name']); ?><?php echo isset($errors[$login['name']]) ? '<br/>'.$errors[$login['name']] : ''; ?>
         <?php echo form_error($password['name']); ?><?php echo isset($errors[$password['name']]) ? '<br/>'.$errors[$password['name']] : ''; ?>
