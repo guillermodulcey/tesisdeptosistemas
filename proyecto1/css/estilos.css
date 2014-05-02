@@ -215,7 +215,7 @@ body {
 		border-radius: 10px;
 		margin: 0 auto;		
 	}
-	#restablecer_contrasena form, #restablecer_contrasena form fieldset {
+	#restablecer_contrasena form {
 		width: 510px;
 	}
 	#restablecer_contrasena  p {
@@ -224,18 +224,19 @@ body {
 		padding: 18px;
 		line-height: 18px;
 	}
-	#restablecer_contrasena form fieldset label {
+	#restablecer_contrasena form label {
 		padding-left: 18px;
 		padding-right: 10px;
+                color: #755C5C;
 	}
-	#restablecer_contrasena form fieldset input {
+	#restablecer_contrasena form input {
 		height: 30px;
 		width: 317px;
 		border-radius: 5px;
 		font-size: 17px;
 		border: 1px solid #CDCDCD;
 	}
-	#restablecer_contrasena form fieldset input:focus {
+	#restablecer_contrasena form input:focus {
 		border-radius: 5px;
 		border: 2px solid #90B3EC;
 	}
