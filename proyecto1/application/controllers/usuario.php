@@ -3,16 +3,18 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
+
+include 'administrador.php';
+include 'docente.php';
+include 'jefe_departamento.php';
+
 class Usuario extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-
-        $this->load->helper(array('form', 'url'));
-        $this->load->library('form_validation');
-        $this->load->library('security');
-        $this->load->library('tank_auth');
         $this->lang->load('tank_auth');
+        $this->load->model('usuarios/usuario_model', 'usuario');
+        $this->load->model('sistema/dao_model', 'dao');
     }
 
     function index() {
@@ -61,27 +63,24 @@ class Usuario extends CI_Controller {
 
             if ($this->form_validation->run()) {        // validation ok
                 if ($this->tank_auth->login(
-                                $this->form_validation->set_value('login'), $this->form_validation->set_value('password'), $this->form_validation->set_value('remember'), $data['login_by_username'], $data['login_by_email'])) {        // success
-                    redirect('');
+                                $this->form_validation->set_value('login'), $this->form_validation->set_value('password'), $this->form_validation->set_value('remember'), $data['login_by_username'], $data['login_by_email'])) {
+                    $this->usuario->tipo_usuario = $this->dao->get_tipo_usuario($login);
+                    $newdata = array(
+                        'email' => $login,
+                        'tipo' => $this->usuario->tipo_usuario
+                    );
+                    $this->session->set_userdata($newdata);
+                    //echo print_r($this->session->all_userdata());
+                    //echo $this->usuario->tipo_usuario[0]    ;
+                    redirect($this->usuario->tipo_usuario[0]);
                 } else {
                     $errors = $this->tank_auth->get_error_message();
                     if (isset($errors['banned'])) {        // banned user
                         $this->_show_message($this->lang->line('auth_message_banned') . ' ' . $errors['banned']);
-                    } elseif (isset($errors['not_activated'])) {    // not activated user
-                        redirect('/usuario/send_again/');
                     } else {             // fail
                         foreach ($errors as $k => $v)
                             $data['errors'][$k] = $this->lang->line($v);
                     }
-                }
-            }
-            $data['show_captcha'] = FALSE;
-            if ($this->tank_auth->is_max_login_attempts_exceeded($login)) {
-                $data['show_captcha'] = TRUE;
-                if ($data['use_recaptcha']) {
-                    $data['recaptcha_html'] = $this->_create_recaptcha();
-                } else {
-                    $data['captcha_html'] = $this->_create_captcha();
                 }
             }
             $vista = array('view' => 'auth/login_form', 'vars' => '');
@@ -149,7 +148,7 @@ class Usuario extends CI_Controller {
                         $this->_show_message($this->lang->line('auth_message_registration_completed_1'));
                     } else {
                         if ($this->config->item('email_account_details', 'tank_auth')) { // send "welcome" email
-                            $this->_send_email('welcome', $data['email'], $data);
+                            //$this->_send_email('welcome', $data['email'], $data);
                         }
                         unset($data['password']); // Clear password (just for any case)
 
@@ -332,9 +331,9 @@ class Usuario extends CI_Controller {
                         $data['errors'][$k] = $this->lang->line($v);
                 }
             }
-        $vista = array('view' => 'auth/change_password_form', 'vars' => '');
-        $data['vistas'] = array($vista);
-        $this->load->view('home', $data);
+            $vista = array('view' => 'auth/change_password_form', 'vars' => '');
+            $data['vistas'] = array($vista);
+            $this->load->view('home', $data);
         }
     }
 
@@ -367,9 +366,9 @@ class Usuario extends CI_Controller {
                         $data['errors'][$k] = $this->lang->line($v);
                 }
             }
-        $vista = array('view' => 'auth/change_email_form', 'vars' => '');
-        $data['vistas'] = array($vista);
-        $this->load->view('home', $data);
+            $vista = array('view' => 'auth/change_email_form', 'vars' => '');
+            $data['vistas'] = array($vista);
+            $this->load->view('home', $data);
         }
     }
 

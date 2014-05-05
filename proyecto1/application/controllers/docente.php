@@ -9,38 +9,26 @@ class Docente extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        /* Standard Libraries of codeigniter are required */
-        $this->load->database();
-        $this->load->helper('url');
-        /* ------------------ */
-
-        $this->load->library('grocery_CRUD');
-        $this->load->model('produccion_model');
-
-
-        $this->load->model('docente_model', 'docente');
-        $this->load->model('seguridad_model', 'seguridad');
-        $this->load->model('dao_model', 'dao');
-    }
-
-    public function tmp($func = 'index') {
-        if ($this->seguridad->es_docente()) {
-            $this->$func();
+        if ($this->seguridad_model->es_docente()) {
+            $this->load->model('producciones/produccion_model');
+            $this->load->model('usuarios/docente_model', 'docente');
+            $this->load->model('sistema/dao_model', 'dao');
         } else {
             show_404();
+            die();
         }
     }
 
-    private function index() {
-        $this->data['vistas'] = array('docente/home');
+    public function index() {
+        $vista = array(
+            'view' => 'docente/home',
+            'vars' => ''
+        );
+        $this->data['vistas'] = array($vista);
         $this->load->view('home', $this->data);
     }
 
-    private function redirect() {
-        redirect('/docente/tmp/index');
-    }
-
-    private function producciones() {
+    public function producciones() {
         $this->_producciones_output();
     }
 
@@ -48,7 +36,7 @@ class Docente extends CI_Controller {
         //$email = $this->seguridad->get_email();
         //$codigo = $this->dao->get_codigo_usuario($email);
         $codigo = 3;
-        
+
         $produccion = new Produccion_model();
 
         $output = $produccion->gestion_monografia($codigo);
@@ -56,11 +44,11 @@ class Docente extends CI_Controller {
         $this->_monografia_output($output);
     }
 
-    private function _producciones_output() {
+    public function _producciones_output() {
         $this->load->view('docente/producciones.php');
     }
 
-    private function _monografia_output($output = null) {
+    public function _monografia_output($output = null) {
         $this->load->view('docente/monografia.php', $output);
     }
 
