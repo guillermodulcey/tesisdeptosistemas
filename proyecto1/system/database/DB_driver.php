@@ -102,7 +102,7 @@ class CI_DB_driver {
 	 */
 	function initialize()
 	{
-		// If an existing connection resource is available
+            	// If an existing connection resource is available
 		// there is no need to connect and select the database
 		if (is_resource($this->conn_id) OR is_object($this->conn_id))
 		{
@@ -110,9 +110,9 @@ class CI_DB_driver {
 		}
 
 		// ----------------------------------------------------------------
-
-		// Connect to the database and set the connection ID
-		$this->conn_id = ($this->pconnect == FALSE) ? $this->db_connect() : $this->db_pconnect();
+                // Connect to the database and set the connection ID
+                $this->conn_id = ($this->pconnect == FALSE) ? $this->db_connect() : $this->db_pconnect();
+                		
 
 		// No connection resource?  Throw an error
 		if ( ! $this->conn_id)
@@ -122,6 +122,7 @@ class CI_DB_driver {
 			if ($this->db_debug)
 			{
 				$this->display_error('db_unable_to_connect');
+                                echo mysql_error();
 			}
 			return FALSE;
 		}
