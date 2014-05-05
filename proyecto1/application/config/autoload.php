@@ -111,7 +111,7 @@ $autoload['language'] = array('spanish');
   |	$autoload['model'] = array('model1', 'model2');
   |
  */
-
+ 
 $autoload['model'] = array('sistema/seguridad_model');
 
 

@@ -10,7 +10,7 @@
 |	http://codeigniter.com/user_guide/libraries/email.html
 |
 */
-
+ 
 $config['useragent'] = 'CodeIgniter';//	None	The "user agent".
 $config['protocol'] = 'smtp';//	mail, sendmail, or smtp	The mail sending protocol.
 //$config['mailpath'] = 'C:/xampp/htdocs/trueque_10/base_datos';//	None	The server path to Sendmail.

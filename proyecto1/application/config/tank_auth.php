@@ -9,7 +9,7 @@ if (!defined('BASEPATH'))
   |
   | These details are used in emails sent by authentication library.
   |--------------------------------------------------------------------------
- */
+ */ 
 $config['website_name'] = base_url();
 $config['webmaster_email'] = 'test_webmaster@wfpc92.tk';
 

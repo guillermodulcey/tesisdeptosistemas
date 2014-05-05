@@ -11,7 +11,7 @@ if (!defined('BASEPATH'))
   |
   | URL to your CodeIgniter root. Typically this will be your base URL,
   | WITH a trailing slash:
-  |
+  | 
   |	http://example.com/
   |
   | If this is not set then CodeIgniter will guess the protocol, domain and
