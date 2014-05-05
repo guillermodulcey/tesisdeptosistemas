@@ -55,10 +55,10 @@ $captcha = array(
         if ($this->config->item('allow_registration', 'tank_auth'))
             echo anchor('/usuario/register/', 'Registrarse');
         ?>
-        
+
         <input id="sendLogin" type="submit" name="enviar_login" value="Ingresar" />
 
-        <?php echo form_error($login['name']); ?><?php echo isset($errors[$login['name']]) ? '<br/>'.$errors[$login['name']] : ''; ?>
-        <?php echo form_error($password['name']); ?><?php echo isset($errors[$password['name']]) ? '<br/>'.$errors[$password['name']] : ''; ?>
+        <?php echo form_error($login['name']); ?><?php echo isset($errors[$login['name']]) ? '<br/>' . $errors[$login['name']] : ''; ?>
+        <?php echo form_error($password['name']); ?><?php echo isset($errors[$password['name']]) ? '<br/>' . $errors[$password['name']] : ''; ?>
         <?php echo form_close(); ?>
 </div>

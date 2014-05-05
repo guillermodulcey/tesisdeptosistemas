@@ -1,13 +1,5 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-//error_reporting(E_ERROR | E_PARSE);
-
-
 class Produccion_model extends CI_Model { 
 
     function __construct() {
@@ -313,6 +305,14 @@ class Produccion_model extends CI_Model {
         $this->db->delete('monografia', array('PROD_CODIGO' => $primary_key));
         return true;
     }
+    
+    
+    function get_last_ten_entries() {
+        $query = $this->db->get('produccion', 10);
+        return $query->result();
+    }
+    
+    
 
 }
 

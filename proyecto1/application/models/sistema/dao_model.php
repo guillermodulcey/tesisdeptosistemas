@@ -70,6 +70,23 @@ class DAO_model extends CI_Model {
         $query = $this->db->query($consulta);
         return $query;
     }
+    
+    function get_producciones_recientes(){
+        $result = NULL;
+        if ($this->conectar()) {
+            $sql = "SELECT * 
+                    FROM produccion
+                    LIMIT 0 , 30";
+            $query = $this->db->query($sql, array());
+            if ($query->num_rows() > 0) {
+                $result = array();
+                foreach ($query->result_array() as $row) {
+                    array_push($result, $row['ROL_NOMBRE']);
+                }
+            }
+        }
+        return $result;
+    }
 
 }
 

@@ -15,14 +15,22 @@ class Usuario extends CI_Controller {
         $this->lang->load('tank_auth');
         $this->load->model('usuarios/usuario_model', 'usuario');
         $this->load->model('sistema/dao_model', 'dao');
+        $this->load->model('producciones/produccion_model','produccion',TRUE);
     }
 
     function index() {
+        $i = 0;
+        $vistas = array();
         if ($message = $this->session->flashdata('message')) {
-            $this->load->view('auth/general_message', array('message' => $message));
+            $vistas[$i++] = array('view' => 'auth/general_message',
+                'vars' => array('message' => $message));
         } else {
-            $this->load->view('home');
+            $producciones = $this->produccion->get_last_ten_entries();
+            $vistas[$i++] = array('view' => 'producciones/listar',
+                'vars' => array('producciones'=>$producciones));
         }
+        $data['vistas'] = $vistas;
+        $this->load->view('home', $data);
     }
 
     /**
@@ -70,8 +78,8 @@ class Usuario extends CI_Controller {
                         'tipo' => $this->usuario->tipo_usuario
                     );
                     $this->session->set_userdata($newdata);
-                    //echo print_r($this->session->all_userdata());
-                    //echo $this->usuario->tipo_usuario[0]    ;
+                    echo print_r($this->session->all_userdata());
+                    echo $this->usuario->tipo_usuario[0];
                     redirect($this->usuario->tipo_usuario[0]);
                 } else {
                     $errors = $this->tank_auth->get_error_message();
