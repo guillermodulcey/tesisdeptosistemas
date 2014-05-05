@@ -47,8 +47,7 @@ class grocery_CRUD_Field_Types {
         foreach ($this->basic_model->get_field_types_basic_table() as $field_info) {
             $field_info->required = !empty($this->required_fields) && in_array($field_info->name, $this->required_fields) ? true : false;
 
-            $field_info->display_as =
-                    isset($this->display_as[$field_info->name]) ?
+            $field_info->display_as = isset($this->display_as[$field_info->name]) ?
                     $this->display_as[$field_info->name] :
                     ucfirst(str_replace("_", " ", $field_info->name));
 
@@ -112,8 +111,7 @@ class grocery_CRUD_Field_Types {
                 $field_info->extras = $field_extras;
                 $field_info->required = !empty($this->required_fields) && in_array($field_name, $this->required_fields) ? true : false;
                 ;
-                $field_info->display_as =
-                        isset($this->display_as[$field_name]) ?
+                $field_info->display_as = isset($this->display_as[$field_name]) ?
                         $this->display_as[$field_name] :
                         ucfirst(str_replace("_", " ", $field_name));
 
@@ -431,7 +429,7 @@ class grocery_CRUD_Model_Driver extends grocery_CRUD_Field_Types {
 
     protected function set_default_Model() {
         $ci = &get_instance();
-        $ci->load->model('grocery_CRUD_Model');
+        $ci->load->model('sistema/grocery_CRUD_Model');
 
         $this->basic_model = new grocery_CRUD_Model();
     }
@@ -480,7 +478,7 @@ class grocery_CRUD_Model_Driver extends grocery_CRUD_Field_Types {
 
     public function set_model($model_name) {
         $ci = &get_instance();
-        $ci->load->model('grocery_CRUD_Model');
+        $ci->load->model('sistema/grocery_CRUD_Model');
 
         $ci->load->model($model_name);
 
@@ -1447,8 +1445,7 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver {
                 if (!empty($action->url_callback)) {
                     $actions_urls[$unique_id] = call_user_func($action->url_callback, $row->$primary_key, $row);
                 } else {
-                    $actions_urls[$unique_id] =
-                            $action->url_has_http ?
+                    $actions_urls[$unique_id] = $action->url_has_http ?
                             $action->link_url . $row->$primary_key :
                             site_url($action->link_url . '/' . $row->$primary_key);
                 }
@@ -2824,12 +2821,12 @@ class grocery_CRUD_States extends grocery_CRUD_Layout {
  * @link		http://www.grocerycrud.com/documentation
  */
 class Grocery_CRUD extends grocery_CRUD_States {
+
     /**
      * Grocery CRUD version
      *
      * @var	string
      */
-
     const VERSION = "1.4.1";
     const JQUERY = "jquery-1.10.2.min.js";
     const JQUERY_UI_JS = "jquery-ui-1.10.3.custom.min.js";
@@ -4254,8 +4251,7 @@ class Grocery_CRUD extends grocery_CRUD_States {
      * @param mixed $where_clause
      */
     public function set_relation_n_n($field_name, $relation_table, $selection_table, $primary_key_alias_to_this_table, $primary_key_alias_to_selection_table, $title_field_selection_table, $priority_field_relation_table = null, $where_clause = null) {
-        $this->relation_n_n[$field_name] =
-                (object) array(
+        $this->relation_n_n[$field_name] = (object) array(
                     'field_name' => $field_name,
                     'relation_table' => $relation_table,
                     'selection_table' => $selection_table,

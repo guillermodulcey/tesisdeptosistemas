@@ -12,12 +12,7 @@ class Usuario extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('usuario_model', 'usuario');
-        $this->load->model('seguridad_model', 'seguridad');
         $this->load->model('dao_model', 'dao');
-        $this->data['title'] = 'homepage';
-        $this->data['header'] = 'user/header';
-        $this->data['content'] = 'content';
-        $this->data['footer'] = 'footer';
     }
 
     public function index() {

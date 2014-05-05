@@ -16,7 +16,7 @@ class Seguridad_model extends CI_Model {
 
     function __construct() {
         parent::__construct();
-        $this->load->model('gestorsesiones_model', 'sesion');
+        $this->load->model('sistema/gestorsesiones_model', 'sesion');
     }
 
     public function nueva_session($usuario) {
