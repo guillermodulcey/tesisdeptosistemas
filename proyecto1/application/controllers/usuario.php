@@ -15,7 +15,7 @@ class Usuario extends CI_Controller {
         $this->lang->load('tank_auth');
         $this->load->model('usuarios/usuario_model', 'usuario');
         $this->load->model('sistema/dao_model', 'dao');
-        $this->load->model('producciones/produccion_model','produccion',TRUE);
+        $this->load->model('producciones/produccion_model', 'produccion');
     }
 
     function index() {
@@ -24,13 +24,31 @@ class Usuario extends CI_Controller {
         if ($message = $this->session->flashdata('message')) {
             $vistas[$i++] = array('view' => 'auth/general_message',
                 'vars' => array('message' => $message));
-        } else {
-            $producciones = $this->produccion->get_last_ten_entries();
-            $vistas[$i++] = array('view' => 'producciones/listar',
-                'vars' => array('producciones'=>$producciones));
         }
+        $vistas[$i++] = $this->listar();
         $data['vistas'] = $vistas;
         $this->load->view('home', $data);
+    }
+
+    function listar() {
+        $this->pagination->base_url = site_url("usuario/index");
+        $this->pagination->total_rows = $this->produccion->producciones_count();
+        $this->pagination->per_page = 3;
+        $this->pagination->uri_segment = 3;
+        $choice = $this->pagination->total_rows / $this->pagination->per_page;
+        $this->pagination->num_links = round($choice);
+        $this->pagination->initialize();
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        echo $page;
+        $start = ($page > 0) ? ($page - 1) * $this->pagination->per_page : 0;
+        echo $start;
+        $data["results"] = $this->produccion->obtener_producciones(
+                $this->pagination->per_page, //limit
+                $start); // start
+        $data["links"] = $this->pagination->create_links();
+
+        $vista = array('view' => 'producciones/listar', 'vars' => $data);
+        return $vista;
     }
 
     /**

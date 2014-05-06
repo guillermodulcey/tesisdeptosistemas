@@ -1,6 +1,6 @@
 <?php
 
-class Produccion_model extends CI_Model { 
+class Produccion_model extends CI_Model {
 
     function __construct() {
         parent::__construct();
@@ -305,15 +305,26 @@ class Produccion_model extends CI_Model {
         $this->db->delete('monografia', array('PROD_CODIGO' => $primary_key));
         return true;
     }
-    
-    
+
     function get_last_ten_entries() {
         $query = $this->db->get('produccion', 10);
         return $query->result();
     }
-    
-    
 
+    public function producciones_count() {
+        return $this->db->count_all("produccion");
+    }
+
+    public function obtener_producciones($limit, $start) {
+        $this->db->limit($limit, $start);
+        $query = $this->db->get("produccion");
+
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;
+    }    
 }
-
-?>
