@@ -30,11 +30,6 @@ class Produccion_model extends CI_Model {
         $output = $this->reporte->gestion_reporte($codigo);
         return $output;
     }
-    function get_last_ten_entries() {
-        $query = $this->db->get('produccion', 10);
-        return $query->result();
-    }
-
     public function producciones_count() {
         return $this->db->count_all("produccion");
     }
@@ -50,5 +45,28 @@ class Produccion_model extends CI_Model {
             return $data;
         }
         return false;
-    }    
+    }
+
+    public function obtener_produccion($PROD_CODIGO) {
+        $query = $this->db->query('
+                    SELECT p.PROD_CODIGO, p.PROD_TITULO, p.PROD_RESUMEN, 
+                    p.PROD_FECHA_PUBLICACION, p.PROD_GRUPO_INVESTIGACION, 
+                    p.PROD_PERMISO, p.PROD_ESTADO, p.PROD_ARCHIVO_ADJUNTO,
+                    m.MONOGRAFIA_TIPO, m.MONOGRAFIA_AUTOR1, m.MONOGRAFIA_AUTOR2,
+                    m.MONOGRAFIA_CODIRECTOR, r.RPT_DESCRIPCION, a.ART_ARCHIVO_ADJUNTO,
+                    a.ART_FACTOR_IMPACTO
+                    FROM produccion as p
+                    LEFT JOIN monografia as m on p.PROD_CODIGO = m.PROD_CODIGO
+                    LEFT JOIN reporte_tecnico as r on p.PROD_CODIGO = r.PROD_CODIGO
+                    LEFT JOIN articulo as a on p.PROD_CODIGO = a.PROD_CODIGO
+                    where p.PROD_CODIGO = ?'
+                , array($PROD_CODIGO));
+        if ($query->num_rows() == 1) {
+            include_once('SP_Produccion.php');
+            $produccion = $query->result("SP_Produccion");
+            return $produccion[0];
+        }
+        return NULL;
+    }
+
 }

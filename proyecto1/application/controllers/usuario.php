@@ -4,9 +4,10 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 
-include 'administrador.php';
-include 'docente.php';
-include 'jefe_departamento.php';
+include_once 'administrador.php';
+include_once 'docente.php';
+include_once 'jefe_departamento.php';
+include_once 'produccion.php';
 
 class Usuario extends CI_Controller {
 
@@ -25,30 +26,10 @@ class Usuario extends CI_Controller {
             $vistas[$i++] = array('view' => 'auth/general_message',
                 'vars' => array('message' => $message));
         }
-        $vistas[$i++] = $this->listar();
+        $prod_controller = new Produccion();
+        $vistas[$i++] = $prod_controller->listar();
         $data['vistas'] = $vistas;
         $this->load->view('home', $data);
-    }
-
-    function listar() {
-        $this->pagination->base_url = site_url("usuario/index");
-        $this->pagination->total_rows = $this->produccion->producciones_count();
-        $this->pagination->per_page = 3;
-        $this->pagination->uri_segment = 3;
-        $choice = $this->pagination->total_rows / $this->pagination->per_page;
-        $this->pagination->num_links = round($choice);
-        $this->pagination->initialize();
-        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        echo $page;
-        $start = ($page > 0) ? ($page - 1) * $this->pagination->per_page : 0;
-        echo $start;
-        $data["results"] = $this->produccion->obtener_producciones(
-                $this->pagination->per_page, //limit
-                $start); // start
-        $data["links"] = $this->pagination->create_links();
-
-        $vista = array('view' => 'producciones/listar', 'vars' => $data);
-        return $vista;
     }
 
     /**
