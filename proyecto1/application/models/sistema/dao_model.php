@@ -57,16 +57,34 @@ class DAO_model extends CI_Model {
 
     function get_codigo_usuario($email) {
         $valor = '';
-        $consulta = 'select USU_CODIGO from usuario where USU_EMAIL="' . $email . '"';
+        $consulta = 'select id from users where email="' . $email . '"';
         $query = $this->db->query($consulta);
         foreach ($query->result_array() as $row) {
-            $valor = $row['USU_CODIGO'];
+            $valor = $row['id'];
         }
         return $valor;
     }
 
     function get_producciones_docente($codigo) {
         $consulta = 'select PROD_CODIGO from usuario_produccion where USU_CODIGO=' . $codigo;
+        $query = $this->db->query($consulta);
+        return $query;
+    }
+    
+    function get_monografias_docente($codigo) {
+        $consulta = 'select usuario_produccion.PROD_CODIGO from usuario_produccion inner join monografia on usuario_produccion.PROD_CODIGO = monografia.PROD_CODIGO where USU_CODIGO=' . $codigo;
+        $query = $this->db->query($consulta);
+        return $query;
+    }
+    
+    function get_articulos_docente($codigo) {
+        $consulta = 'select usuario_produccion.PROD_CODIGO from usuario_produccion inner join articulo on usuario_produccion.PROD_CODIGO = articulo.PROD_CODIGO where USU_CODIGO=' . $codigo;
+        $query = $this->db->query($consulta);
+        return $query;
+    }
+    
+    function get_reportes_docente($codigo) {
+        $consulta = 'select usuario_produccion.PROD_CODIGO from usuario_produccion inner join reporte_tecnico on usuario_produccion.PROD_CODIGO = reporte_tecnico.PROD_CODIGO where USU_CODIGO=' . $codigo;
         $query = $this->db->query($consulta);
         return $query;
     }
@@ -87,7 +105,7 @@ class DAO_model extends CI_Model {
         }
         return $result;
     }
-
+    
 }
 
 ?>
