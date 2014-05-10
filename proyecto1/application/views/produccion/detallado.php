@@ -7,13 +7,15 @@ echo $produccion->PROD_CODIGO . br() .
  $produccion->PROD_GRUPO_INVESTIGACION . br() .
  $produccion->PROD_PERMISO . br() .
  $produccion->PROD_ESTADO . br() .
- $produccion->PROD_ARCHIVO_ADJUNTO . br() .
- $produccion->MONOGRAFIA_TIPO . br() .
- $produccion->MONOGRAFIA_AUTOR1 . br() .
- $produccion->MONOGRAFIA_AUTOR2 . br() .
- $produccion->MONOGRAFIA_CODIRECTOR . br() .
- $produccion->ART_ARCHIVO_ADJUNTO . br() .
- $produccion->ART_FACTOR_IMPACTO . br() .
- $produccion->RPT_DESCRIPCION . br();
+ $produccion->PROD_ARCHIVO_ADJUNTO . br();
+
+if (isset($produccion->MONOGRAFIA_TIPO)) {
+    $this->load->view("produccion/detallado_monografia", $produccion);
+} else if (isset($produccion->ART_ARCHIVO_ADJUNTO)) {
+    $this->load->view("produccion/detallado_articulo", $produccion);
+} else if (isset($produccion->RPT_DESCRIPCION)) {
+    $this->load->view("produccion/detallado_reporte", $produccion);
+}
+
 
 
