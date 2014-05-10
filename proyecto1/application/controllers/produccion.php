@@ -10,8 +10,14 @@ class Produccion extends CI_Controller {
         $this->load->model('producciones/produccion_model', 'produccion');
     }
 
-    function listar() {
-        $this->pagination->base_url = site_url("produccion/listar");
+    public function index() {
+        $vista = $this->listar();
+        $data['vistas'] = array($vista);
+        $this->load->view('home', $data);
+    }
+
+    public function listar() {
+        $this->pagination->base_url = site_url("produccion/index");
         $this->pagination->total_rows = $this->produccion->producciones_count();
         $this->pagination->per_page = 3;
         $this->pagination->uri_segment = 3;
