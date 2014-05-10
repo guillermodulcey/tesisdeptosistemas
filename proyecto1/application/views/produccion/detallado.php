@@ -1,5 +1,4 @@
 <?php
-
 echo $produccion->PROD_CODIGO . br() .
  $produccion->PROD_TITULO . br() .
  $produccion->PROD_RESUMEN . br() .
@@ -17,5 +16,12 @@ if (isset($produccion->MONOGRAFIA_TIPO)) {
     $this->load->view("produccion/detallado_reporte", $produccion);
 }
 
+$produccion->PROD_ARCHIVO_ADJUNTO = 'compressed.tracemonkey-pldi-09.pdf';
+?>
+
+
+<center>
+    <iframe src="<?php echo base_url("pdf/web/viewer.php?DEFAULT_URL=" . $produccion->PROD_ARCHIVO_ADJUNTO); ?>" width="80%" height="700"></iframe>
+</center>
 
 
