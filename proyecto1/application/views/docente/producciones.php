@@ -31,10 +31,10 @@ a:hover
     <div>
         <a href='<?php echo site_url('docente/articulo')?>'>Articulo</a> <br> 
         <a href='<?php echo site_url('docente/monografia')?>'>Monografia</a> <br>
-        <a href='<?php echo site_url('docente/reporte_tecnico')?>'>Reporte Tecnico</a>         
+        <a href='<?php echo site_url('docente/reporte')?>'>Reporte Tecnico</a>         
     </div>
 <!-- Beginning footer -->
-<div>Footer</div>
+<div></div>
 <!-- End of Footer -->
 </body>
 </html>
