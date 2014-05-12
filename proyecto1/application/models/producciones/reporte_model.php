@@ -67,7 +67,12 @@ class Reporte_model extends CI_Model {
         /* Tipo de campo */
         $crud->field_type('PROD_PERMISO', 'dropdown', array('1' => 'Privada', '2' => 'Publico'));
         $crud->field_type('PROD_GRUPO_INVESTIGACION', 'enum', array('IDIS', 'GIT'));
-        $crud->set_field_upload('PROD_ARCHIVO_ADJUNTO', 'assets/uploads/reportes');
+        
+        $md5_login = md5($this->dao->get_login_usuario($codigo));
+        if(!is_dir('stored/'.$md5_login)){
+            mkdir('stored/'.$md5_login,0777,TRUE);
+        }
+        $crud->set_field_upload('PROD_ARCHIVO_ADJUNTO', 'stored/'.$md5_login);
 
         /* Edit vs Add */
         $state = $crud->getState();
@@ -148,7 +153,7 @@ class Reporte_model extends CI_Model {
 
         $reporte_insert = array(
             'PROD_CODIGO' => $i,
-            'RPT_DESCRIPCION' => $art_factor_impacto
+            'RPT_DESCRIPCION' => $rpt_descripcion
         );
         $post_array['PROD_CODIGO'] = $i;
 

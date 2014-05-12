@@ -74,7 +74,12 @@ class Monografia_model extends CI_Model {
         /* Tipo de campo */
         $crud->field_type('PROD_PERMISO', 'dropdown', array('1' => 'Privada', '2' => 'Publico'));
         $crud->field_type('PROD_GRUPO_INVESTIGACION', 'enum', array('IDIS', 'GIT'));
-        $crud->set_field_upload('PROD_ARCHIVO_ADJUNTO', 'assets/uploads/monografias');
+        
+        $md5_login = md5($this->dao->get_login_usuario($codigo));
+        if(!is_dir('stored/'.$md5_login)){
+            mkdir('stored/'.$md5_login,0777,TRUE);
+        }
+        $crud->set_field_upload('PROD_ARCHIVO_ADJUNTO', 'stored/'.$md5_login);
 
         /* Edit vs Add */
         $state = $crud->getState();

@@ -63,11 +63,16 @@ class Articulo_model extends CI_Model {
 
         /* Campos requeridos */
         $crud->required_fields('PROD_TITULO', 'PROD_RESUMEN', 'PROD_FECHA_PUBLICACION', 'PROD_PERMISO', 'PROD_ARCHIVO_ADJUNTO', 'ART_FACTOR_IMPACTO');
-
+                
         /* Tipo de campo */
         $crud->field_type('PROD_PERMISO', 'dropdown', array('1' => 'Privada', '2' => 'Publico'));
         $crud->field_type('PROD_GRUPO_INVESTIGACION', 'enum', array('IDIS', 'GIT'));
-        $crud->set_field_upload('PROD_ARCHIVO_ADJUNTO', 'assets/uploads/articulos');
+        
+        $md5_login = md5($this->dao->get_login_usuario($codigo));
+        if(!is_dir('stored/'.$md5_login)){
+            mkdir('stored/'.$md5_login,0777,TRUE);
+        }
+        $crud->set_field_upload('PROD_ARCHIVO_ADJUNTO', 'stored/'.$md5_login);
 
         /* Edit vs Add */
         $state = $crud->getState();
