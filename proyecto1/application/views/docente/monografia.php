@@ -1,4 +1,3 @@
-
 <?php foreach ($css_files as $file): ?>
     <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" /> 
 <?php endforeach; ?>
@@ -7,9 +6,7 @@
     <script src="<?php echo $file; ?>"></script>
 <?php endforeach; ?>
 
-
-
-<div>
+<div id="nonografia">
     <?php echo $output; ?>
 
 </div>
