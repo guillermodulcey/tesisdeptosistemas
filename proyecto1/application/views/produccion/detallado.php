@@ -16,7 +16,8 @@ if (isset($produccion->MONOGRAFIA_TIPO)) {
     $this->load->view("produccion/detallado_reporte", $produccion);
 }
 
-$produccion->PROD_ARCHIVO_ADJUNTO = 'compressed.tracemonkey-pldi-09.pdf';
+//$produccion->PROD_ARCHIVO_ADJUNTO = 'compressed.tracemonkey-pldi-09.pdf';
+$produccion->PROD_ARCHIVO_ADJUNTO = base_url('/stored/docente1/compressed.tracemonkey-pldi-09.pdf');
 ?>
 
 

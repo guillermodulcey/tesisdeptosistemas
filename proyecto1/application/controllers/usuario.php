@@ -77,8 +77,6 @@ class Usuario extends CI_Controller {
                         'tipo' => $this->usuario->tipo_usuario
                     );
                     $this->session->set_userdata($newdata);
-                    echo print_r($this->session->all_userdata());
-                    echo $this->usuario->tipo_usuario[0];
                     redirect($this->usuario->tipo_usuario[0]);
                 } else {
                     $errors = $this->tank_auth->get_error_message();
@@ -454,7 +452,7 @@ class Usuario extends CI_Controller {
         $this->email->message($this->load->view('email/' . $type . '-html', $data, TRUE));
         $this->email->set_alt_message($this->load->view('email/' . $type . '-txt', $data, TRUE));
         $this->email->send();
-        echo $this->email->print_debugger();
+        //echo $this->email->print_debugger();
     }
 
     /**
