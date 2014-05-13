@@ -8,4 +8,4 @@
     <?php } ?>
 </ul>
 
-<? echo $links; ?>
+<?php echo $links; ?>
