@@ -40,10 +40,10 @@ class DAO_model extends CI_Model {
         $result = NULL;
         if ($this->conectar()) {
             $sql = "SELECT rol.ROL_NOMBRE
-                    FROM usuario
-                    INNER JOIN usuario_rol ON usuario.USU_CODIGO = usuario_rol.USU_CODIGO
+                    FROM users
+                    INNER JOIN usuario_rol ON users.id = usuario_rol.USU_CODIGO
                     INNER JOIN rol ON usuario_rol.ROL_CODIGO = rol.ROL_CODIGO
-                    WHERE usuario.USU_EMAIL = ? LIMIT 0 , 30";
+                    WHERE users.email = ? LIMIT 0 , 30";
             $query = $this->db->query($sql, array($login . "@unicauca.edu.co"));
             if ($query->num_rows() > 0) {
                 $result = array();
@@ -64,7 +64,59 @@ class DAO_model extends CI_Model {
         }
         return $valor;
     }
-
+    
+    function get_email_usuario($id) {
+        $valor = '';
+        $consulta = 'select email from users where id="' . $id . '"';
+        $query = $this->db->query($consulta);
+        foreach ($query->result_array() as $row) {
+            $valor = $row['email'];
+        }
+        return $valor;
+    }
+    
+    function get_nombre_usuario($id) {
+        $valor = '';
+        $consulta = 'select USU_NOMBRE from usuario where USU_CODIGO="' . $id . '"';
+        $query = $this->db->query($consulta);
+        foreach ($query->result_array() as $row) {
+            $valor = $row['USU_NOMBRE'];
+        }
+        return $valor;
+    }
+    
+    function get_apellido_usuario($id) {
+        $valor = '';
+        $consulta = 'select USU_APELLIDO from usuario where USU_CODIGO="' . $id . '"';
+        $query = $this->db->query($consulta);
+        foreach ($query->result_array() as $row) {
+            $valor = $row['USU_APELLIDO'];
+        }
+        return $valor;
+    }
+    
+    function get_login_usuario($id) {
+        $valor = '';
+        $consulta = 'select username from users where id="' . $id . '"';
+        $query = $this->db->query($consulta);
+        foreach ($query->result_array() as $row) {
+            $valor = $row['username'];
+        }
+        return $valor;
+    }
+    
+    function get_roles_usuario($id) {
+        $valor = '';
+        $i = 0;
+        $consulta = 'select ROL_NOMBRE from rol inner join usuario_rol on rol.ROL_CODIGO = usuario_rol.ROL_CODIGO where USU_CODIGO="' . $id . '"';
+        $query = $this->db->query($consulta);
+        foreach ($query->result_array() as $row) {
+            $valor[$i] = $row['ROL_NOMBRE'];
+            $i++;
+        }
+        return $valor;
+    }
+    
     function get_producciones_docente($codigo) {
         $consulta = 'select PROD_CODIGO from usuario_produccion where USU_CODIGO=' . $codigo;
         $query = $this->db->query($consulta);
