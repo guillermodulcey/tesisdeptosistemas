@@ -22,67 +22,53 @@ class Docente extends CI_Controller {
     public function index() {
         $vista = array(
             'view' => 'docente/home',
-            'vars' => ''
-        );
+            'vars' => '');
         $this->data['vistas'] = array($vista);
         $this->load->view('home', $this->data);
     }
 
     public function producciones() {
-        $this->_producciones_output();
+        $vista = array(
+            'view' => 'docente/producciones',
+            'vars' => '');
+        $this->data['vistas'] = array($vista);
+        $this->load->view('home', $this->data);
     }
 
     public function monografia() {
         $email = $this->session->userdata('username');
-        $email = $email."@unicauca.edu.co";
+        $email = $email . "@unicauca.edu.co";
         $codigo = $this->dao->get_codigo_usuario($email);
         $output = $this->produccion->gestion_monografia($codigo);
         $vista = array(
-            'view' => 'docente/monografia.php',
-            'vars' => $output
-        );
-        $this->data['vistas'] = array($vista); 
-        $this->load->view('home', $this->data);  
+            'view' => 'docente/monografia',
+            'vars' => $output);
+        $this->data['vistas'] = array($vista);
+        $this->load->view('home', $this->data);
     }
-    
+
     public function articulo() {
         $email = $this->session->userdata('username');
-        $email = $email."@unicauca.edu.co";
+        $email = $email . "@unicauca.edu.co";
         $codigo = $this->dao->get_codigo_usuario($email);
-
-        $produccion = new Produccion_model();
-
-        $output = $produccion->gestion_articulo($codigo);
-
-        $this->_articulo_output($output);
+        $output = $this->produccion->gestion_articulo($codigo);
+        $vista = array(
+            'view' => 'docente/articulo',
+            'vars' => $output);
+        $this->data['vistas'] = array($vista);
+        $this->load->view('home', $this->data);
     }
-    
+
     public function reporte() {
         $email = $this->session->userdata('username');
-        $email = $email."@unicauca.edu.co";
+        $email = $email . "@unicauca.edu.co";
         $codigo = $this->dao->get_codigo_usuario($email);
-
-        $produccion = new Produccion_model();
-
-        $output = $produccion->gestion_reporte($codigo);
-
-        $this->_reporte_output($output);
-    }
-    
-    public function _producciones_output() {
-        $this->load->view('docente/producciones.php');
-    }
-
-    public function _monografia_output($output = null) {
-        $this->load->view('docente/monografia.php', $output);
-    }
-    
-    public function _articulo_output($output = null) {
-        $this->load->view('docente/articulo.php', $output);
-    }
-    
-    public function _reporte_output($output = null) {
-        $this->load->view('docente/reporte.php', $output);
+        $output = $this->produccion->gestion_reporte($codigo);
+        $vista = array(
+            'view' => 'docente/reporte',
+            'vars' => $output);
+        $this->data['vistas'] = array($vista);
+        $this->load->view('home', $this->data);
     }
 
 }

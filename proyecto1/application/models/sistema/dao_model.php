@@ -105,7 +105,6 @@ class DAO_model extends CI_Model {
         }
         return $result;
     }
-    
 }
 
 ?>
