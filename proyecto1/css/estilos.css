@@ -267,7 +267,7 @@ body {
 	background: url("../img/footer-fon.png") no-repeat;  
 }
 
-/**** Estilos CRUD usuarios ****/
+/**** Estilos botones crud ****/
 span.required {
     color: #CC0000;
     padding-left: 8px;
@@ -281,6 +281,48 @@ span.required {
 }
 #form-button-save:hover, #save-and-go-back-button:hover, #cancel-button:hover {
 	background-color: #CC0000;
+}
+/**** estilos usuarios****/
+#usuario {
+    margin: 0 150px;
+}
+
+#usuario h2 {
+    font-size: 38px;
+    color: #0B2972;
+    padding-bottom: 20px;
+    text-align: center;
+}
+#usuario table th {
+  margin: 0;
+  padding: 6px 0;
+}
+
+#usuario .flexigrid div.fbutton span.add {
+  background: url("../img/add.png") no-repeat scroll 0 2px rgba(0, 0, 0, 0);
+  padding-left: 20px;
+  font-size: 15px;
+}
+
+#usuario .flexigrid table thead tr.hDiv th div {
+  border-left: 0 solid #FFFFFF;
+  font-size: 13px;
+  padding: 5px;
+  text-align: center;
+}
+
+#usuario .flexigrid table tr.hDiv th {
+    
+}
+#usuario .form-display-as-box {
+  float: left;
+  font-size: 18px;
+  padding-top: 7px;
+  width: 130px;
+}
+
+#usuario .flexigrid .ftitle-left {
+    font-size: 15px;
 }
 #field-USU_CONTRASENA {
 	border: 1px solid #CCCCCC;
@@ -301,11 +343,11 @@ span.required {
 
 /**** estilos monografia ****/
 
-#monografia {
+#monografia, #articulo, #reporte {
     margin: 0 50px;
 }
 
-#monografia h2 {
+#monografia h2, #articulo h2, #reporte h2 {
     font-size: 38px;
     color: #0B2972;
     padding-bottom: 20px;
@@ -316,7 +358,8 @@ span.required {
   padding: 6px 0;
 }
 
-#monografia .flexigrid div.fbutton span.add {
+#monografia .flexigrid div.fbutton span.add, #articulo .flexigrid div.fbutton span.add,
+#reporte .flexigrid div.fbutton span.add  {
   background: url("../img/add.png") no-repeat scroll 0 2px rgba(0, 0, 0, 0);
   padding-left: 20px;
   font-size: 15px;
@@ -333,7 +376,7 @@ span.required {
     width: 8%;
 }
 
-#monografia .flexigrid .ftitle-left {
+#monografia .flexigrid .ftitle-left, #articulo .flexigrid .ftitle-left, #reporte .flexigrid .ftitle-left  {
     font-size: 15px;
 }
 
@@ -375,4 +418,65 @@ center a {
 }
 center a:hover {
     color: #4A66C4;
+}
+#detallado h2 {
+    color: #0B2972;
+    font-size: 35px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+#detallado ul li span {
+    display: inline-block;
+    color: #000000;
+    font-size: 20px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-right: 5px;
+}
+#detallado ul li p {
+    padding-left: 15px;
+    font-size: 16px;
+}
+#detallado ul {
+    width: 80%;
+    margin: 0 auto;
+    color: #333333;
+}
+
+#detallado a {
+    display: block;
+    height: 34px;
+    width: 100px;
+    border-radius: 6px;
+    text-decoration: none;
+    background: #770000;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 33px;
+    margin: 30px auto 0;
+}
+#detallado a:hover {
+    background-color: #CC0000;
+}
+#detallado_monografia, #detallado_articulo, #detallado_reporte {
+    width: 80%;
+}
+center.visualizar{
+    padding-top: 20px;
+}
+#monografia .flexigrid div.fbutton span.export, 
+#articulo .flexigrid div.fbutton span.export,
+#reporte .flexigrid div.fbutton span.export,
+#usuario .flexigrid div.fbutton span.export {
+  padding-bottom: 5px;
+}
+#monografia .flexigrid div.fbutton span.print,
+#articulo .flexigrid div.fbutton span.print,
+#reporte .flexigrid div.fbutton span.print,
+#usuario .flexigrid div.fbutton span.print {
+  padding-bottom: 5px;
+}
+
+#PROD_RESUMEN_display_as_box {
+    padding-bottom: 7px;
 }
