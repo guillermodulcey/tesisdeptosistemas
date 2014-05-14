@@ -332,3 +332,47 @@ span.required {
 #monografia .flexigrid table tr.hDiv th {
     width: 8%;
 }
+
+#monografia .flexigrid .ftitle-left {
+    font-size: 15px;
+}
+
+/**** estilos item busqueda****/
+#itemBusqueda a {
+    display: block;
+    text-decoration: none;
+    font-size: 25px;
+    color: #0B2972;
+    padding-top: 20px;
+}
+#itemBusqueda a:hover {
+    color: #4A66C4;
+}
+#itemBusqueda {
+    width: 50%;
+    margin: 0 auto;
+    border-bottom: 2px dotted #D3D3D3;
+    color: #333333;
+}
+#itemBusqueda ul li span {
+    color: #000000;
+    padding-right: 5px;
+    font-size: 18px;
+}
+
+#itemBusqueda ul li {
+    line-height: 25px;
+}
+#itemBusqueda ul  {
+    padding-bottom: 20px;
+}
+center {
+    padding: 10px;
+    font-size: 20px;
+}
+center a {
+    color: #0B2972;
+}
+center a:hover {
+    color: #4A66C4;
+}

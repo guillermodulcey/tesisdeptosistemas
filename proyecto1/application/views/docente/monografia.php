@@ -6,7 +6,8 @@
     <script src="<?php echo $file; ?>"></script>
 <?php endforeach; ?>
 
-<div id="nonografia">
+<div id="monografia">
+    <h2>Monografias</h2>
     <?php echo $output; ?>
 
 </div>
