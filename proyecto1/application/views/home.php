@@ -35,7 +35,7 @@
                         <a href="#">Artículos</a>
                     </li>
                     <li class="reportes">
-                        <a href="#">Reportes Ténicos</a>
+                        <a href="#">Reportes Técnicos</a>
                     </li>
                 </ul>      
             </div>

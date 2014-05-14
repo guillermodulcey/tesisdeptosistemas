@@ -8,7 +8,8 @@
     <script src="<?php echo $file; ?>"></script>
 <?php endforeach; ?>
 
-<div>
+<div id="reporte">
+    <h2>Reportes Técnicos</h2>
     <?php echo $output; ?>
 
 </div>

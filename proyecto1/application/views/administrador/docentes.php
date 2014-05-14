@@ -5,4 +5,7 @@
     <script src="<?php echo $file; ?>"></script>
 <?php endforeach; ?>
 
-<?php echo $output; ?>
+<div id="usuario">
+    <h2>Docentes</h2>
+    <?php echo $output; ?>
+</div>
