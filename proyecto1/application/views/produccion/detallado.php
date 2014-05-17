@@ -32,7 +32,7 @@
         <iframe src="<?php echo base_url("pdf/web/viewer.php?DEFAULT_URL=" . $produccion->PROD_ARCHIVO_ADJUNTO); ?>" width="80%" height="700"></iframe>
     </center>
 
-    <a href="">Regresar</a>
+    <a href="<?php echo base_url('index.php/produccion/index'); ?>">Regresar</a>
 
 </div>
 
