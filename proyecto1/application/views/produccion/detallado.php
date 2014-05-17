@@ -2,7 +2,6 @@
     <h2><?php echo $produccion->PROD_TITULO?></h2>
     <ul>
         <li> <span>Código: </span> <?php echo $produccion->PROD_CODIGO ?> </li>
-        <li> <span>Resumen: </span> <p><?php echo $produccion->PROD_RESUMEN?></p> </li>
         <li> <span>Fecha Publicación: </span> <?php echo $produccion->PROD_FECHA_PUBLICACION ?> </li>
         <li> <span>Grupo Investigación: </span> <?php echo $produccion->PROD_GRUPO_INVESTIGACION ?> </li>
         <li> <span>Permiso: </span> <?php echo $produccion->PROD_PERMISO ?> </li>
@@ -17,7 +16,13 @@
     } else if (isset($produccion->RPT_DESCRIPCION)) {
         $this->load->view("produccion/detallado_reporte", $produccion);
     }
-
+    ?>
+    
+    <ul>
+        <li> <span>Resumen: </span> <p><?php echo $produccion->PROD_RESUMEN?></p> </li>
+    </ul>
+    
+    <?php
 //$produccion->PROD_ARCHIVO_ADJUNTO = 'compressed.tracemonkey-pldi-09.pdf';
     $produccion->PROD_ARCHIVO_ADJUNTO = base_url('/stored/docente1/compressed.tracemonkey-pldi-09.pdf');
     ?>
