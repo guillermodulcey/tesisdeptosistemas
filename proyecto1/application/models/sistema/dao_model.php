@@ -65,6 +65,16 @@ class DAO_model extends CI_Model {
         return $valor;
     }
     
+    function get_codigo_usuario_prod($cod_produccion){
+        $valor = '';
+        $consulta = 'select id from users inner join usuario_produccion on id=USU_CODIGO where PROD_CODIGO="' . $cod_produccion . '"';
+        $query = $this->db->query($consulta);
+        foreach ($query->result_array() as $row) {
+            $valor = $row['id'];
+        }
+        return $valor;
+    }
+            
     function get_email_usuario($id) {
         $valor = '';
         $consulta = 'select email from users where id="' . $id . '"';
