@@ -14,7 +14,9 @@ class Usuario extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->lang->load('tank_auth');
+        $this->load->model('usuarios/usuario_edit', 'user');
         $this->load->model('usuarios/usuario_model', 'usuario');
+        $this->load->model('usuarios/SP_usuario', 'sp_usuario',TRUE);
         $this->load->model('sistema/dao_model', 'dao');
         $this->load->model('producciones/produccion_model', 'produccion');
     }
@@ -540,6 +542,20 @@ class Usuario extends CI_Controller {
             return FALSE;
         }
         return TRUE;
+    }
+    
+    function editar_datos(){
+        $email = $this->session->userdata('username');
+        $email = $email."@unicauca.edu.co";
+        $codigo = $this->dao->get_codigo_usuario($email);
+        
+        $output = $this->user->editar_docente($codigo);
+        $vista = array(
+            'view' => 'usuario/editar_datos',
+            'vars' => $output);
+        $this->data['vistas'] = array($vista);
+        $this->load->view('home', $this->data);
+        
     }
 
 }
