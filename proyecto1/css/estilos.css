@@ -529,6 +529,6 @@ center.visualizar{
     display: none;
 }
 
-#editar .flexigrid div.mDiv div {
-  padding: 13px;
+#editar .flexigrid div.mDiv div.ftitle {
+    padding: 13px;
 }
