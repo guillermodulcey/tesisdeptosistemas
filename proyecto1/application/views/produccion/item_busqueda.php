@@ -5,12 +5,13 @@
     <br />
 
     <ul>
-        <li> <span>Resumen: </span> <?php echo $PROD_RESUMEN ?> </li>
         <li> <span>Fecha Publicación: </span> <?php echo $PROD_FECHA_PUBLICACION ?> </li>
-        <li> <span>Grupo Investigación: </span> <?php echo $PROD_GRUPO_INVESTIGACION ?> </li>
-        <li> <span>Permiso: </span> <?php echo $PROD_PERMISO ?> </li>
-        <li> <span>Estado: </span> <?php echo $PROD_ESTADO ?> </li>
-        <li> <span>Archivo Adjunto: </span> <?php echo $PROD_ARCHIVO_ADJUNTO ?> </li>
+        <li class="resumen"> <?php
+            $resumenDetallado = $PROD_RESUMEN;
+            $resumenBusqueda = substr($resumenDetallado, 0, 250) . "...";
+
+            echo $resumenBusqueda;?>
+        </li>
     </ul>
 </div>
 

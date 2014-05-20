@@ -1,12 +1,8 @@
 <div id="detallado">
-    <h2><?php echo $produccion->PROD_TITULO?></h2>
+    <h2><?php echo $produccion->PROD_TITULO ?></h2>
     <ul>
-        <li> <span>Código: </span> <?php echo $produccion->PROD_CODIGO ?> </li>
         <li> <span>Fecha Publicación: </span> <?php echo $produccion->PROD_FECHA_PUBLICACION ?> </li>
-        <li> <span>Grupo Investigación: </span> <?php echo $produccion->PROD_GRUPO_INVESTIGACION ?> </li>
-        <li> <span>Permiso: </span> <?php echo $produccion->PROD_PERMISO ?> </li>
-        <li> <span>Estado: </span> <?php echo $produccion->PROD_ESTADO ?> </li>
-        <li> <span>Archivo Adjunto: </span> <?php echo $produccion->PROD_ARCHIVO_ADJUNTO ?> </li>
+        <li> <span>Grupo Investigación: </span> <?php echo $produccion->PROD_GRUPO_INVESTIGACION ?> </li>        
     </ul>
     <?php
     if (isset($produccion->MONOGRAFIA_TIPO)) {
@@ -17,11 +13,18 @@
         $this->load->view("produccion/detallado_reporte", $produccion);
     }
     ?>
-    
+
     <ul>
-        <li> <span>Resumen: </span> <p><?php echo $produccion->PROD_RESUMEN?></p> </li>
+        <li> <span>Resumen: </span> <p><?php echo $produccion->PROD_RESUMEN ?></p> </li>
+        <li> <span>Archivo Adjunto: </span>
+            <a href="#" id="archivoAdjunto">
+                <?php
+                echo substr($produccion->PROD_ARCHIVO_ADJUNTO, 0, strlen($produccion->PROD_ARCHIVO_ADJUNTO) - 4)
+                ?>
+            </a>
+        </li>
     </ul>
-    
+
     <?php
 //$produccion->PROD_ARCHIVO_ADJUNTO = 'compressed.tracemonkey-pldi-09.pdf';
     $produccion->PROD_ARCHIVO_ADJUNTO = base_url('/stored/docente1/compressed.tracemonkey-pldi-09.pdf');
@@ -32,7 +35,7 @@
         <iframe src="<?php echo base_url("pdf/web/viewer.php?DEFAULT_URL=" . $produccion->PROD_ARCHIVO_ADJUNTO); ?>" width="80%" height="700"></iframe>
     </center>
 
-    <a href="<?php echo base_url('index.php/produccion/index'); ?>">Regresar</a>
+    <a id="regresar" href="<?php echo base_url('index.php/produccion/index'); ?>">Regresar</a>
 
 </div>
 
