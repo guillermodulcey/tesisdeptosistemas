@@ -1,5 +1,6 @@
 <div id="detallado">
     <h2><?php echo $produccion->PROD_TITULO ?></h2>
+    <a id="contactar" href="<?php echo site_url("produccion/contactar_autor/$produccion->PROD_CODIGO"); ?>">Contactar Autor</a>
     <ul>
         <li> <span>Fecha Publicación: </span> <?php echo $produccion->PROD_FECHA_PUBLICACION ?> </li>
         <li> <span>Grupo Investigación: </span> <?php echo $produccion->PROD_GRUPO_INVESTIGACION ?> </li>        
