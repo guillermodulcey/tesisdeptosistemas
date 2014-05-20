@@ -7,7 +7,7 @@
 <?php endforeach; ?>
 
 <div id="editar">
-    <h2>Editar Info</h2>
+    <h2>Actualizar Información Personal</h2>
     <?php echo $output; ?>
 
 </div>

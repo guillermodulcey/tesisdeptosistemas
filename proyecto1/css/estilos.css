@@ -21,8 +21,15 @@ body {
 
 	}
 	#inicioSesion a:hover {
-		
-	}            
+            color: #EEB60C;
+	}
+        span.bienvenido {
+            color: #FFFFFF;
+            float: right;
+            position: absolute;
+            right: 355px;
+            top: 4px;
+        }
 #header {
 	position: relative;
 	float: right;
@@ -343,7 +350,7 @@ span.required {
 
 /**** estilos monografia ****/
 
-#monografia, #articulo, #reporte {
+#monografia, #articulo, #reporte, #editar {
     margin: 0 50px;
 }
 
@@ -352,6 +359,11 @@ span.required {
     color: #0B2972;
     padding-bottom: 20px;
     text-align: center;
+}
+#editar h2 {
+    font-size: 20px;
+    color: #0B2972;
+    padding: 10px 0 10px 10px;
 }
 #monografia table th {
   margin: 0;
@@ -511,4 +523,12 @@ center.visualizar{
 
 #PROD_RESUMEN_display_as_box {
     padding-bottom: 7px;
+}
+
+#editar .flexigrid .ftitle-left {
+    display: none;
+}
+
+#editar .flexigrid div.mDiv div {
+  padding: 13px;
 }
