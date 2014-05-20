@@ -16,8 +16,7 @@
 
     <ul>
         <li> <span>Resumen: </span> <p><?php echo $produccion->PROD_RESUMEN ?></p> </li>
-        <li> <span>Archivo Adjunto: </span>
-            <a href="#" id="archivoAdjunto">
+        <li> <a href="#" id="archivoAdjunto">
                 <?php
                 echo substr($produccion->PROD_ARCHIVO_ADJUNTO, 0, strlen($produccion->PROD_ARCHIVO_ADJUNTO) - 4)
                 ?>
