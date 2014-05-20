@@ -16,9 +16,9 @@ class Usuario extends CI_Controller {
         $this->lang->load('tank_auth');
         $this->load->model('usuarios/usuario_edit', 'user');
         $this->load->model('usuarios/usuario_model', 'usuario');
-        $this->load->model('usuarios/SP_usuario', 'sp_usuario',TRUE);
         $this->load->model('sistema/dao_model', 'dao');
         $this->load->model('producciones/produccion_model', 'produccion');
+        
     }
 
     function index() {
@@ -73,10 +73,13 @@ class Usuario extends CI_Controller {
             if ($this->form_validation->run()) {        // validation ok
                 if ($this->tank_auth->login(
                                 $this->form_validation->set_value('login'), $this->form_validation->set_value('password'), $this->form_validation->set_value('remember'), $data['login_by_username'], $data['login_by_email'])) {
+                    $codigo = $this->dao->get_codigo_usuario($this->form_validation->set_value('login').'@unicauca.edu.co');
+                    $nombre = $this->dao->get_nombre_usuario($codigo);
                     $this->usuario->tipo_usuario = $this->dao->get_tipo_usuario($login);
                     $newdata = array(
                         'email' => $login,
-                        'tipo' => $this->usuario->tipo_usuario
+                        'tipo' => $this->usuario->tipo_usuario,
+                        'nombre' => $nombre
                     );
                     $this->session->set_userdata($newdata);
                     redirect($this->usuario->tipo_usuario[0]);

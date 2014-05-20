@@ -1,11 +1,20 @@
 <ul>
-    <?php foreach ($results as $data) { ?>
-        <li>
-            <?php
-            $this->load->view('produccion/item_busqueda', $data);
+    <?php
+    if (isset($results)) :
+        foreach ($results as $data):
             ?>
-        </li>
-    <?php } ?>
+            <li>
+                <?php
+                $this->load->view('produccion/item_busqueda', $data);
+                ?>
+            </li>
+            <?php
+        endforeach;
+    endif;
+    ?>
 </ul>
 
-<?php echo $links; ?>
+<?php
+if (isset($links)) {
+    echo $links;
+}

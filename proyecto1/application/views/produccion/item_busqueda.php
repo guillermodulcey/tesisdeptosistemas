@@ -1,8 +1,9 @@
 <div id="itemBusqueda">
     <?php
-    echo anchor(site_url('produccion/ver_detalle/' . $PROD_CODIGO), $PROD_TITULO)
-    ?>
-    <br />
+    if (isset($PROD_CODIGO)):
+        echo anchor(site_url('produccion/ver_detalle/' . $PROD_CODIGO), $PROD_TITULO)
+        ?>
+        <br />
 
     <ul>
         <li> <span>Fecha Publicación: </span> <?php echo $PROD_FECHA_PUBLICACION ?> </li>

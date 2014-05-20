@@ -8,7 +8,7 @@
 class SP_usuario extends CI_Model{
     private $tbl_usuario = 'usuario';
     
-    function SP_usuario(){
+    function __construct(){
         parent::__construct();
     }
     function count_all(){

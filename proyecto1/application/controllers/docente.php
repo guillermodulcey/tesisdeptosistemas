@@ -3,6 +3,8 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
+include_once 'produccion.php';
+
 class Docente extends CI_Controller {
 
     public $STR_INDEX = "docente/home";
@@ -20,10 +22,12 @@ class Docente extends CI_Controller {
     }
 
     public function index() {
-        $vista = array(
+        $vista_home = array(
             'view' => 'docente/home',
             'vars' => '');
-        $this->data['vistas'] = array($vista);
+        $prod = new Produccion();
+        $vista_prod = $prod->listar(2);
+        $this->data['vistas'] = array($vista_home, $vista_prod);
         $this->load->view('home', $this->data);
     }
 
@@ -70,5 +74,7 @@ class Docente extends CI_Controller {
         $this->data['vistas'] = array($vista);
         $this->load->view('home', $this->data);
     }
+    
+    
 
 }
