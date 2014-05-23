@@ -12,9 +12,11 @@ class Docente extends CI_Controller {
     function __construct() {
         parent::__construct();
         if ($this->seguridad_model->es_docente()) {
+            $this->load->model('producciones/SP_Produccion','sp_produccion',TRUE);
             $this->load->model('producciones/produccion_model', 'produccion');
             $this->load->model('usuarios/docente_model', 'docente');
             $this->load->model('sistema/dao_model', 'dao');
+            
         } else {
             show_404();
             die();
@@ -29,6 +31,7 @@ class Docente extends CI_Controller {
         $vista_prod = $prod->listar(2);
         $this->data['vistas'] = array($vista_home, $vista_prod);
         $this->load->view('home', $this->data);
+        $this->load->view('docente/menu_docente');
     }
 
     public function producciones() {
@@ -49,6 +52,7 @@ class Docente extends CI_Controller {
             'vars' => $output);
         $this->data['vistas'] = array($vista);
         $this->load->view('home', $this->data);
+        $this->load->view('docente/menu_docente');
     }
 
     public function articulo() {
@@ -57,10 +61,12 @@ class Docente extends CI_Controller {
         $codigo = $this->dao->get_codigo_usuario($email);
         $output = $this->produccion->gestion_articulo($codigo);
         $vista = array(
-            'view' => 'docente/articulo',
-            'vars' => $output);
-        $this->data['vistas'] = array($vista);
-        $this->load->view('home', $this->data);
+            'view' => 'docente/articulo.php',
+            'vars' => $output
+        );
+        $this->data['vistas'] = array($vista); 
+        $this->load->view('home', $this->data);  
+        $this->load->view('docente/menu_docente');
     }
 
     public function reporte() {
@@ -69,10 +75,28 @@ class Docente extends CI_Controller {
         $codigo = $this->dao->get_codigo_usuario($email);
         $output = $this->produccion->gestion_reporte($codigo);
         $vista = array(
-            'view' => 'docente/reporte',
-            'vars' => $output);
-        $this->data['vistas'] = array($vista);
-        $this->load->view('home', $this->data);
+            'view' => 'docente/reporte.php',
+            'vars' => $output
+        );
+        $this->data['vistas'] = array($vista); 
+        $this->load->view('home', $this->data);   
+        $this->load->view('docente/menu_docente');
+    }
+    
+    public function _producciones_output() {
+        $this->load->view('docente/producciones.php');
+    }
+
+    public function _monografia_output($output = null) {
+        $this->load->view('docente/monografia.php', $output);
+    }
+    
+    public function _articulo_output($output = null) {
+        $this->load->view('docente/articulo.php', $output);
+    }
+    
+    public function _reporte_output($output = null) {
+        $this->load->view('docente/reporte.php', $output);
     }
     
     

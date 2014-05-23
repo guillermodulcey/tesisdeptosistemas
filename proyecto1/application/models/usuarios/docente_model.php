@@ -7,7 +7,7 @@ class Docente_model extends CI_Model {
 
     function __construct() {
         parent::__construct();
-        $this->lang->load('tank_auth');
+        $this->load->library('tank_auth');
         $this->load->library('grocery_CRUD');
         $this->load->model('sistema/dao_model', 'dao');
     }
@@ -63,6 +63,7 @@ class Docente_model extends CI_Model {
         }
 
         $crud->callback_before_insert(array($this, 'llenar_2_tablas'));
+
         $output = $crud->render();
         return $output;
     }

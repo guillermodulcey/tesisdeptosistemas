@@ -30,6 +30,7 @@ class Jefe_Departamento extends CI_Controller {
         }
         $this->data['vistas'] = $vistas;
         $this->load->view('home', $this->data);
+        $this->load->view('jefe_departamento/menu_jefe');
     }
 
 }
