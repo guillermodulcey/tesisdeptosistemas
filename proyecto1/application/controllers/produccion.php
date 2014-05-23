@@ -31,12 +31,13 @@ class Produccion extends CI_Controller {
         } else {
             $result = array($items);
         }
+        
         $this->pagination->total_rows = count($items);
         $choice = $this->pagination->total_rows / $this->pagination->per_page;
         $this->pagination->num_links = round($choice);
         $this->pagination->initialize();
 
-        $data["results"] = $result;
+        $data["producciones"] = $result;
         $data["links"] = $this->pagination->create_links();
         $vista = array('view' => 'produccion/listar_items', 'vars' => $data);
         return $vista;

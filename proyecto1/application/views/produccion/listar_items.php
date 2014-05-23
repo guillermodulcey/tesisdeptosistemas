@@ -1,11 +1,11 @@
 <ul>
     <?php
-    if (isset($results)) :
-        foreach ($results as $data):
+    if (isset($producciones)) :
+        foreach ($producciones as $produccion):
             ?>
             <li>
                 <?php
-                $this->load->view('produccion/item_busqueda', $data);
+                $this->load->view('produccion/item_busqueda', array('produccion'=>$produccion));
                 ?>
             </li>
             <?php
