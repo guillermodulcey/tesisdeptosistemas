@@ -5,10 +5,7 @@
 
         <h2><?php echo $produccion->PROD_TITULO ?></h2>
         <a id="contactar" href="<?php echo site_url("produccion/contactar_autor/$produccion->PROD_CODIGO"); ?>">Contactar Autor</a>
-        <ul>
-            <li> <span>Fecha Publicación: </span> <?php echo $produccion->PROD_FECHA_PUBLICACION ?> </li>
-            <li> <span>Grupo Investigación: </span> <?php echo $produccion->PROD_GRUPO_INVESTIGACION ?> </li>        
-        </ul>
+        
         <?php
         if (isset($produccion->MONOGRAFIA_TIPO)) {
             $this->load->view("produccion/detallado_monografia", $produccion);
@@ -18,7 +15,12 @@
             $this->load->view("produccion/detallado_reporte", $produccion);
         }
         ?>
-
+        
+        
+        <ul>
+            <li> <span>Fecha Publicación: </span> <?php echo $produccion->PROD_FECHA_PUBLICACION ?> </li>
+            <li> <span>Grupo Investigación: </span> <?php echo $produccion->PROD_GRUPO_INVESTIGACION ?> </li>        
+        </ul>
         <ul>
             <li> <p><?php echo $produccion->PROD_RESUMEN ?></p> </li>
             <li> <a href="#" id="archivoAdjunto">

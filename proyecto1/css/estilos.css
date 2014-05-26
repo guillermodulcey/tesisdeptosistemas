@@ -403,6 +403,13 @@ span.required {
     color: #4A66C4;
     text-decoration: underline;
 }
+#itemBusqueda li.resumen a {
+    background: url("../img/icono-descargarpdf.png") 0 5px no-repeat;
+    padding-left: 40px;
+    font-size: 15px;
+    line-height: 46px;
+    height: 40px;
+}
 #itemBusqueda #verDescripcion {
     float: right;
     display: block;
@@ -425,20 +432,30 @@ span.required {
     color: #000000;
     padding-right: 5px;
 }
-
+#itemBusqueda ul li span.autores {
+    padding-left: 20px;
+    font-size: 16px;
+}
+#itemBusqueda ul li span.fechaPubli {
+    padding-left: 60px;
+}
 #itemBusqueda ul li {
     font-size: 15px;
     line-height: 18px;
 }
+
+#itemBusqueda ul li.grupoInv {
+    float: right;
+}
 #itemBusqueda ul li.resumen{
-    padding-top: 8px;
+    padding-top: 5px;
 }
 #itemBusqueda ul li.detallado{
     display: none;
     padding-top: 8px;
 }
 #itemBusqueda ul  {
-    padding-bottom: 20px;
+    padding-bottom: 5px;
 }
 center {
     padding: 10px;
@@ -501,6 +518,17 @@ center a:hover {
     color: #4A66C4;
     text-decoration: underline;
 }
+#detallado #contactar{
+    text-decoration: none;
+    font-size: 16px;
+    color: #0B2972;
+    float: right;
+    margin-right: 140px;
+}
+#detallado #contactar:hover {
+    color: #4A66C4;
+    text-decoration: underline;
+}
 #detallado_monografia, #detallado_articulo, #detallado_reporte {
     width: 80%;
 }
@@ -532,3 +560,60 @@ center.visualizar{
 #editar .flexigrid div.mDiv div.ftitle {
     padding: 13px;
 }
+#contactarAutor {
+    width: 600px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+#contactarAutor form label {
+		display: inline-block;
+                width: 155px;
+                color: #755C5C;
+                vertical-align: top;
+                padding-top: 6px;
+	}
+	#contactarAutor form input {
+		height: 30px;
+		width: 370px;
+		border-radius: 5px;
+		font-size: 17px;
+		border: 1px solid #CDCDCD;
+	}
+	#contactarAutor form input:focus {
+		border-radius: 5px;
+		border: 1px solid #90B3EC;
+	}
+        #contactarAutor form textArea {
+		height: 200px;
+		width: 370px;
+		border-radius: 5px;
+		font-size: 17px;
+		border: 1px solid #CDCDCD;
+                font-family: Arial;
+	}
+	#contactarAutor form textArea:focus {
+		border-radius: 5px;
+		border: 1px solid #90B3EC;
+	}
+	#contactarAutor #sendContactar {
+		width: 125px;
+		height: 35px;
+		background-color: #770000;
+		border: hidden;
+		cursor: pointer;
+		color: #FFFFFF;
+		border-radius: 6px;
+		font-size: 16px;
+		margin-top: 10px;
+		margin-left: 192px;
+		margin-bottom: 10px;
+	}
+	#contactarAutor #sendContactar:hover {
+		background-color: #CC0000;
+	}
+        #contactarAutor p {
+            color: #755C5C;            
+        }
+        #contactarAutor p span {
+            color: #000000;            
+        }
