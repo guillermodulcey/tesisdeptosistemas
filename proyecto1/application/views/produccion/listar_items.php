@@ -1,4 +1,4 @@
-<ul>
+<ul id="listarItems">
     <?php
     if (isset($producciones)) :
         foreach ($producciones as $produccion):
