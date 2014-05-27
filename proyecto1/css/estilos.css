@@ -336,18 +336,18 @@ span.required {
 #usuario .flexigrid .ftitle-left {
     font-size: 15px;
 }
-#field-USU_CONTRASENA {
+#field-contrasena, #field-verify_password {
 	border: 1px solid #CCCCCC;
 	border-radius: 3px;
 	color: #444444;
 	display: inline-block;
 }
-#field-USU_CONTRASENA:hover {
+#field-contrasena:hover, #field-verify_password:hover {
 	background: #FFFFFF;
 	border: 1px solid #555555;
 }
 
-#field-USU_CONTRASENA:focus {
+#field-contrasena:focus, #field-verify_password:focus {
 	border-color: rgba(82, 168, 236, 0.8);
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(82, 168, 236, 0.6);
 	outline: 0 none;
@@ -356,7 +356,9 @@ span.required {
 /**** estilos monografia ****/
 
 #monografia, #articulo, #reporte, #editar {
-    margin: 0 50px;
+    float: right;
+    margin-right: 15px;
+    width: 75%;
 }
 
 #monografia h2, #articulo h2, #reporte h2 {
@@ -626,7 +628,7 @@ center.visualizar{
 #menuDocente, #menuAdministrador {
     float: left;
     margin-left: 30px;
-    margin-top: 20px;
+    margin-top: 58px;
 }
 #menuDocente ul h3, #menuAdministrador ul h3 {
     color: #C20602;

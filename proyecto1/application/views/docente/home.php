@@ -10,7 +10,6 @@
     <ul>
         <h3>Estadisticas de Publicaciones</h3>
         <li><?php echo anchor(site_url('docente/estadisticas'), 'Estadisticas de Grupos') ?></li>
-    </ul>
-    
+    </ul>    
 </div>
 
