@@ -1,11 +1,8 @@
-<?php
-
-echo "MENU ADMINISTRADO:" . br();
-
-echo form_open('administrador/docentes')
- . form_submit('crud_docentes', 'CRUD DOCENTES')
- . form_close();
-
-echo anchor('/usuario/logout', 'Cerrar Sesion');
-?>
-
+<div id="menuAdministrador">    
+    <ul>
+        <h3>Menú Usuarios</h3>
+        <li><?php echo anchor(site_url('administrador/docentes'),'Administrar Usuarios')?></li>
+        <li><?php echo anchor(site_url('administrador/docentes/add'), 'Crear Usuario') ?></li>
+        
+    </ul>    
+</div>

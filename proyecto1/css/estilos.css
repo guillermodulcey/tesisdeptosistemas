@@ -603,20 +603,19 @@ center.visualizar{
 		border: 1px solid #90B3EC;
 	}
 	#contactarAutor #sendContactar {
-		width: 125px;
-		height: 35px;
-		background-color: #770000;
-		border: hidden;
-		cursor: pointer;
-		color: #FFFFFF;
-		border-radius: 6px;
-		font-size: 16px;
-		margin-top: 10px;
-		margin-left: 192px;
-		margin-bottom: 10px;
+            display: block;
+            width: 100px;
+            height: 35px;
+            background-color: #770000;
+            border: hidden;
+            cursor: pointer;
+            color: #FFFFFF;
+            border-radius: 6px;
+            font-size: 16px;
+            margin: 0 auto 10px;
 	}
 	#contactarAutor #sendContactar:hover {
-		background-color: #CC0000;
+            background-color: #CC0000;
 	}
         #contactarAutor p {
             color: #755C5C;            
@@ -624,12 +623,12 @@ center.visualizar{
         #contactarAutor p span {
             color: #000000;            
         }
-#menuDocente {
+#menuDocente, #menuAdministrador {
     float: left;
     margin-left: 30px;
     margin-top: 20px;
 }
-#menuDocente ul h3{
+#menuDocente ul h3, #menuAdministrador ul h3 {
     color: #C20602;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -637,7 +636,7 @@ center.visualizar{
     font-size: 18px;
     line-height: 18px;
 }
-#menuDocente ul {
+#menuDocente ul, #menuAdministrador ul {
     display: block;
     width: 215px;
     height: 185px;
@@ -647,7 +646,7 @@ center.visualizar{
 #menuDocente ul li {
     
 }
-#menuDocente li a {
+#menuDocente li a, #menuAdministrador li a {
     width: 80%;
     background-color: #0B2972;
     border-radius: 6px;
@@ -660,7 +659,7 @@ center.visualizar{
     margin-left: 10px;
     margin-top: 5px;
 }
-#menuDocente li a:hover {
+#menuDocente li a:hover, #menuAdministrador li a:hover {
     text-decoration: none;
     background-color: #4A66C4;
 }

@@ -9,6 +9,6 @@ echo form_open('administrador/docentes')
 echo anchor('/usuario/logout', 'Cerrar Sesion');
  * 
  */
-echo 'Menu'.br();
-echo anchor(site_url('administrador/docentes'),'Administrar Usuarios');
+/*echo 'Menu'.br();
+echo anchor(site_url('administrador/docentes'),'Administrar Usuarios');*/
 ?>
