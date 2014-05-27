@@ -32,6 +32,7 @@ class Docente extends CI_Controller {
         $this->data['vistas'] = array($vista_home, $vista_prod);
         $this->load->view('home', $this->data);
         $this->load->view('docente/menu_docente');
+        $this->load->view('enlaces');
     }
 
     public function producciones() {
@@ -80,7 +81,7 @@ class Docente extends CI_Controller {
         );
         $this->data['vistas'] = array($vista); 
         $this->load->view('home', $this->data);   
-        $this->load->view('docente/menu_docente');
+        $this->load->view('docente/home');
     }
     
     public function _producciones_output() {

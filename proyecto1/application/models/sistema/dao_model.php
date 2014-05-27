@@ -85,6 +85,20 @@ class DAO_model extends CI_Model {
         return $valor;
     }
     
+    function get_codigo_usuario_p($produccion_codigo){
+        $valor = '';
+        $consulta = 'SELECT usuario_produccion.USU_CODIGO AS codigo
+                        FROM usuario_produccion
+                        INNER JOIN usuario_rol ON usuario_produccion.USU_CODIGO = usuario_rol.USU_CODIGO
+                        WHERE usuario_produccion.USU_CODIGO =3
+                        LIMIT 1';
+        $query = $this->db->query($consulta);
+        foreach ($query->result_array() as $row) {
+            $valor = $row['codigo'];
+        }
+        return $valor;
+    }
+            
     function get_nombre_usuario($id) {
         $valor = '';
         $consulta = 'select USU_NOMBRE from usuario where USU_CODIGO="' . $id . '"';

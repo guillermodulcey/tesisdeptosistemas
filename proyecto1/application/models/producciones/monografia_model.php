@@ -103,6 +103,7 @@ class Monografia_model extends CI_Model {
             $crud->callback_field('MONOGRAFIA_AUTOR1', array($this, 'autor1_view'));
             $crud->callback_field('MONOGRAFIA_AUTOR2', array($this, 'autor2_view'));
             $crud->callback_field('MONOGRAFIA_CODIRECTOR', array($this, 'codirector_view'));            
+            $crud->callback_field('docente', array($this, 'docente_view'));
         }
 
         $crud->callback_before_insert(array($this, 'llenar_dos_tablas'));
@@ -112,7 +113,17 @@ class Monografia_model extends CI_Model {
         $output = $crud->render();
         return $output;
     }
-
+    
+    public function docente_view($value = "", $primary_key) {
+        $resultado = '';
+        $llave = $primary_key;
+        $value = $this->dao->get_codigo_usuario_p($llave);
+        $nombre = $this->dao->get_nombre_usuario($value);
+        $apellido = $this->dao->get_apellido_usuario($value);
+        $final = $nombre." ".$apellido;
+        return '<div id="field-Docente" class="readonly_label">' . $final . '</div>';
+    }
+    
     public function tipo_view($value = "", $primary_key) {
         $resultado = '';
         $llave = $primary_key;

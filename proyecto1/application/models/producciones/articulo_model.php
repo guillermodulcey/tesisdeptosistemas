@@ -49,6 +49,7 @@ class Articulo_model extends CI_Model {
         $crud->edit_fields('PROD_CODIGO', 'PROD_TITULO', 'PROD_RESUMEN', 'PROD_FECHA_PUBLICACION', 'PROD_GRUPO_INVESTIGACION', 'PROD_PERMISO', 'PROD_ESTADO', 'PROD_ARCHIVO_ADJUNTO', 'ART_FACTOR_IMPACTO','docente');
 
         /* Los nombres de los campos */
+        $crud->display_as('PROD_CODIGO', 'Codigo');
         $crud->display_as('PROD_TITULO', 'Titulo');
         $crud->display_as('PROD_RESUMEN', 'Resumen');
         $crud->display_as('PROD_FECHA_PUBLICACION', 'Fecha de Publicacion');
@@ -89,7 +90,8 @@ class Articulo_model extends CI_Model {
             $crud->field_type('docente', 'hidden', $codigo);
             $crud->callback_edit_field('ART_FACTOR_IMPACTO', array($this, 'tipo_edit'));            
         } else {
-            $crud->callback_field('ART_FACTOR_IMPACTO', array($this, 'tipo_view'));            
+            $crud->callback_field('ART_FACTOR_IMPACTO', array($this, 'tipo_view'));
+            $crud->callback_field('docente', array($this, 'docente_view'));
         }
 
         $crud->callback_before_insert(array($this, 'llenar_dos_tablas'));
@@ -110,6 +112,16 @@ class Articulo_model extends CI_Model {
         }
         $value = $resultado;
         return '<div id="field-ART_FACTOR_IMPACTO" class="readonly_label">' . $value . '</div>';
+    }
+    
+    public function docente_view($value = "", $primary_key) {
+        $resultado = '';
+        $llave = $primary_key;
+        $value = $this->dao->get_codigo_usuario_p($llave);
+        $nombre = $this->dao->get_nombre_usuario($value);
+        $apellido = $this->dao->get_apellido_usuario($value);
+        $final = $nombre." ".$apellido;
+        return '<div id="field-Docente" class="readonly_label">' . $final . '</div>';
     }
 
     public function tipo_edit($value = "", $primary_key) {

@@ -90,6 +90,7 @@ class Reporte_model extends CI_Model {
             $crud->callback_edit_field('RPT_DESCRIPCION', array($this, 'tipo_edit'));            
         } else {
             $crud->callback_field('RPT_DESCRIPCION', array($this, 'tipo_view'));            
+            $crud->callback_field('docente', array($this, 'docente_view'));
         }
 
         $crud->callback_before_insert(array($this, 'llenar_dos_tablas'));
@@ -100,6 +101,16 @@ class Reporte_model extends CI_Model {
         return $output;
     }
 
+    public function docente_view($value = "", $primary_key) {
+        $resultado = '';
+        $llave = $primary_key;
+        $value = $this->dao->get_codigo_usuario_p($llave);
+        $nombre = $this->dao->get_nombre_usuario($value);
+        $apellido = $this->dao->get_apellido_usuario($value);
+        $final = $nombre." ".$apellido;
+        return '<div id="field-Docente" class="readonly_label">' . $final . '</div>';
+    }
+    
     public function tipo_view($value = "", $primary_key) {
         $resultado = '';
         $llave = $primary_key;
