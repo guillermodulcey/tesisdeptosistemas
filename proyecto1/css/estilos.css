@@ -18,16 +18,17 @@ body {
 		margin-right: 30px;
 		margin-top: 4px;
 		font-size: 15px;
-
+                text-decoration: none;
 	}
 	#inicioSesion a:hover {
             color: #EEB60C;
+            text-decoration: underline;
 	}
         span.bienvenido {
             color: #FFFFFF;
             float: right;
             position: absolute;
-            right: 355px;
+            right: 390px;
             top: 4px;
         }
 #header {
@@ -327,7 +328,7 @@ span.required {
 }
 #usuario .form-display-as-box {
   float: left;
-  font-size: 18px;
+  font-size: 16px;
   padding-top: 7px;
   width: 130px;
 }
@@ -389,7 +390,7 @@ span.required {
 }
 
 #monografia .flexigrid table tr.hDiv th {
-    width: 8%;
+    /*width: 8%;*/
 }
 
 #monografia .flexigrid .ftitle-left, #articulo .flexigrid .ftitle-left, #reporte .flexigrid .ftitle-left  {
@@ -397,15 +398,18 @@ span.required {
 }
 
 /**** estilos item busqueda****/
-#itemBusqueda a {
+#itemBusqueda a, #contactarAutor a {
     display: block;
     text-decoration: none;
     font-size: 18px;
     color: #0B2972;
 }
-#itemBusqueda a:hover {
+#itemBusqueda a:hover, #contactarAutor a:hover {
     color: #4A66C4;
     text-decoration: underline;
+}
+#contactarAutor a {
+    display: inline;
 }
 #itemBusqueda li.resumen a {
     background: url("../img/icono-descargarpdf.png") 0 5px no-repeat;

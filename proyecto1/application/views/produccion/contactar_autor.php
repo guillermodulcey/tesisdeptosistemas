@@ -2,7 +2,7 @@
     <p> Contacta con el autor de
         <span>
             <?php
-            echo $produccion->PROD_TITULO
+            echo anchor(site_url('produccion/ver_detalle/' . $produccion->PROD_CODIGO), $produccion->PROD_TITULO)
             . br(3)
             ?>
         </span>
