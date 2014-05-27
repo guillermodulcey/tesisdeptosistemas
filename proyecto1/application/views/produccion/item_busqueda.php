@@ -38,7 +38,9 @@
                 echo $resumenBusqueda;
 
                 if ($produccion->PROD_PERMISO == 2) {
-                    echo anchor($produccion->PROD_ARCHIVO_ADJUNTO, 'Descargar PDF');
+                    $md5_login = md5($produccion->USU_LOGIN);
+                    $ruta_archivo_adjunto = base_url("stored/$md5_login/$produccion->PROD_ARCHIVO_ADJUNTO");
+                    echo anchor($ruta_archivo_adjunto, 'Descargar PDF');
                 } else {
                     echo "sin archivo adjunto";
                 }

@@ -29,9 +29,9 @@ class Produccion extends CI_Controller {
         if (count($items) > 1) {
             $result = array_slice($items, $start, $this->pagination->per_page);
         } else {
-            $result = array($items);
+            $result = $items;
         }
-        
+
         $this->pagination->total_rows = count($items);
         $choice = $this->pagination->total_rows / $this->pagination->per_page;
         $this->pagination->num_links = round($choice);
@@ -39,10 +39,18 @@ class Produccion extends CI_Controller {
 
         $data["producciones"] = $result;
         $data["links"] = $this->pagination->create_links();
-        $vista = array('view' => 'produccion/listar_items', 'vars' => $data);
+        if ($result) {
+            $vista = array('view' => 'produccion/listar_items', 'vars' => $data);
+        } else {
+            $vista = array('view' => 'produccion/no_hay_producciones', 'vars' => '');
+        }
         return $vista;
     }
 
+    /**
+     * Mostrar vista para ver en detalle la produccion
+     * @param type $PROD_CODIGO
+     */
     function ver_detalle($PROD_CODIGO) {
         $produccion = $this->produccion->obtener_produccion($PROD_CODIGO);
         $vista = array('view' => 'produccion/detallado',
@@ -55,12 +63,21 @@ class Produccion extends CI_Controller {
         $vista = array();
 
         switch ($criterio) {
-            case 1:
+            case 1://obtener todas las producciones en orden de salida de base de datos
                 $vista = $this->produccion->obtener_producciones();
                 break;
-            case 2:
+            case 2://obtener producciones de docente actual
                 $id = $this->session->userdata('user_id');
                 $vista = $this->produccion->obtener_producciones_docente($id);
+                break;
+            case 3://obtener monografias unicamente
+                $vista = $this->produccion->obtener_monografias();
+                break;
+            case 4://obtener articulos unicamente
+                $vista = $this->produccion->obtener_articulos();
+                break;
+            case 5://obtener reportes unicamente
+                $vista = $this->produccion->obtener_reportes();
                 break;
             default:
                 $vista = array('view' => 'produccion/no_hay_producciones', 'vars' => '');
@@ -78,8 +95,7 @@ class Produccion extends CI_Controller {
             $enviado = $this->_enviar_contactar_autor($email_autor, $nombre_usuario, $email_usuario, $mensaje_usuario);
             if ($enviado) {
                 $enviado = "Mensaje enviado al autor";
-            }
-            else{
+            } else {
                 $enviado = "No se pudo enviar el mensaje.";
             }
         }

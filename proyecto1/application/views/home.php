@@ -29,16 +29,16 @@
 
                 <ul id="menuPrincipal">
                     <li class="inicio">
-                        <a href="#">Inicio</a>
+                        <a href="<?php echo site_url()?>">Inicio</a>
                     </li>
                     <li class="monografias">
-                        <a href="#">Monografias</a>
+                        <a href="<?php echo site_url("produccion/index/3")?>">Monografias</a>
                     </li>
                     <li class="articulos">
-                        <a href="#">Artículos</a>
+                        <a href="<?php echo site_url("produccion/index/4")?>">Artículos</a>
                     </li>
                     <li class="reportes">
-                        <a href="#">Reportes Técnicos</a>
+                        <a href="<?php echo site_url("produccion/index/5")?>">Reportes Técnicos</a>
                     </li>
                 </ul>      
             </div>

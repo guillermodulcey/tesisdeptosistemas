@@ -12,7 +12,6 @@ class Docente extends CI_Controller {
     function __construct() {
         parent::__construct();
         if ($this->seguridad_model->es_docente()) {
-            $this->load->model('producciones/SP_Produccion', 'sp_produccion', TRUE);
             $this->load->model('producciones/produccion_model', 'produccion');
             $this->load->model('usuarios/docente_model', 'docente');
             $this->load->model('sistema/dao_model', 'dao');

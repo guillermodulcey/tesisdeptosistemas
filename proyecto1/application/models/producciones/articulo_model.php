@@ -4,7 +4,8 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-class Articulo_model extends CI_Model { 
+
+class Articulo_model extends CI_Model {
 
     function __construct() {
         parent::__construct();
@@ -16,9 +17,9 @@ class Articulo_model extends CI_Model {
         $this->load->library('grocery_CRUD');
         $this->load->model('sistema/dao_model', 'dao');
     }
-    
+
     public function gestion_articulo($codigo) {
-        
+
         $crud = new grocery_CRUD();
         //$crud->set_theme('datatables');
         $query = $this->dao->get_articulos_docente($codigo);
@@ -40,13 +41,13 @@ class Articulo_model extends CI_Model {
 
         /* columnas a mostrar */
         $crud->columns('PROD_TITULO', 'PROD_RESUMEN', 'PROD_FECHA_PUBLICACION', 'PROD_GRUPO_INVESTIGACION', 'PROD_PERMISO', 'PROD_ESTADO', 'PROD_ARCHIVO_ADJUNTO', 'ART_FACTOR_IMPACTO');
-        $crud->fields('PROD_CODIGO', 'PROD_TITULO', 'PROD_RESUMEN', 'PROD_FECHA_PUBLICACION', 'PROD_GRUPO_INVESTIGACION', 'PROD_PERMISO', 'PROD_ESTADO', 'PROD_ARCHIVO_ADJUNTO','ART_FACTOR_IMPACTO','docente');
-        
+        $crud->fields('PROD_CODIGO', 'PROD_TITULO', 'PROD_RESUMEN', 'PROD_FECHA_PUBLICACION', 'PROD_GRUPO_INVESTIGACION', 'PROD_PERMISO', 'PROD_ESTADO', 'PROD_ARCHIVO_ADJUNTO', 'ART_FACTOR_IMPACTO', 'docente');
+
         /* campos en add */
-        $crud->add_fields('PROD_CODIGO', 'PROD_TITULO', 'PROD_RESUMEN', 'PROD_FECHA_PUBLICACION', 'PROD_GRUPO_INVESTIGACION', 'PROD_PERMISO', 'PROD_ESTADO', 'PROD_ARCHIVO_ADJUNTO', 'ART_FACTOR_IMPACTO','docente');
+        $crud->add_fields('PROD_CODIGO', 'PROD_TITULO', 'PROD_RESUMEN', 'PROD_FECHA_PUBLICACION', 'PROD_GRUPO_INVESTIGACION', 'PROD_PERMISO', 'PROD_ESTADO', 'PROD_ARCHIVO_ADJUNTO', 'ART_FACTOR_IMPACTO', 'docente');
 
         /* campos en edit */
-        $crud->edit_fields('PROD_CODIGO', 'PROD_TITULO', 'PROD_RESUMEN', 'PROD_FECHA_PUBLICACION', 'PROD_GRUPO_INVESTIGACION', 'PROD_PERMISO', 'PROD_ESTADO', 'PROD_ARCHIVO_ADJUNTO', 'ART_FACTOR_IMPACTO','docente');
+        $crud->edit_fields('PROD_CODIGO', 'PROD_TITULO', 'PROD_RESUMEN', 'PROD_FECHA_PUBLICACION', 'PROD_GRUPO_INVESTIGACION', 'PROD_PERMISO', 'PROD_ESTADO', 'PROD_ARCHIVO_ADJUNTO', 'ART_FACTOR_IMPACTO', 'docente');
 
         /* Los nombres de los campos */
         $crud->display_as('PROD_CODIGO', 'Codigo');
@@ -55,25 +56,25 @@ class Articulo_model extends CI_Model {
         $crud->display_as('PROD_FECHA_PUBLICACION', 'Fecha de Publicacion');
         $crud->display_as('PROD_GRUPO_INVESTIGACION', 'Grupo de Investigacion');
         $crud->display_as('PROD_PERMISO', 'Permiso');
-        $crud->display_as('PROD_ESTADO', 'Estado');       
-        $crud->display_as('PROD_ARCHIVO_ADJUNTO', 'Archivo PDF');       
+        $crud->display_as('PROD_ESTADO', 'Estado');
+        $crud->display_as('PROD_ARCHIVO_ADJUNTO', 'Archivo PDF');
         $crud->display_as('ART_FACTOR_IMPACTO', 'Factor de Impacto');
 
         /* columnas que no pertenecen a la tabla */
-        $crud->callback_column('ART_FACTOR_IMPACTO', array($this, 'custom_tipo'));        
+        $crud->callback_column('ART_FACTOR_IMPACTO', array($this, 'custom_tipo'));
 
         /* Campos requeridos */
         $crud->required_fields('PROD_TITULO', 'PROD_RESUMEN', 'PROD_FECHA_PUBLICACION', 'PROD_PERMISO', 'PROD_ARCHIVO_ADJUNTO', 'ART_FACTOR_IMPACTO');
-                
+
         /* Tipo de campo */
         $crud->field_type('PROD_PERMISO', 'dropdown', array('1' => 'Privada', '2' => 'Publico'));
         $crud->field_type('PROD_GRUPO_INVESTIGACION', 'enum', array('IDIS', 'GIT'));
-        
+
         $md5_login = md5($this->dao->get_login_usuario($codigo));
-        if(!is_dir('stored/'.$md5_login)){
-            mkdir('stored/'.$md5_login,0777,TRUE);
+        if (!is_dir('stored/' . $md5_login)) {
+            mkdir('stored/' . $md5_login, 0777, TRUE);
         }
-        $crud->set_field_upload('PROD_ARCHIVO_ADJUNTO', 'stored/'.$md5_login);
+        $crud->set_field_upload('PROD_ARCHIVO_ADJUNTO', "stored/$md5_login");
 
         /* Edit vs Add */
         $state = $crud->getState();
@@ -88,7 +89,7 @@ class Articulo_model extends CI_Model {
             $crud->field_type('PROD_ESTADO', 'invisible');
             $crud->field_type('PROD_CODIGO', 'invisible');
             $crud->field_type('docente', 'hidden', $codigo);
-            $crud->callback_edit_field('ART_FACTOR_IMPACTO', array($this, 'tipo_edit'));            
+            $crud->callback_edit_field('ART_FACTOR_IMPACTO', array($this, 'tipo_edit'));
         } else {
             $crud->callback_field('ART_FACTOR_IMPACTO', array($this, 'tipo_view'));
             $crud->callback_field('docente', array($this, 'docente_view'));
@@ -170,17 +171,17 @@ class Articulo_model extends CI_Model {
         $post_array['PROD_CODIGO'] = $i;
 
         $this->db->insert('articulo', $articulo_insert);
-        
-        
+
+
         $produccion_insert = array(
             'USU_CODIGO' => $codigo_autor,
             'PROD_CODIGO' => $i
         );
-        
-        $this->db->insert('usuario_produccion',$produccion_insert);
-        
+
+        $this->db->insert('usuario_produccion', $produccion_insert);
+
         unset($post_array['docente']);
-        
+
         unset($post_array['ART_FACTOR_IMPACTO']);
         return $post_array;
     }
@@ -194,7 +195,7 @@ class Articulo_model extends CI_Model {
         );
         $this->db->where('PROD_CODIGO', $primary_key);
         $this->db->update('articulo', $articulo_update);
-        
+
         unset($post_array['docente']);
         unset($post_array['ART_FACTOR_IMPACTO']);
         return $post_array;
@@ -202,9 +203,11 @@ class Articulo_model extends CI_Model {
 
     public function borrar_de_dos_tablas($primary_key) {
         $this->db->delete('articulo', array('PROD_CODIGO' => $primary_key));
-        $this->db->where('PROD_CODIGO',$primary_key);
+        $this->db->where('PROD_CODIGO', $primary_key);
         $this->db->delete('usuario_produccion');
         return true;
     }
+
 }
+
 ?>

@@ -249,7 +249,7 @@ $config['encryption_key'] = '5b1c4f1f6f568f65194709f61f1bcc56';
   |
  */
 $config['sess_cookie_name'] = 't_sess';
-$config['sess_expiration'] = 7200;
+$config['sess_expiration'] = 1500;
 $config['sess_expire_on_close'] = TRUE;
 $config['sess_encrypt_cookie'] = TRUE;
 $config['sess_use_database'] = TRUE;
