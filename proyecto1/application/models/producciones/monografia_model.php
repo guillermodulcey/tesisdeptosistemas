@@ -73,7 +73,7 @@ class Monografia_model extends CI_Model {
 
         /* Tipo de campo */
         $crud->field_type('PROD_PERMISO', 'dropdown', array('1' => 'Privada', '2' => 'Publico'));
-        $crud->field_type('PROD_GRUPO_INVESTIGACION', 'enum', array('IDIS', 'GIT'));
+        $crud->field_type('PROD_GRUPO_INVESTIGACION', 'enum', array('IDIS', 'GTI','GICOM'));
         
         $md5_login = md5($this->dao->get_login_usuario($codigo));
         if(!is_dir('stored/'.$md5_login)){
@@ -104,6 +104,7 @@ class Monografia_model extends CI_Model {
             $crud->callback_field('MONOGRAFIA_AUTOR2', array($this, 'autor2_view'));
             $crud->callback_field('MONOGRAFIA_CODIRECTOR', array($this, 'codirector_view'));            
             $crud->callback_field('docente', array($this, 'docente_view'));
+            $crud->callback_field('PROD_PERMISO', array($this, 'permiso_view'));
         }
 
         $crud->callback_before_insert(array($this, 'llenar_dos_tablas'));
@@ -112,6 +113,16 @@ class Monografia_model extends CI_Model {
 
         $output = $crud->render();
         return $output;
+    }
+    
+    public function permiso_view($value = "", $primary_key) {
+        if($value==1){
+            $final = 'Privada';
+        }
+        else{
+            $final = 'Publico';
+        }
+        return '<div id="field-Permiso" class="readonly_label">' . $final . '</div>';
     }
     
     public function docente_view($value = "", $primary_key) {
