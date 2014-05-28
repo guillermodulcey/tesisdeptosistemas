@@ -630,7 +630,20 @@ center.visualizar{
     margin-left: 30px;
     margin-top: 58px;
 }
-#menuDocente ul h3, #menuAdministrador ul h3 {
+#linkDestacados {
+    position: absolute;
+    right: 30px;
+    top: 58px;
+}
+#menuDocente {
+    
+}
+#menuDocente div.menuProducciones, #menuDocente div.menuEstadisticas, #linkDestacados, #menuAdministrador {
+    width: 215px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+}
+#menuDocente h3, #menuAdministrador h3, #linkDestacados h3{
     color: #C20602;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -638,17 +651,28 @@ center.visualizar{
     font-size: 18px;
     line-height: 18px;
 }
-#menuDocente ul, #menuAdministrador ul {
+#menuDocente ul, #menuAdministrador ul, #linkDestacados ul {
     display: block;
     width: 215px;
     height: 185px;
     border-radius: 10px;
     background-color: #FFFFFF;       
 }
+#linkDestacados ul {
+    height: 325px;
+}
+#linkDestacados ul li a {
+    text-align: center;
+}
 #menuDocente ul li {
     
 }
-#menuDocente li a, #menuAdministrador li a {
+#linkDestacados ul li.deptSistemas a , #linkDestacados ul li.grupoInves a {
+    line-height: 19px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+#menuDocente li a, #menuAdministrador li a, #linkDestacados li a {
     width: 80%;
     background-color: #0B2972;
     border-radius: 6px;
@@ -658,10 +682,10 @@ center.visualizar{
     line-height: 34px;
     padding: 0 10px;
     text-decoration: none;
-    margin-left: 10px;
+    margin-left: 12px;
     margin-top: 5px;
 }
-#menuDocente li a:hover, #menuAdministrador li a:hover {
+#menuDocente li a:hover, #menuAdministrador li a:hover, #linkDestacados li a:hover {
     text-decoration: none;
     background-color: #4A66C4;
 }
