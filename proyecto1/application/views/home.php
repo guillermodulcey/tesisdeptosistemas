@@ -24,7 +24,8 @@
             </div>
             <div id="logo">
                 <div class="logo">
-                    <img src="<?php echo base_url('img/logo-unicauca.png'); ?>" alt="Logo Unicauca" />
+                    <a href="http://www.unicauca.edu.co" target="_NEW">Universidad del Cauca</a>
+<!--                    <img src="<?php echo base_url('img/logo-unicauca.png'); ?>" alt="Logo Unicauca" />-->
                 </div>
             </div>		
             <div id="conSuperior">

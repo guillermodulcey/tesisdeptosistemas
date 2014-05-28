@@ -60,8 +60,13 @@ body {
 			margin: 0 auto 0 auto;
 			width: 119px;
 		}
-			#logo div.logo img {
-				
+			#logo div.logo a {
+                            display: block;
+                            height: 226px;
+                            width: 119px;
+                            background: url("../img/logo-unicauca.png");
+                            overflow: hidden;
+                            text-indent: -9999px;
 			}
 
 #conSuperior {
