@@ -25,11 +25,14 @@ class Docente extends CI_Controller {
         $vista_home = array(
             'view' => 'docente/home',
             'vars' => '');
+        $vista2 = array(
+            'view' => 'enlaces',
+            'vars' => ""
+        );
         $prod = new Produccion();
         $vista_prod = $prod->listar(2);
-        $this->data['vistas'] = array($vista_home, $vista_prod);
+        $this->data['vistas'] = array($vista_home, $vista_prod, $vista2);
         $this->load->view('home', $this->data);
-        $this->load->view('enlaces');
     }
 
     public function producciones() {
