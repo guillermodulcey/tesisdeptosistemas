@@ -153,7 +153,7 @@ body {
 				width: 320px;
 				color: #5C5C5C;
 			}
-				#access form fieldset p {
+				#access form fieldset p.bienvenido {
 					font-size: 24px;
 					padding-bottom: 20px;
 					color: #0B2972;

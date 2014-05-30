@@ -35,7 +35,7 @@ $captcha = array(
 
     <?php echo form_open($this->uri->uri_string()); ?>
     <fieldset>
-        <p>Bienvenido</p>
+        <p class="bienvenido">Bienvenido</p>
         <div class="form login">
             <?php echo form_label($login_label, $login['id']); ?>
             <?php echo form_input($login); ?>
@@ -57,7 +57,10 @@ $captcha = array(
         ?>
 
         <input id="sendLogin" type="submit" name="enviar_login" value="Ingresar" />
-
+        
+        <br />
+        <br />
+        
         <?php echo form_error($login['name']); ?><?php echo isset($errors[$login['name']]) ? '<br/>' . $errors[$login['name']] : ''; ?>
         <?php echo form_error($password['name']); ?><?php echo isset($errors[$password['name']]) ? '<br/>' . $errors[$password['name']] : ''; ?>
         <?php echo form_close(); ?>
