@@ -11,10 +11,12 @@ class Docente extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+      //  $this->load->library('jpgraph');
         if ($this->seguridad_model->es_docente()) {
             $this->load->model('producciones/produccion_model', 'produccion');
             $this->load->model('usuarios/docente_model', 'docente');
             $this->load->model('sistema/dao_model', 'dao');
+            $this->load->model('usuarios/grafica_torta_idis', 'idis');
         } else {
             show_404();
             die();
@@ -111,6 +113,11 @@ class Docente extends CI_Controller {
 
     public function _reporte_output($output = null) {
         $this->load->view('docente/reporte.php', $output);
+    }
+    
+    public function estadisticas(){                
+        $this->idis->dibujar();                
+        $this->load->view('docente/grafica_idis');
     }
 
 }
