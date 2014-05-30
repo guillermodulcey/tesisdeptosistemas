@@ -6,8 +6,7 @@
         <meta name="viewport" content="width-device-width, initial-scale=1" />	        
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/genericos.css'); ?>" media="all"/>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/estilos.css'); ?>" media="all"/>
-        <link rel="shortcut icon" href="favicon.ico">
-<!--        <link rel="shortcut icon" href="http://www.unicauca.edu.co/sistemas/sites/default/files/favicon.ico" type="image/vnd.microsoft.icon" />-->
+        <link rel="shortcut icon" href="http://www.unicauca.edu.co/sistemas/sites/default/files/favicon.ico" type="image/vnd.microsoft.icon" />
         
         <script src="<?php echo base_url('js/jquery.js'); ?>"></script>
         <script src="<?php echo base_url('js/proyecto.js'); ?>"></script>
