@@ -181,9 +181,9 @@ body {
 						font-size: 17px;
 						border: 1px solid #CDCDCD;
 					}
-					#access form fieldset input:focus {
+					#access form fieldset div.form input:focus {
 						border-radius: 5px;
-						border: 2px solid #90B3EC;
+						border: 1px solid #90B3EC;
 					}
 					#email {
 						
