@@ -554,9 +554,13 @@ class Usuario extends CI_Controller {
         
         $output = $this->user->editar_docente($codigo);
         $vista = array(
+            'view' => 'docente/home',
+            'vars' => ""
+        );
+        $vista2 = array(
             'view' => 'usuario/editar_datos',
             'vars' => $output);
-        $this->data['vistas'] = array($vista);
+        $this->data['vistas'] = array($vista,$vista2);
         $this->load->view('home', $this->data);
         
     }
