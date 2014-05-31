@@ -27,13 +27,9 @@ class Docente extends CI_Controller {
         $vista_home = array(
             'view' => 'docente/home',
             'vars' => '');
-        $vista2 = array(
-            'view' => 'enlaces',
-            'vars' => ""
-        );
         $prod = new Produccion();
         $vista_prod = $prod->listar(2);
-        $this->data['vistas'] = array($vista_home, $vista_prod, $vista2);
+        $this->data['vistas'] = array($vista_home, $vista_prod);
         $this->load->view('home', $this->data);
     }
 
@@ -44,7 +40,7 @@ class Docente extends CI_Controller {
         $vista2 = array(
             'view' => 'docente/home',
             'vars' => ""
-        );
+        );        
         $this->data['vistas'] = array($vista, $vista2);
         $this->load->view('home', $this->data);
     }
@@ -60,7 +56,9 @@ class Docente extends CI_Controller {
         );
         $vista2 = array(
             'view' => 'docente/monografia',
-            'vars' => $output);
+            'vars' => $output
+        );
+        $this->data['bandera'] = false;
         $this->data['vistas'] = array($vista, $vista2);
         $this->load->view('home', $this->data);
     }
@@ -78,6 +76,7 @@ class Docente extends CI_Controller {
             'view' => 'docente/articulo',
             'vars' => $output
         );
+        $this->data['bandera'] = false;
         $this->data['vistas'] = array($vista, $vista2);
         $this->load->view('home', $this->data);
     }
@@ -95,6 +94,7 @@ class Docente extends CI_Controller {
             'view' => 'docente/reporte',
             'vars' => $output
         );
+        $this->data['bandera'] = false;
         $this->data['vistas'] = array($vista, $vista2);
         $this->load->view('home', $this->data);
     }
@@ -116,8 +116,17 @@ class Docente extends CI_Controller {
     }
     
     public function estadisticas(){                
-        $this->idis->dibujar();                
-        $this->load->view('docente/grafica_idis');
+        $this->idis->dibujar();
+        $vista = array(
+            'view' => 'docente/home',
+            'vars' => ""
+        );
+        $vista2 = array(
+            'view' => 'docente/grafica_idis',
+            'vars' => ""
+        );
+        $this->data['vistas'] = array($vista, $vista2);
+        $this->load->view('home', $this->data);
     }
 
 }

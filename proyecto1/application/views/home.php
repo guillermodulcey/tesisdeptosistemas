@@ -23,7 +23,7 @@
             </div>
             <div id="logo">
                 <div class="logo">
-                    <a href="http://www.unicauca.edu.co" target="_NEW">Universidad del Cauca</a>
+                    <a href="http://www.unicauca.edu.co" target="_blank">Universidad del Cauca</a>
 <!--                    <img src="<?php echo base_url('img/logo-unicauca.png'); ?>" alt="Logo Unicauca" />-->
                 </div>
             </div>		
@@ -47,6 +47,13 @@
             <div class="clearfix"></div>
             <div id="conInferior">
                 <?php
+                $flag = true;
+                if (isset($bandera)) {
+                   $flag = $bandera; 
+                }                
+                if($flag){
+                    $this->load->view('enlaces');
+                }
                 if (isset($vistas)) {
                     foreach ($vistas as $value) {
                         $view = $value['view'];

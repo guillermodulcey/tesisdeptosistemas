@@ -41,6 +41,7 @@ class Administrador extends CI_Controller {
         $vista = array(
             'view' => 'administrador/docentes.php',
             'vars' => $output);
+        $this->data['bandera'] = false;
         $this->data['vistas'] = array($vista);
         $this->load->view('home', $this->data);         
         $this->load->view('administrador/menu_admin');

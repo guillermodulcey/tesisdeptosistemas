@@ -94,6 +94,7 @@ class Usuario extends CI_Controller {
                 }
             }
             $vista = array('view' => 'auth/login_form', 'vars' => '');
+            $data['bandera'] = false;
             $data['vistas'] = array($vista);
             $this->load->view('home', $data);
         }
@@ -553,14 +554,29 @@ class Usuario extends CI_Controller {
         $codigo = $this->dao->get_codigo_usuario($email);
         
         $output = $this->user->editar_docente($codigo);
-        $vista = array(
+        if($this->seguridad_model->es_administrador()){
+            $vista = array(
+            'view' => 'administrador/home',
+            'vars' => ""
+            );
+        }
+        if($this->seguridad_model->es_docente()){
+            $vista = array(
             'view' => 'docente/home',
             'vars' => ""
-        );
+            );
+        }
+        if($this->seguridad_model->es_jefe()){
+            $vista = array(
+            'view' => 'jefe_departamento/home',
+            'vars' => ""
+            );
+        }
         $vista2 = array(
             'view' => 'usuario/editar_datos',
             'vars' => $output);
         $this->data['vistas'] = array($vista,$vista2);
+        $this->data['bandera'] = false;
         $this->load->view('home', $this->data);
         
     }
