@@ -181,6 +181,18 @@ class DAO_model extends CI_Model {
         }
         return $result;
     }
+    
+    function get_count_producciones_grupo($grupo,$tipo){
+        $valor = '';
+        $consulta = 'select count(produccion.PROD_CODIGO) as contador from produccion 
+            inner join ' . $tipo . ' on produccion.PROD_CODIGO = ' . $tipo . '.PROD_CODIGO 
+            where `PROD_GRUPO_INVESTIGACION` ="' . $grupo . '"';        
+        $query = $this->db->query($consulta);
+        foreach ($query->result_array() as $row) {
+            $valor = $row['contador'];
+        }
+        return $valor;
+    }    
 }
 
 ?>

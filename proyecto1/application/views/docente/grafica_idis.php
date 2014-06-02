@@ -4,9 +4,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-  
-   echo $graph->Stroke();
-
+     $email = $this->session->userdata('username');
 ?>
-<!--<img src="grafica_torta_idis.php" alt="" border="0">-->
-<!--<img src="<?php echo $graph->Stroke();?>" alt="" border="0">-->
+<img src="<?php echo '/proyecto1/img/grafica_de_barras'.$email.'.png' ?>" alt="" border="0">

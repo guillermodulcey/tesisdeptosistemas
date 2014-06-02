@@ -16,7 +16,7 @@ class Docente extends CI_Controller {
             $this->load->model('producciones/produccion_model', 'produccion');
             $this->load->model('usuarios/docente_model', 'docente');
             $this->load->model('sistema/dao_model', 'dao');
-            $this->load->model('usuarios/grafica_torta_idis', 'idis');
+            $this->load->model('usuarios/graficas', 'graficar');
         } else {
             show_404();
             die();
@@ -115,18 +115,9 @@ class Docente extends CI_Controller {
         $this->load->view('docente/reporte.php', $output);
     }
     
-    public function estadisticas(){                
-        $this->idis->dibujar();
-        $vista = array(
-            'view' => 'docente/home',
-            'vars' => ""
-        );
-        $vista2 = array(
-            'view' => 'docente/grafica_idis',
-            'vars' => ""
-        );
-        $this->data['vistas'] = array($vista, $vista2);
-        $this->load->view('home', $this->data);
+    public function estadisticas(){
+        $this->graficar->graficar_barras_idis();
+        $this->load->view('docente/grafica_idis');
     }
 
 }
