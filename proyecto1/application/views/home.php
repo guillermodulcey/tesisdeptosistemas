@@ -7,65 +7,90 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/genericos.css'); ?>" media="all"/>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/estilos.css'); ?>" media="all"/>
         <link rel="shortcut icon" href="http://www.unicauca.edu.co/sistemas/sites/default/files/favicon.ico" type="image/vnd.microsoft.icon" />
-        
+
         <script src="<?php echo base_url('js/jquery.js'); ?>"></script>
         <script src="<?php echo base_url('js/proyecto.js'); ?>"></script>
-    </head>
 
-    <body>
-        <div id="pagina">
-            <?php
-            $this->load->view('iniciar_sesion');
-            ?>
 
-            <div id="header">
-                <h1>Sistema Intelectual del Departamento De Sistemas</h1>
-            </div>
-            <div id="logo">
-                <div class="logo">
-                    <a href="http://www.unicauca.edu.co" target="_blank">Universidad del Cauca</a>
-<!--                    <img src="<?php echo base_url('img/logo-unicauca.png'); ?>" alt="Logo Unicauca" />-->
-                </div>
-            </div>		
-            <div id="conSuperior">
 
-                <ul id="menuPrincipal">
-                    <li class="inicio">
-                        <a href="<?php echo site_url()?>">Inicio</a>
-                    </li>
-                    <li class="monografias">
-                        <a href="<?php echo site_url("produccion/index/3")?>">Monografias</a>
-                    </li>
-                    <li class="articulos">
-                        <a href="<?php echo site_url("produccion/index/4")?>">Artículos</a>
-                    </li>
-                    <li class="reportes">
-                        <a href="<?php echo site_url("produccion/index/5")?>">Reportes Técnicos</a>
-                    </li>
-                </ul>      
-            </div>
-            <div class="clearfix"></div>
-            <div id="conInferior">
-                <?php
-                $flag = true;
-                if (isset($bandera)) {
-                   $flag = $bandera; 
-                }                
-                if($flag){
-                    $this->load->view('enlaces');
-                }
-                if (isset($vistas)) {
-                    foreach ($vistas as $value) {
-                        $view = $value['view'];
-                        $vars = $value['vars'];
-                        $this->load->view($view, $vars);
-                    }
-                }
-                ?>
-                <div class="clearfix"></div>
-            </div>		
-            <div id="footer"></div>
+    </script>   
+    <script type="text/javascript" src="<? echo base_url("js/jquery-ui.js"); ?>"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var url = 'index.php/produccion/get_data';
+            $('#buscarProduccion').autocomplete({
+                source: url
+            });
+        });
+    </script>
+
+
+
+
+</head>
+
+<body>
+
+    <div id="pagina">
+
+        <?php
+        $this->load->view('iniciar_sesion');
+        ?>
+
+        <div id="header">
+            <h1>Sistema Intelectual del Departamento De Sistemas</h1>
         </div>
+        <div id="logo">
+            <div class="logo">
+                <a href="http://www.unicauca.edu.co" target="_blank">Universidad del Cauca</a>
+<!--                    <img src="<?php echo base_url('img/logo-unicauca.png'); ?>" alt="Logo Unicauca" />-->
+            </div>
+        </div>		
+        <div id="conSuperior">
 
-    </body>
+            <ul id="menuPrincipal">
+                <li class="inicio">
+                    <a href="<?php echo site_url() ?>">Inicio</a>
+                </li>
+                <li class="monografias">
+                    <a href="<?php echo site_url("produccion/index/3") ?>">Monografias</a>
+                </li>
+                <li class="articulos">
+                    <a href="<?php echo site_url("produccion/index/4") ?>">Artículos</a>
+                </li>
+                <li class="reportes">
+                    <a href="<?php echo site_url("produccion/index/5") ?>">Reportes Técnicos</a>
+                </li>
+            </ul> 
+
+        </div> 
+
+        <div class="clearfix"></div>
+        <div id="conInferior">
+            <div id="barra_busqueda" style="">
+                <label>Produccion:</label>   
+                <input type="text" id="buscarProduccion" size="15" />
+            </div> 
+            <?php
+            $flag = true;
+            if (isset($bandera)) {
+                $flag = $bandera;
+            }
+            if ($flag) {
+                $this->load->view('enlaces');
+            }
+            if (isset($vistas)) {
+                foreach ($vistas as $value) {
+                    $view = $value['view'];
+                    $vars = $value['vars'];
+                    $this->load->view($view, $vars);
+                }
+            }
+            ?>
+            <div class="clearfix"></div>
+        </div>		
+        <div id="footer"></div>
+    </div>
+
+</body>
 </html>

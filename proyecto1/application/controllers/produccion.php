@@ -18,7 +18,7 @@ class Produccion extends CI_Controller {
 
     public function listar($criterio = 1) {
         $this->pagination->base_url = site_url("produccion/index/" . $criterio . "/");
-        $this->pagination->per_page = 3;
+        $this->pagination->per_page = 15;
 
         $this->pagination->uri_segment = 4;
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
@@ -110,6 +110,15 @@ class Produccion extends CI_Controller {
         $this->load->model("sistema/clienteemail_model", "clienteemail");
         $result = $this->clienteemail->enviar_contactar_autor($email_autor, $nombre_usuario, $email_usuario, $mensaje_usuario);
         return $result;
+    }
+
+    /**
+     * obtener producciones sobre autocompletado.
+     */
+    function get_data() {
+        $match = $this->input->get('term', TRUE);  // TRUE para hacer un filtrado XSS  
+        $data['results'] = $this->produccion->get_data($match);
+        $this->load->view('produccion/buscar_data', $data);
     }
 
 }

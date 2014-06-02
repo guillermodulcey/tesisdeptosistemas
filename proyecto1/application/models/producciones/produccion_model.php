@@ -210,4 +210,10 @@ class Produccion_model extends CI_Model {
         return NULL;
     }
 
+    function get_data($valor) {
+        $this->db->like("PROD_TITULO", $valor);
+        $query = $this->db->get('produccion');
+        return $query->result();
+    }
+
 }
