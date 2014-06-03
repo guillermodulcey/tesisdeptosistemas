@@ -161,7 +161,7 @@ class Produccion_model extends CI_Model {
                     LEFT JOIN users as u on u.id = up.USU_CODIGO
                     where p.PROD_CODIGO = ?'
                 , array($PROD_CODIGO));
-        if ($query->num_rows() == 1) {
+        if ($query->num_rows() >= 1) {
             include_once('SP_Produccion.php');
             $produccion = $query->result("SP_Produccion");
             return $produccion[0];
