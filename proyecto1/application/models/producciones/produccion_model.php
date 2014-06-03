@@ -217,7 +217,6 @@ class Produccion_model extends CI_Model {
      */
     public function busqueda_simple($item) {
         $item = strtoupper($item);
-        echo $item;
         $query = $this->db->query("
                     SELECT p.PROD_CODIGO, p.PROD_TITULO, p.PROD_RESUMEN, 
                     p.PROD_FECHA_PUBLICACION, p.PROD_GRUPO_INVESTIGACION, 

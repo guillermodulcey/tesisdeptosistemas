@@ -18,7 +18,6 @@ class Usuario extends CI_Controller {
         $this->load->model('usuarios/usuario_model', 'usuario');
         $this->load->model('sistema/dao_model', 'dao');
         $this->load->model('producciones/produccion_model', 'produccion');
-        
     }
 
     function index() {
@@ -73,7 +72,7 @@ class Usuario extends CI_Controller {
             if ($this->form_validation->run()) {        // validation ok
                 if ($this->tank_auth->login(
                                 $this->form_validation->set_value('login'), $this->form_validation->set_value('password'), $this->form_validation->set_value('remember'), $data['login_by_username'], $data['login_by_email'])) {
-                    $codigo = $this->dao->get_codigo_usuario($this->form_validation->set_value('login').'@unicauca.edu.co');
+                    $codigo = $this->dao->get_codigo_usuario($this->form_validation->set_value('login') . '@unicauca.edu.co');
                     $nombre = $this->dao->get_nombre_usuario($codigo);
                     $this->usuario->tipo_usuario = $this->dao->get_tipo_usuario($login);
                     $newdata = array(
@@ -547,38 +546,57 @@ class Usuario extends CI_Controller {
         }
         return TRUE;
     }
-    
-    function editar_datos(){
+
+    function editar_datos() {
         $email = $this->session->userdata('username');
-        $email = $email."@unicauca.edu.co";
+        $email = $email . "@unicauca.edu.co";
         $codigo = $this->dao->get_codigo_usuario($email);
-        
+
         $output = $this->user->editar_docente($codigo);
-        if($this->seguridad_model->es_administrador()){
+        if ($this->seguridad_model->es_administrador()) {
             $vista = array(
-            'view' => 'administrador/home',
-            'vars' => ""
+                'view' => 'administrador/home',
+                'vars' => ""
             );
         }
-        if($this->seguridad_model->es_docente()){
+        if ($this->seguridad_model->es_docente()) {
             $vista = array(
-            'view' => 'docente/home',
-            'vars' => ""
+                'view' => 'docente/home',
+                'vars' => ""
             );
         }
-        if($this->seguridad_model->es_jefe()){
+        if ($this->seguridad_model->es_jefe()) {
             $vista = array(
-            'view' => 'jefe_departamento/home',
-            'vars' => ""
+                'view' => 'jefe_departamento/home',
+                'vars' => ""
             );
         }
         $vista2 = array(
             'view' => 'usuario/editar_datos',
             'vars' => $output);
-        $this->data['vistas'] = array($vista,$vista2);
+        $this->data['vistas'] = array($vista, $vista2);
         $this->data['bandera'] = false;
         $this->load->view('home', $this->data);
-        
+    }
+
+    public function get_home() {
+        $tipo = $this->session->userdata("tipo");
+        echo "el tipo es: ";
+        var_dump($tipo);
+        switch ($tipo[0]) {
+            case "administrador":
+                redirect("administrador");
+                break;
+            case "docente":
+                redirect("docente");
+                break;
+            case "jefe":
+                redirect("jefe_departamento");
+                break;
+            default:
+                $this->index();
+                break;
+        }
     }
 
 }

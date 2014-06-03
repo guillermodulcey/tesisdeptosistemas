@@ -25,33 +25,25 @@
             });
         </script>
 
-
-
-
     </head>
-
     <body>
-
         <div id="pagina">
-
-            <?php
-            $this->load->view('iniciar_sesion');
-            ?>
+            <?php $this->load->view('iniciar_sesion'); ?>
 
             <div id="header">
                 <h1>Sistema Intelectual del Departamento De Sistemas</h1>
             </div>
+
             <div id="logo">
                 <div class="logo">
-                    <a href="http://www.unicauca.edu.co" target="_blank">Universidad del Cauca</a>
-    <!--                    <img src="<?php echo base_url('img/logo-unicauca.png'); ?>" alt="Logo Unicauca" />-->
+                    <a href="<?php echo base_url(); ?>" >Universidad del Cauca</a>
                 </div>
             </div>		
             <div id="conSuperior">
 
                 <ul id="menuPrincipal">
                     <li class="inicio">
-                        <a href="<?php echo site_url() ?>">Inicio</a>
+                        <a href="<?php echo site_url("usuario/get_home"); ?>">Inicio</a>
                     </li>
                     <li class="monografias">
                         <a href="<?php echo site_url("produccion/index/3") ?>">Monografias</a>

@@ -6,9 +6,16 @@ if (!defined('BASEPATH'))
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '';
+if (strpos(base_url(), "wfpc92.tk")) {
+    $db['default']['hostname'] = 'mysql.nixiweb.com';
+    $db['default']['username'] = 'u974710561_proy1';
+    $db['default']['password'] = 'u974710561_proy1';
+} else {
+    $db['default']['hostname'] = 'localhost';
+    $db['default']['username'] = 'root';
+    $db['default']['password'] = '';
+}
+
 $db['default']['database'] = 'u974710561_proy1';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['port'] = 3306;
