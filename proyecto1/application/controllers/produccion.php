@@ -79,6 +79,11 @@ class Produccion extends CI_Controller {
             case 5://obtener reportes unicamente
                 $vista = $this->produccion->obtener_reportes();
                 break;
+            case 6://busqueda simple
+                //obtener datos de input
+                $busqueda = $this->input->post('buscarProduccion', TRUE);  // TRUE para hacer un filtrado XSS  
+                $vista = $this->produccion->busqueda_simple($busqueda);
+                break;
             default:
                 $vista = array('view' => 'produccion/no_hay_producciones', 'vars' => '');
                 break;
@@ -119,6 +124,17 @@ class Produccion extends CI_Controller {
         $match = $this->input->get('term', TRUE);  // TRUE para hacer un filtrado XSS  
         $data['results'] = $this->produccion->get_data($match);
         $this->load->view('produccion/buscar_data', $data);
+    }
+
+    /**
+     * Funcion que se llama para la busqueda simple.
+     * toma la cadena obtiene los datos de la base de datos y los muestra
+     * en pantalla con listar items busqueda
+     */
+    public function busqueda_simple() {
+        $vista = $this->listar(6);
+        $data['vistas'] = array($vista);
+        $this->load->view('home', $data);
     }
 
 }

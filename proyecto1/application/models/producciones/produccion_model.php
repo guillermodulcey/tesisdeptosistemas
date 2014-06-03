@@ -210,10 +210,57 @@ class Produccion_model extends CI_Model {
         return NULL;
     }
 
+    /**
+     * Buscar en la tabla produccion producciones que contengan "$item" 
+     * en su contenido.
+     * @param type $item
+     */
+    public function busqueda_simple($item) {
+        $item = strtoupper($item);
+        echo $item;
+        $query = $this->db->query("
+                    SELECT p.PROD_CODIGO, p.PROD_TITULO, p.PROD_RESUMEN, 
+                    p.PROD_FECHA_PUBLICACION, p.PROD_GRUPO_INVESTIGACION, 
+                    p.PROD_PERMISO, p.PROD_ESTADO, p.PROD_ARCHIVO_ADJUNTO,
+                    m.MONOGRAFIA_TIPO, m.MONOGRAFIA_AUTOR1, m.MONOGRAFIA_AUTOR2,
+                    m.MONOGRAFIA_CODIRECTOR, r.RPT_DESCRIPCION,
+                    a.ART_FACTOR_IMPACTO,
+                    u.username as USU_LOGIN
+                    FROM produccion as p
+                    LEFT JOIN monografia as m on p.PROD_CODIGO = m.PROD_CODIGO
+                    LEFT JOIN reporte_tecnico as r on p.PROD_CODIGO = r.PROD_CODIGO
+                    LEFT JOIN articulo as a on p.PROD_CODIGO = a.PROD_CODIGO
+                    LEFT JOIN usuario_produccion as up on p.PROD_CODIGO = up.PROD_CODIGO
+                    LEFT JOIN users as u on u.id = up.USU_CODIGO
+                    LEFT JOIN usuario as us on us.USU_CODIGO = u.id
+                    where upper(p.PROD_TITULO) like  '%$item%'
+                    or upper(p.PROD_RESUMEN) like  '%$item%' 
+                    or upper(p.PROD_GRUPO_INVESTIGACION) like  '%$item%' 
+                    or upper(u.username) like  '%$item%' 
+                    or upper(us.USU_NOMBRE) like  '%$item%'
+                    or upper(us.USU_APELLIDO) like  '%$item%' ");
+        if ($query->num_rows() > 0) {
+            include_once('SP_Produccion.php');
+            foreach ($query->result("SP_Produccion") as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;
+    }
+
+    /**
+     * Funcion llamada para autocompletado, obtiene datos desde la tabla de produccion
+     * @param type $valor
+     * @return boolean
+     */
     function get_data($valor) {
         $this->db->like("PROD_TITULO", $valor);
         $query = $this->db->get('produccion');
-        return $query->result();
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        }
+        return FALSE;
     }
 
 }
