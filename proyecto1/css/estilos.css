@@ -274,6 +274,19 @@ body {
 	background-color: #DFE8F4;
 	padding-bottom: 10px
 }
+#btnBuscar {
+    width: 84px;
+    height: 35px;
+    background-color: #770000;
+    border: hidden;
+    cursor: pointer;
+    color: #FFFFFF;
+    border-radius: 6px;
+    font-size: 16px;
+}
+#btnBuscar:hover {
+    background-color: #CC0000;
+}
 #conInferior #listarItems {
     width: 50%;
     margin: 0 auto;

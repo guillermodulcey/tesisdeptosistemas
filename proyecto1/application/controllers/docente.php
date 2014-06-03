@@ -117,7 +117,18 @@ class Docente extends CI_Controller {
     
     public function estadisticas(){
         $this->graficar->graficar_barras_grupos();
-        $this->load->view('docente/grafica_grupos');
+        $vista = array(
+            'view' => 'docente/home',
+            'vars' => ""
+        );
+        $vista2 = array(
+            'view' => 'docente/grafica_grupos',
+            'vars' => ''
+        );
+        $this->data['bandera'] = false;
+        $this->data['vistas'] = array($vista, $vista2);
+//        $this->load->view('docente/grafica_grupos');
+        $this->load->view('home', $this->data);
     }
 
 }

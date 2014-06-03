@@ -13,8 +13,8 @@
 
 
         <!--librerias y estilos para el autocompletado-->
-        <link rel="stylesheet" href="<? echo base_url("js/jquery-ui.css"); ?>" />
-        <script type="text/javascript" src="<? echo base_url("js/jquery-ui.js"); ?>"></script>
+        <link rel="stylesheet" href="<? echo base_url('js/jquery-ui.css'); ?>" />
+        <script type="text/javascript" src="<? echo base_url('js/jquery-ui.js'); ?>"></script>
         <script type="text/javascript">
             $(document).ready(function() {
                 //ubicacion de controlador que atiende la solicitud ajax
@@ -64,9 +64,10 @@
                     <?php
                     $textoBusqueda = "Consulte Producciones Aqui...";
                     echo form_open("produccion/busqueda_simple")
-                    . form_label("Produccion")
+                    . form_label("Produccion", "buscarProduccion")
                     . form_input(array("id" => "buscarProduccion",
                         "value" => $textoBusqueda,
+                        "id" => "buscarProduccion",
                         "name" => "buscarProduccion",
                         "onclick" => "this.value='';",
                         "onfocus" => "this.select()",

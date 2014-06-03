@@ -37,11 +37,31 @@ class Jefe_Departamento extends CI_Controller {
     public function estadisticas_usuario(){
         $persona = $this->input->post('login');
         $this->graficar->graficar_barras_persona($persona);
-        $this->load->view('jefe_departamento/grafica_persona');        
+        $vista = array(
+            'view' => 'jefe_departamento/home',
+            'vars' => ""
+        );
+        $vista2 = array(
+            'view' => 'jefe_departamento/grafica_persona',
+            'vars' => ''
+        );
+        $this->data['vistas'] = array($vista, $vista2);
+//        $this->load->view('jefe_departamento/grafica_persona');
+        $this->load->view('home', $this->data);
     }
     
-    public function estadisticas(){        
-        $this->load->view('jefe_departamento/form_estadisticas');               
+    public function estadisticas(){    
+        $vista = array(
+            'view' => 'jefe_departamento/home',
+            'vars' => ""
+        );
+        $vista2 = array(
+            'view' => 'jefe_departamento/form_estadisticas',
+            'vars' => ''
+        );
+        $this->data['vistas'] = array($vista, $vista2);
+//        $this->load->view('jefe_departamento/form_estadisticas');
+        $this->load->view('home', $this->data);
     }
 
 }
