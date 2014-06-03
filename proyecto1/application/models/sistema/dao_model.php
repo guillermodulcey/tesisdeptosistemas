@@ -192,7 +192,21 @@ class DAO_model extends CI_Model {
             $valor = $row['contador'];
         }
         return $valor;
-    }    
+    }  
+    
+    function get_count_producciones_persona($codigo,$tipo){
+        $valor = '';
+        $consulta = 'select count(produccion.PROD_CODIGO) as contador
+                    from produccion
+                    inner join ' . $tipo . ' on produccion.PROD_CODIGO = ' . $tipo . '.PROD_CODIGO
+                    inner join usuario_produccion on produccion.PROD_CODIGO = usuario_produccion.PROD_CODIGO
+                    where USU_CODIGO = "' . $codigo . '"';        
+        $query = $this->db->query($consulta);
+        foreach ($query->result_array() as $row) {
+            $valor = $row['contador'];
+        }
+        return $valor;
+    }
 }
 
 ?>

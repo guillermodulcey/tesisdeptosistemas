@@ -116,8 +116,8 @@ class Docente extends CI_Controller {
     }
     
     public function estadisticas(){
-        $this->graficar->graficar_barras_idis();
-        $this->load->view('docente/grafica_idis');
+        $this->graficar->graficar_barras_grupos();
+        $this->load->view('docente/grafica_grupos');
     }
 
 }
