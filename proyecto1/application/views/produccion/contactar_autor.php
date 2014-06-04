@@ -26,5 +26,6 @@
 
     echo isset($enviado) ? $enviado : '';
     ?>
+    <button class="regresar" onclick="goBack()">Cancelar</button>
 </div>
 

@@ -31,7 +31,7 @@
             <?php $this->load->view('iniciar_sesion'); ?>
 
             <div id="header">
-                <h1>Sistema Intelectual del Departamento De Sistemas</h1>
+                <h1>Sistema de Gestión de Producción Intelectual del Departamento de Sistemas de la Universidad del Cauca</h1>
             </div>
 
             <div id="logo">
@@ -64,7 +64,7 @@
                     <?php
                     $textoBusqueda = "Consulte Producciones Aqui...";
                     echo form_open("produccion/busqueda_simple")
-                    . form_label("Produccion", "buscarProduccion")
+                    . form_label("Producción", "buscarProduccion")
                     . form_input(array("id" => "buscarProduccion",
                         "value" => $textoBusqueda,
                         "id" => "buscarProduccion",

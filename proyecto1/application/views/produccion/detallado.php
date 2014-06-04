@@ -49,14 +49,9 @@
         <?php
     endif;
     ?>
-
-
-
-
-
-
-
-    <a id="regresar" href="<?php echo base_url('index.php/produccion/index'); ?>">Regresar</a>
+    <button class="regresar" onclick="goBack()">Regresar</button>
+        
+<!--    <a id="regresar" href="<?php echo base_url('index.php/produccion/index'); ?>">Regresar</a>-->
 
 </div>
 
