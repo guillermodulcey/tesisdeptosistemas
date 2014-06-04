@@ -282,7 +282,7 @@ body {
     color: #0B2972;
     font-size: 20px;
 }
-#barra_busqueda #buscarProduccion {
+#barra_busqueda #buscarProduccion, #formEstadistica #login {
     height: 30px;
     width: 370px;
     border-radius: 5px;
@@ -291,12 +291,22 @@ body {
     color: #B2B2B2;
     margin-left: 10px;
 }
-#barra_busqueda #buscarProduccion:focus {
+#formEstadistica  {
+    margin-left: 25%;
+    margin-top: 32px;
+}
+#formEstadistica #login {
+    width: 200px;
+}
+#formEstadistica form label {
+    color: #755C5C;
+}
+#barra_busqueda #buscarProduccion:focus, #formEstadistica #login:focus {
         border-radius: 5px;
         border: 1px solid #90B3EC;
         color: #000000;
 }
-#btnBuscar {
+#btnBuscar, #btnConsultar {
     width: 84px;
     height: 35px;
     background-color: #770000;
@@ -307,7 +317,7 @@ body {
     font-size: 16px;
     margin-left: 10px;
 }
-#btnBuscar:hover {
+#btnBuscar:hover, #btnConsultar:hover {
     background-color: #CC0000;
 }
 #conInferior #listarItems {
@@ -676,7 +686,7 @@ center.visualizar{
         #contactarAutor p span {
             color: #000000;            
         }
-#menuDocente, #menuAdministrador {
+#menuDocente, #menuAdministrador, #menuJefe {
     float: left;
     margin-left: 30px;
     margin-top: -35px;
@@ -690,12 +700,13 @@ center.visualizar{
 #menuDocente {
     
 }
-#menuDocente div.menuProducciones, #menuDocente div.menuEstadisticas, #linkDestacados, #menuAdministrador {
+#menuDocente div.menuProducciones, #menuDocente div.menuEstadisticas, #linkDestacados,
+#menuAdministrador, #menuJefe div.menuProducciones, #menuJefe div.menuEstadisticas {
     width: 215px;
     border-radius: 10px;
     background-color: #FFFFFF;
 }
-#menuDocente h3, #menuAdministrador h3, #linkDestacados h3{
+#menuDocente h3, #menuAdministrador h3, #linkDestacados h3, #menuJefe h3{
     color: #C20602;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -703,10 +714,10 @@ center.visualizar{
     font-size: 18px;
     line-height: 18px;
 }
-#menuDocente ul, #menuAdministrador ul, #linkDestacados ul {
+#menuDocente ul, #menuAdministrador ul, #linkDestacados ul, #menuJefe ul{
     display: block;
     width: 215px;
-    height: 185px;
+    height: 145px;
     border-radius: 10px;
     background-color: #FFFFFF;       
 }
@@ -724,7 +735,7 @@ center.visualizar{
     padding-bottom: 8px;
     padding-top: 8px;
 }
-#menuDocente li a, #menuAdministrador li a, #linkDestacados li a {
+#menuDocente li a, #menuAdministrador li a, #linkDestacados li a, #menuJefe li a {
     width: 80%;
     background-color: #0B2972;
     border-radius: 6px;
@@ -737,12 +748,12 @@ center.visualizar{
     margin-left: 12px;
     margin-top: 5px;
 }
-#menuDocente li a:hover, #menuAdministrador li a:hover, #linkDestacados li a:hover {
+#menuDocente li a:hover, #menuAdministrador li a:hover, #linkDestacados li a:hover, #menuJefe li a:hover {
     text-decoration: none;
     background-color: #4A66C4;
 }
 #grafDocenteGrupo {
 }
-#grafDocenteGrupo img {
+#grafDocenteGrupo img, #grafsJefe img{
     padding: 35px 0 35px 35px;
 }

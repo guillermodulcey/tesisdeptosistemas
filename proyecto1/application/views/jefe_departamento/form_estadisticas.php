@@ -1,12 +1,10 @@
-<?php
+<div id="formEstadistica">
+    <?php
+    echo form_open('jefe_departamento/estadisticas_usuario')
+    . form_label("usuario (login):", "login")
+    . form_input(array("id" => "login"))
+    . form_submit(array("id" => "btnConsultar", "value" => "Consultar"))
+    . form_close();
+    ?>
+</div>
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-echo form_open('jefe_departamento/estadisticas_usuario');
-echo 'usuario (login): ';
-echo form_input('login');
-echo form_submit('submit','Consultar');
-echo form_close();
-?>

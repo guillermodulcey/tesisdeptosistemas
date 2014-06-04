@@ -21,17 +21,21 @@ class Jefe_Departamento extends CI_Controller {
 
     public function index() {
         $roles = $this->seguridad_model->roles();
-        $vistas = array();
-        foreach ($roles as $key => $value) {
-            $vista = array(
-                'view' => $roles[$key] . '/home',
-                'vars' => ''
-            );
-            array_push($vistas, $vista);
-        }
-        $this->data['vistas'] = $vistas;
+        $vistas = array();        
+        $vista = array(
+            'view' => 'jefe_departamento/home',
+            'vars' => ''
+        );
+//        foreach ($roles as $key => $value) {
+//            $vista = array(
+//                'view' => $roles[$key] . '/home',
+//                'vars' => ''
+//            );
+//            array_push($vistas, $vista);
+//        }
+//      $this->data['vistas'] = $vistas;
+        $this->data['vistas'] = array($vista);
         $this->load->view('home', $this->data);
-        $this->load->view('jefe_departamento/menu_jefe');
     }
     
     public function estadisticas_usuario(){
@@ -45,6 +49,7 @@ class Jefe_Departamento extends CI_Controller {
             'view' => 'jefe_departamento/grafica_persona',
             'vars' => ''
         );
+        $this->data['bandera'] = false;
         $this->data['vistas'] = array($vista, $vista2);
 //        $this->load->view('jefe_departamento/grafica_persona');
         $this->load->view('home', $this->data);
@@ -59,6 +64,7 @@ class Jefe_Departamento extends CI_Controller {
             'view' => 'jefe_departamento/form_estadisticas',
             'vars' => ''
         );
+        $this->data['bandera'] = false;
         $this->data['vistas'] = array($vista, $vista2);
 //        $this->load->view('jefe_departamento/form_estadisticas');
         $this->load->view('home', $this->data);
