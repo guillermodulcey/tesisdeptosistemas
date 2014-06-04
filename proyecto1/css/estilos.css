@@ -337,13 +337,16 @@ span.required {
 }
 /**** estilos usuarios****/
 #usuario {
-    margin: 0 150px;
+    float: right;
+    margin-right: 15px;
+    width: 75%;
 }
 
 #usuario h2 {
     font-size: 38px;
     color: #0B2972;
     padding-bottom: 20px;
+    padding-top: 20px;
     text-align: center;
 }
 #usuario table th {
@@ -406,6 +409,7 @@ span.required {
     font-size: 38px;
     color: #0B2972;
     padding-bottom: 20px;
+    padding-top: 20px;
     text-align: center;
 }
 #editar h2 {
@@ -686,7 +690,7 @@ center.visualizar{
 #menuDocente {
     
 }
-#menuDocente, #menuEstadisticas, #linkDestacados, #menuAdministrador {
+#menuDocente div.menuProducciones, #menuDocente div.menuEstadisticas, #linkDestacados, #menuAdministrador {
     width: 215px;
     border-radius: 10px;
     background-color: #FFFFFF;
@@ -736,4 +740,9 @@ center.visualizar{
 #menuDocente li a:hover, #menuAdministrador li a:hover, #linkDestacados li a:hover {
     text-decoration: none;
     background-color: #4A66C4;
+}
+#grafDocenteGrupo {
+}
+#grafDocenteGrupo img {
+    padding: 35px 0 35px 35px;
 }

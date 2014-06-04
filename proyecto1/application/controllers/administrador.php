@@ -26,9 +26,16 @@ class Administrador extends CI_Controller {
             'view' => 'administrador/home',            
             'vars' => ''
         );
-        $this->data['vistas'] = array($vista);
+        $this->load->model('usuarios/docente_model', 'docente');
+        $output = $this->docente->gestion_docente();        
+        $vista2 = array(
+            'view' => 'administrador/docentes.php',
+            'vars' => $output
+                );
+        $this->data['bandera'] = false;
+        $this->data['vistas'] = array($vista,$vista2);
         $this->load->view('home', $this->data);
-        $this->load->view('administrador/menu_admin');
+//        $this->load->view('administrador/menu_admin');
     }
 
     public function validar_formulario_crear_usuario() {
@@ -36,13 +43,17 @@ class Administrador extends CI_Controller {
     }
     
     public function docentes() {
+        $vista = array(
+            'view' => 'administrador/home',            
+            'vars' => ''
+        );
         $this->load->model('usuarios/docente_model', 'docente');
         $output = $this->docente->gestion_docente();        
-        $vista = array(
+        $vista2 = array(
             'view' => 'administrador/docentes.php',
             'vars' => $output);
         $this->data['bandera'] = false;
-        $this->data['vistas'] = array($vista);
+        $this->data['vistas'] = array($vista, $vista2);
         $this->load->view('home', $this->data);         
         $this->load->view('administrador/menu_admin');
     }        
