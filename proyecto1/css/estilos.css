@@ -306,7 +306,7 @@ body {
         border: 1px solid #90B3EC;
         color: #000000;
 }
-#btnBuscar, #btnConsultar {
+#btnBuscar, #btnConsultar, input[type="submit"]{
     width: 84px;
     height: 35px;
     background-color: #770000;
@@ -317,7 +317,7 @@ body {
     font-size: 16px;
     margin-left: 10px;
 }
-#btnBuscar:hover, #btnConsultar:hover {
+#btnBuscar:hover, #btnConsultar:hover, input[type="submit"]:hover {
     background-color: #CC0000;
 }
 #conInferior #listarItems {
