@@ -277,6 +277,7 @@ body {
 }
 #barra_busqueda {
     text-align: center;
+    padding-bottom: 10px;
 }
 #barra_busqueda label {
     color: #0B2972;
