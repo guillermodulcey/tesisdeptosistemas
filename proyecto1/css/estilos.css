@@ -342,6 +342,11 @@ span.required {
 	border: none;
 	text-shadow: 0 0px 0px rgba(255, 255, 255, 0.75);
 }
+#form-button-save {
+    width: 160px;
+    font-size: 15px;
+    height: 38px;
+}
 #form-button-save:hover, #save-and-go-back-button:hover, #cancel-button:hover {
 	background-color: #CC0000;
 }
