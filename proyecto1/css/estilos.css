@@ -252,7 +252,7 @@ body {
 	}
 	#restablecer_contrasena form input:focus {
 		border-radius: 5px;
-		border: 2px solid #90B3EC;
+		border: 1px solid #90B3EC;
 	}
 	#restablecer_contrasena #sendContrasena {
 		width: 125px;
