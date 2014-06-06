@@ -13,6 +13,7 @@ class Produccion extends CI_Controller {
     public function index($criterio = 1) {
         $vista = $this->listar($criterio);
         $data['vistas'] = array($vista);
+        $this->data['bandera1'] = false;
         $this->load->view('home', $data);
     }
 
@@ -38,6 +39,7 @@ class Produccion extends CI_Controller {
         $this->pagination->initialize();
 
         $data["producciones"] = $result;
+        $this->data['bandera1'] = false;
         $data["links"] = $this->pagination->create_links();
         if ($result) {
             $vista = array('view' => 'produccion/listar_items', 'vars' => $data);
@@ -56,6 +58,7 @@ class Produccion extends CI_Controller {
         $vista = array('view' => 'produccion/detallado',
             'vars' => array('produccion' => $produccion));
         $data['vistas'] = array($vista);
+        $this->data['bandera1'] = false;
         $this->load->view('home', $data);
     }
 
@@ -88,6 +91,7 @@ class Produccion extends CI_Controller {
                 $vista = array('view' => 'produccion/no_hay_producciones', 'vars' => '');
                 break;
         }
+        $this->data['bandera1'] = false;
         return $vista;
     }
 
@@ -108,6 +112,7 @@ class Produccion extends CI_Controller {
         $vista = array('view' => 'produccion/contactar_autor',
             'vars' => array('produccion' => $produccion, 'enviado' => (isset($enviado) ? $enviado : null)));
         $data['vistas'] = array($vista);
+        $this->data['bandera1'] = false;
         $this->load->view('home', $data);
     }
 
@@ -124,6 +129,7 @@ class Produccion extends CI_Controller {
         $match = $this->input->get('term', TRUE);  // TRUE para hacer un filtrado XSS  
         $data['results'] = $this->produccion->get_data($match);
         $this->load->view('produccion/buscar_data', $data);
+        $this->data['bandera1'] = false;
     }
 
     /**
@@ -134,6 +140,7 @@ class Produccion extends CI_Controller {
     public function busqueda_simple() {
         $vista = $this->listar(6);
         $data['vistas'] = array($vista);
+        $this->data['bandera1'] = false;
         $this->load->view('home', $data);
     }
 
