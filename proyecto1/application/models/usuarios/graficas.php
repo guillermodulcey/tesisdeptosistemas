@@ -15,8 +15,8 @@ class Graficas extends CI_Model {
         }                
         public function graficar_barras_grupos(){        
             // Standard inclusions   
-            include("/application/libraries/pChart.1.27d/pChart/pData.class");
-            include("/application/libraries/pChart.1.27d/pChart/pChart.class");
+            include("application/libraries/pChart.1.27d/pChart/pData.class");
+            include("application/libraries/pChart.1.27d/pChart/pChart.class");
 
             $monografiasIDIS = $this->dao->get_count_producciones_grupo('IDIS','monografia');
             $articulosIDIS = $this->dao->get_count_producciones_grupo('IDIS','articulo');
@@ -26,9 +26,9 @@ class Graficas extends CI_Model {
             $articulosGTI = $this->dao->get_count_producciones_grupo('GTI','articulo');
             $reportesGTI = $this->dao->get_count_producciones_grupo('GTI','reporte_tecnico');
             
-            $monografiasGICOM = $this->dao->get_count_producciones_grupo('GICOM','monografia');
-            $articulosGICOM = $this->dao->get_count_producciones_grupo('GICOM','articulo');
-            $reportesGICOM = $this->dao->get_count_producciones_grupo('GICOM','reporte_tecnico');
+            $monografiasGICOM = $this->dao->get_count_producciones_grupo('GICO','monografia');
+            $articulosGICOM = $this->dao->get_count_producciones_grupo('GICO','articulo');
+            $reportesGICOM = $this->dao->get_count_producciones_grupo('GICO','reporte_tecnico');
 
             // Dataset definition 
             $DataSet = new pData;
@@ -36,7 +36,7 @@ class Graficas extends CI_Model {
             $DataSet->AddPoint(array($monografiasIDIS,$monografiasGTI,$monografiasGICOM),"SerieMonografias");
             $DataSet->AddPoint(array($articulosIDIS,$articulosGTI,$articulosGICOM),"SerieArticulos");
             $DataSet->AddPoint(array($reportesIDIS,$reportesGTI,$reportesGICOM),"SerieReportes");
-            $DataSet->AddPoint(array('IDIS','GTI','GICOM'),"XLabel");        
+            $DataSet->AddPoint(array('IDIS','GTI','GICO'),"XLabel");        
 
             $DataSet->SetAbsciseLabelSerie("XLabel");
             //$DataSet->AddPoint(array(3,3,-4,1,-2,2,1,0,-1,6,3),"Serie2");
@@ -68,7 +68,7 @@ class Graficas extends CI_Model {
             $Test->setFontProperties($font_folder."/application/libraries/pChart.1.27d/Fonts/tahoma.ttf",8);
             $Test->drawLegend(596,150,$DataSet->GetDataDescription(),255,255,255);
             $Test->setFontProperties($font_folder."/application/libraries/pChart.1.27d/Fonts/tahoma.ttf",10);
-            $Test->drawTitle(50,22,"Producciones Grupo IDIS",50,50,50,585);
+            $Test->drawTitle(50,22,"Producciones por Grupos",50,50,50,585);
 
             $font_folder = $_SERVER['DOCUMENT_ROOT']."/proyecto1/img";
             //$email = $this->session->userdata('username');
@@ -78,8 +78,8 @@ class Graficas extends CI_Model {
     
     public function graficar_barras_persona($persona){        
             // Standard inclusions   
-            include("/application/libraries/pChart.1.27d/pChart/pData.class");
-            include("/application/libraries/pChart.1.27d/pChart/pChart.class");
+            include("application/libraries/pChart.1.27d/pChart/pData.class");
+            include("application/libraries/pChart.1.27d/pChart/pChart.class");
             
             $codigo = $this->dao->get_codigo_usuario($persona."@unicauca.edu.co");
             $nombre = $this->dao->get_nombre_usuario($codigo);
@@ -127,7 +127,7 @@ class Graficas extends CI_Model {
             $Test->setFontProperties($font_folder."/application/libraries/pChart.1.27d/Fonts/tahoma.ttf",8);
             $Test->drawLegend(596,150,$DataSet->GetDataDescription(),255,255,255);
             $Test->setFontProperties($font_folder."/application/libraries/pChart.1.27d/Fonts/tahoma.ttf",10);
-            $Test->drawTitle(50,22,"Producciones Grupo IDIS",50,50,50,585);
+            $Test->drawTitle(50,22,"Producciones por Grupos",50,50,50,585);
 
             $font_folder = $_SERVER['DOCUMENT_ROOT']."/proyecto1/img";
             //$email = $this->session->userdata('username');
