@@ -21,7 +21,7 @@
             <li> <span>Fecha Publicación: </span> <?php echo $produccion->PROD_FECHA_PUBLICACION ?> </li>
             <li> <span>Grupo Investigación: </span> <?php echo $produccion->PROD_GRUPO_INVESTIGACION ?> </li>        
         </ul>
-        <ul>
+        <ul class="resumen">
             <li> <p><?php echo $produccion->PROD_RESUMEN ?></p> </li>
 
             <?php

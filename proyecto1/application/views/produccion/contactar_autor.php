@@ -1,6 +1,7 @@
 <div id="contactarAutor">
     <p> Contacta con el autor de
         <span>
+            <br/>
             <?php
             echo anchor(site_url('produccion/ver_detalle/' . $produccion->PROD_CODIGO), $produccion->PROD_TITULO)
             . br(3)

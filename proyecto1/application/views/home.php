@@ -78,7 +78,7 @@
                 </div> 
                 <?php
                 $flag = true;
-                $flag1 = true;
+                $flag1 = false;
                 if (isset($bandera1)) {
                     $flag1 = $bandera1;
                 }
