@@ -1,3 +1,1 @@
-<?php
-
-echo "No hay producciones para mostrar.";
+<span>No hay producciones para mostrar</span>

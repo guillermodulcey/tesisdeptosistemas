@@ -562,7 +562,6 @@ center a:hover {
     padding: 0 25px;
     color: #333333;
 }
-
 button.regresar {
     display: block;
     width: 100px;    
@@ -763,4 +762,12 @@ center.visualizar{
 }
 #grafDocenteGrupo img, #grafsJefe img{
     padding: 35px 0 35px 35px;
+}
+#itemBusqueda ul li span.sinArchivo {
+    display: block;
+    padding-top: 10px;
+}
+#conInferior span {
+    display: inline-block;
+    text-align: center;
 }

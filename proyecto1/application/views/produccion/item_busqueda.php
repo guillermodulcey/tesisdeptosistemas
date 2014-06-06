@@ -42,7 +42,7 @@
                     $ruta_archivo_adjunto = base_url("stored/$md5_login/$produccion->PROD_ARCHIVO_ADJUNTO");
                     echo anchor($ruta_archivo_adjunto, 'Descargar PDF');
                 } else {
-                    echo "sin archivo adjunto";
+                    ?><span class="sinArchivo"><?php echo "Sin archivo adjunto"?></span><?php
                 }
                 ?>
             </li>
