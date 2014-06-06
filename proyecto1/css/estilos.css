@@ -692,7 +692,7 @@ center.visualizar{
         #contactarAutor p span {
             color: #000000;            
         }
-#menuDocente, #menuAdministrador, #menuJefe {
+#menuDocente, #menuAdministrador, #menuJefe, #menuGrupos {
     float: left;
     margin-left: 30px;
     margin-top: -45px;
@@ -707,12 +707,12 @@ center.visualizar{
     
 }
 #menuDocente div.menuProducciones, #menuDocente div.menuEstadisticas, #linkDestacados,
-#menuAdministrador, #menuJefe div.menuProducciones, #menuJefe div.menuEstadisticas {
+#menuAdministrador, #menuJefe div.menuProducciones, #menuJefe div.menuEstadisticas, #menuGrupos {
     width: 215px;
     border-radius: 10px;
     background-color: #FFFFFF;
 }
-#menuDocente h3, #menuAdministrador h3, #linkDestacados h3, #menuJefe h3{
+#menuDocente h3, #menuAdministrador h3, #linkDestacados h3, #menuJefe h3, #menuGrupos h3 {
     color: #C20602;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -720,7 +720,7 @@ center.visualizar{
     font-size: 18px;
     line-height: 18px;
 }
-#menuDocente ul, #menuAdministrador ul, #linkDestacados ul, #menuJefe ul{
+#menuDocente ul, #menuAdministrador ul, #linkDestacados ul, #menuJefe ul, #menuGrupos ul {
     display: block;
     width: 215px;
     height: 145px;
@@ -741,7 +741,7 @@ center.visualizar{
     padding-bottom: 8px;
     padding-top: 8px;
 }
-#menuDocente li a, #menuAdministrador li a, #linkDestacados li a, #menuJefe li a {
+#menuDocente li a, #menuAdministrador li a, #linkDestacados li a, #menuJefe li a, #menuGrupos li a {
     width: 80%;
     background-color: #0B2972;
     border-radius: 6px;
@@ -754,7 +754,8 @@ center.visualizar{
     margin-left: 12px;
     margin-top: 5px;
 }
-#menuDocente li a:hover, #menuAdministrador li a:hover, #linkDestacados li a:hover, #menuJefe li a:hover {
+#menuDocente li a:hover, #menuAdministrador li a:hover,#linkDestacados li a:hover,
+#menuJefe li a:hover, #menuGrupos li a:hover {
     text-decoration: none;
     background-color: #4A66C4;
 }

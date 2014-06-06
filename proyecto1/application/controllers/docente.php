@@ -30,6 +30,7 @@ class Docente extends CI_Controller {
         $prod = new Produccion();
         $vista_prod = $prod->listar(2);
         $this->data['vistas'] = array($vista_home, $vista_prod);
+        $this->data['bandera1'] = false;
         $this->load->view('home', $this->data);
     }
 
@@ -40,7 +41,8 @@ class Docente extends CI_Controller {
         $vista2 = array(
             'view' => 'docente/home',
             'vars' => ""
-        );        
+        ); 
+        $this->data['bandera1'] = false;
         $this->data['vistas'] = array($vista, $vista2);
         $this->load->view('home', $this->data);
     }
@@ -59,6 +61,7 @@ class Docente extends CI_Controller {
             'vars' => $output
         );
         $this->data['bandera'] = false;
+        $this->data['bandera1'] = false;
         $this->data['vistas'] = array($vista, $vista2);
         $this->load->view('home', $this->data);
     }
@@ -77,6 +80,7 @@ class Docente extends CI_Controller {
             'vars' => $output
         );
         $this->data['bandera'] = false;
+        $this->data['bandera1'] = false;
         $this->data['vistas'] = array($vista, $vista2);
         $this->load->view('home', $this->data);
     }
@@ -95,6 +99,7 @@ class Docente extends CI_Controller {
             'vars' => $output
         );
         $this->data['bandera'] = false;
+        $this->data['bandera1'] = false;
         $this->data['vistas'] = array($vista, $vista2);
         $this->load->view('home', $this->data);
     }
@@ -126,6 +131,7 @@ class Docente extends CI_Controller {
             'vars' => ''
         );
         $this->data['bandera'] = false;
+        $this->data['bandera1'] = false;
         $this->data['vistas'] = array($vista, $vista2);
 //        $this->load->view('docente/grafica_grupos');
         $this->load->view('home', $this->data);

@@ -33,6 +33,7 @@ class Administrador extends CI_Controller {
             'vars' => $output
                 );
         $this->data['bandera'] = false;
+        $this->data['bandera1'] = false;
         $this->data['vistas'] = array($vista,$vista2);
         $this->load->view('home', $this->data);
 //        $this->load->view('administrador/menu_admin');
@@ -53,6 +54,7 @@ class Administrador extends CI_Controller {
             'view' => 'administrador/docentes.php',
             'vars' => $output);
         $this->data['bandera'] = false;
+        $this->data['bandera1'] = false;
         $this->data['vistas'] = array($vista, $vista2);
         $this->load->view('home', $this->data);         
         $this->load->view('administrador/menu_admin');

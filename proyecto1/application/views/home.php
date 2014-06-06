@@ -78,6 +78,13 @@
                 </div> 
                 <?php
                 $flag = true;
+                $flag1 = true;
+                if (isset($bandera1)) {
+                    $flag1 = $bandera1;
+                }
+                if ($flag1) {
+                    $this->load->view('menu_grupos');
+                }
                 if (isset($bandera)) {
                     $flag = $bandera;
                 }

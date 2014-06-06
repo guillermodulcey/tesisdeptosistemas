@@ -94,6 +94,7 @@ class Usuario extends CI_Controller {
             }
             $vista = array('view' => 'auth/login_form', 'vars' => '');
             $data['bandera'] = false;
+            $data['bandera1'] = false;
             $data['vistas'] = array($vista);
             $this->load->view('home', $data);
         }
@@ -576,6 +577,7 @@ class Usuario extends CI_Controller {
             'vars' => $output);
         $this->data['vistas'] = array($vista, $vista2);
         $this->data['bandera'] = false;
+         $this->data['bandera1'] = false;
         $this->load->view('home', $this->data);
     }
 

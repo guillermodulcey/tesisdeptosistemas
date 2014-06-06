@@ -34,6 +34,7 @@ class Jefe_Departamento extends CI_Controller {
 //            array_push($vistas, $vista);
 //        }
 //      $this->data['vistas'] = $vistas;
+        $this->data['bandera1'] = false;
         $this->data['vistas'] = array($vista);
         $this->load->view('home', $this->data);
     }
@@ -50,6 +51,7 @@ class Jefe_Departamento extends CI_Controller {
             'vars' => ''
         );
         $this->data['bandera'] = false;
+        $this->data['bandera1'] = false;
         $this->data['vistas'] = array($vista, $vista2);
 //        $this->load->view('jefe_departamento/grafica_persona');
         $this->load->view('home', $this->data);
@@ -65,6 +67,7 @@ class Jefe_Departamento extends CI_Controller {
             'vars' => ''
         );
         $this->data['bandera'] = false;
+        $this->data['bandera1'] = false;
         $this->data['vistas'] = array($vista, $vista2);
 //        $this->load->view('jefe_departamento/form_estadisticas');
         $this->load->view('home', $this->data);
