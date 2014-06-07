@@ -58,7 +58,7 @@ class Articulo_model extends CI_Model {
         $crud->display_as('PROD_PERMISO', 'Permiso');
         $crud->display_as('PROD_ESTADO', 'Estado');
         $crud->display_as('PROD_ARCHIVO_ADJUNTO', 'Archivo PDF');
-        $crud->display_as('ART_FACTOR_IMPACTO', 'Factor de Impacto');
+        $crud->display_as('ART_FACTOR_IMPACTO', 'Categorización Colciencias');
 
         /* columnas que no pertenecen a la tabla */
         $crud->callback_column('ART_FACTOR_IMPACTO', array($this, 'custom_tipo'));
