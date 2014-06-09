@@ -53,8 +53,7 @@ class Usuario extends CI_Controller {
             $this->form_validation->set_rules('remember', 'Remember me', 'integer');
 
             // Get login for counting attempts to login
-            if ($this->config->item('login_count_attempts', 'tank_auth') AND
-                    ($login = $this->input->post('login'))) {
+            if ($this->config->item('login_count_attempts', 'tank_auth') AND ( $login = $this->input->post('login'))) {
                 $login = $this->security->xss_clean($login);
             } else {
                 $login = '';
@@ -81,7 +80,11 @@ class Usuario extends CI_Controller {
                         'nombre' => $nombre
                     );
                     $this->session->set_userdata($newdata);
-                    redirect($this->usuario->tipo_usuario[0]);
+                    if (count($this->usuario->tipo_usuario) > 1) {
+                        redirect($this->usuario->tipo_usuario[1]);
+                    } else {
+                        redirect($this->usuario->tipo_usuario[0]);
+                    }
                 } else {
                     $errors = $this->tank_auth->get_error_message();
                     if (isset($errors['banned'])) {        // banned user
@@ -298,7 +301,7 @@ class Usuario extends CI_Controller {
                 // Send email with new password
                 $this->_send_email('reset_password', $data['email'], $data);
 
-                $this->_show_message($this->lang->line('auth_message_new_password_activated') . ' ' . anchor('/usuario/login/', 'Login'));
+                $this->_show_message($this->lang->line('auth_message_new_password_activated') . ' ' . anchor('/usuario/login/', 'Iniciar Sesion.'));
             } else {              // fail
                 $this->_show_message($this->lang->line('auth_message_new_password_failed'));
             }
@@ -451,14 +454,14 @@ class Usuario extends CI_Controller {
      */
     function _send_email($type, $email, &$data) {
         $this->load->library('email');
-        $this->email->from($this->config->item('webmaster_email', 'tank_auth'), $this->config->item('website_name', 'tank_auth'));
-        $this->email->reply_to($this->config->item('webmaster_email', 'tank_auth'), $this->config->item('website_name', 'tank_auth'));
+        $this->email->from($this->config->item('webmaster_email', 'tank_auth'), "Sistema de Producciones Depto Sistemas");
+        //$this->email->reply_to($this->config->item('webmaster_email', 'tank_auth'), $this->config->item('website_name', 'tank_auth'));
         $this->email->to($email);
         $this->email->subject(sprintf($this->lang->line('auth_subject_' . $type), $this->config->item('website_name', 'tank_auth')));
         $this->email->message($this->load->view('email/' . $type . '-html', $data, TRUE));
-        $this->email->set_alt_message($this->load->view('email/' . $type . '-txt', $data, TRUE));
+        //$this->email->set_alt_message($this->load->view('email/' . $type . '-txt', $data, TRUE));
         $this->email->send();
-        //echo $this->email->print_debugger();
+        echo $this->email->print_debugger();
     }
 
     /**
@@ -577,7 +580,7 @@ class Usuario extends CI_Controller {
             'vars' => $output);
         $this->data['vistas'] = array($vista, $vista2);
         $this->data['bandera'] = false;
-         $this->data['bandera1'] = false;
+        $this->data['bandera1'] = false;
         $this->load->view('home', $this->data);
     }
 

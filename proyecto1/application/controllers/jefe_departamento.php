@@ -21,10 +21,15 @@ class Jefe_Departamento extends CI_Controller {
 
     public function index() {
         $roles = $this->seguridad_model->roles();
-        $vistas = array();        
-        $vista = array(
+        $vistas = array();
+        $vista2 = array(
             'view' => 'jefe_departamento/home',
             'vars' => ''
+        );
+        $output = $this->docente->gestion_docente();
+        $vista3 = array(
+            'view' => 'administrador/docentes.php',
+            'vars' => $output
         );
 //        foreach ($roles as $key => $value) {
 //            $vista = array(
@@ -34,12 +39,13 @@ class Jefe_Departamento extends CI_Controller {
 //            array_push($vistas, $vista);
 //        }
 //      $this->data['vistas'] = $vistas;
+        $this->data['bandera'] = false;
         $this->data['bandera1'] = false;
-        $this->data['vistas'] = array($vista);
+        $this->data['vistas'] = array($vista2, $vista3);
         $this->load->view('home', $this->data);
     }
-    
-    public function estadisticas_usuario(){
+
+    public function estadisticas_usuario() {
         $persona = $this->input->post('login');
         $this->graficar->graficar_barras_persona($persona);
         $vista = array(
@@ -56,8 +62,8 @@ class Jefe_Departamento extends CI_Controller {
 //        $this->load->view('jefe_departamento/grafica_persona');
         $this->load->view('home', $this->data);
     }
-    
-    public function estadisticas(){    
+
+    public function estadisticas() {
         $vista = array(
             'view' => 'jefe_departamento/home',
             'vars' => ""
@@ -72,5 +78,22 @@ class Jefe_Departamento extends CI_Controller {
 //        $this->load->view('jefe_departamento/form_estadisticas');
         $this->load->view('home', $this->data);
     }
+    
+    public function docentes() {
+        $vista = array(
+            'view' => 'jefe_departamento/home',            
+            'vars' => ''
+        );
+        $this->load->model('usuarios/docente_model', 'docente');
+        $output = $this->docente->gestion_docente();        
+        $vista2 = array(
+            'view' => 'administrador/docentes.php',
+            'vars' => $output);
+        $this->data['bandera'] = false;
+        $this->data['bandera1'] = false;
+        $this->data['vistas'] = array($vista, $vista2);
+        $this->load->view('home', $this->data);         
+        $this->load->view('administrador/menu_admin');
+    }   
 
 }

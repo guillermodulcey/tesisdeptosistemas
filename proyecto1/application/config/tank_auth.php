@@ -11,7 +11,8 @@ if (!defined('BASEPATH'))
   |--------------------------------------------------------------------------
  */ 
 $config['website_name'] = base_url();
-$config['webmaster_email'] = 'test_webmaster@wfpc92.tk';
+//$config['webmaster_email'] = 'test_webmaster@wfpc92.tk';
+$config['webmaster_email'] = 'wfpc92.tk@gmail.com';
 
 /*
   |--------------------------------------------------------------------------

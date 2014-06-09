@@ -31,8 +31,8 @@ $lang['auth_message_unregistered'] = 'Su cuenta ha sido eliminada ...';
 // Email subjects
 $lang['auth_subject_welcome'] = 'Bienvenido a %s!';
 $lang['auth_subject_activate'] = 'Bienvenido a %s!';
-$lang['auth_subject_forgot_password'] = 'Ha olvidado su contraseña en %s?';
-$lang['auth_subject_reset_password'] = 'Su nueva contraseña en %s';
+$lang['auth_subject_forgot_password'] = 'Ha olvidado su contrasena en %s';
+$lang['auth_subject_reset_password'] = 'Su nueva contrasena en %s';
 $lang['auth_subject_change_email'] = 'Su nuevo email en %s';
 
 

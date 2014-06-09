@@ -1,15 +1,11 @@
-<?php //
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-//echo 'Menu'.br();
-//echo 'Estadisticas'.br();
-//echo anchor(site_url('jefe_departamento/estadisticas'),'Estadisticas por Grupos').br();
-//echo anchor(site_url('jefe_departamento/estadisticas'),'Estadisticas Docentes').br();
-?>
 <div id="menuJefe">
+    <div class="menuProducciones">
+        <h3>Menú Usuarios</h3>
+        <ul>        
+            <li><?php echo anchor(site_url('jefe_departamento/docentes'), 'Administrar Usuarios') ?></li>
+            <li><?php echo anchor(site_url('jefe_departamento/docentes/add'), 'Crear Usuario') ?></li>        
+        </ul> 
+    </div>
     <div class="menuProducciones">
         <h3>Menú Producciones</h3>
         <ul>        

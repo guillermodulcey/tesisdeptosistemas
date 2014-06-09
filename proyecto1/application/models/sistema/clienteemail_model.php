@@ -8,7 +8,7 @@ class Clienteemail_model extends CI_Model {
     }
 
     public function enviar_contrasena($email, $password) {
-        $this->email->from('test_webmaster@wfpc92.tk', 'Sitio web de Tesis Depto Sistemas');
+        $this->email->from('test_webmaster@wfpc92.tk', 'Sistema de Producciones Depto Sistemas');
         $this->email->to($email);
         $this->email->subject('recordatorio contraseña');
         $this->email->message(
