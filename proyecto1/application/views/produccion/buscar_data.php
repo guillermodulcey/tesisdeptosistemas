@@ -6,7 +6,7 @@ if ($results) {
     $records = [];
     foreach ($results as $result) {
         $records[$j] = array('id' => $result->PROD_CODIGO,
-            'label' => substr($result->PROD_TITULO, 0, 30),
+            'label' => $result->PROD_TITULO,
             'value' => $result->PROD_TITULO
         );
         $j++;

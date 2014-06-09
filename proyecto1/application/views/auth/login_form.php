@@ -48,8 +48,6 @@ $captcha = array(
 
         </div>
 
-        <?php echo form_checkbox($remember); ?>
-        <?php echo form_label('Recordar Datos', $remember['id']); ?>
         <?php echo anchor('/usuario/forgot_password/', '¿Olvidó su Contraseña?'); ?>
         <?php
         if ($this->config->item('allow_registration', 'tank_auth'))

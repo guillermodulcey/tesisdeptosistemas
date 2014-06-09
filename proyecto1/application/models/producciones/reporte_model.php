@@ -66,7 +66,7 @@ class Reporte_model extends CI_Model {
 
         /* Tipo de campo */
         $crud->field_type('PROD_PERMISO', 'dropdown', array('1' => 'Privada', '2' => 'Publico'));
-        $crud->field_type('PROD_GRUPO_INVESTIGACION', 'enum', array('IDIS', 'GTI','GICOM'));
+        $crud->field_type('PROD_GRUPO_INVESTIGACION', 'enum', array('IDIS', 'GTI','GICO'));
         
         $md5_login = md5($this->dao->get_login_usuario($codigo));
         if(!is_dir('stored/'.$md5_login)){
