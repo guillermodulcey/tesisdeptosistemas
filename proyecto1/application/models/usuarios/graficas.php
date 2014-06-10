@@ -107,8 +107,15 @@ class Graficas extends CI_Model {
             $DataSet->SetSerieName("Articulos","SerieArticulos");
             $DataSet->SetSerieName("Reportes","SerieReportes");
 
-            $font_folder = $_SERVER['DOCUMENT_ROOT']."/proyecto1";
-
+             if(strpos(base_url(), "localhost")){
+                $font_folder = $_SERVER['DOCUMENT_ROOT']."/proyecto1";
+            }
+            else{
+                $font_folder = $_SERVER['DOCUMENT_ROOT'];
+            }
+            
+            
+            
             // Initialise the graph
             $Test = new pChart(700,230);
             $Test->setFontProperties($font_folder."/application/libraries/pChart.1.27d/Fonts/tahoma.ttf",8);
@@ -129,7 +136,12 @@ class Graficas extends CI_Model {
             $Test->setFontProperties($font_folder."/application/libraries/pChart.1.27d/Fonts/tahoma.ttf",10);
             $Test->drawTitle(50,22,"Producciones por Grupos",50,50,50,585);
 
-            $font_folder = $_SERVER['DOCUMENT_ROOT']."/proyecto1/img";
+            if(strpos(base_url(), "localhost")){
+                $font_folder = $_SERVER['DOCUMENT_ROOT']."/proyecto1/img";
+            }
+            else{
+                $font_folder = $_SERVER['DOCUMENT_ROOT']."/img";
+            }
             //$email = $this->session->userdata('username');
             $Test->Render($font_folder."/grafica_de_barras_persona.png");            
     }

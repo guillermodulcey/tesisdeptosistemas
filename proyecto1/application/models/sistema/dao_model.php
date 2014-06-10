@@ -186,7 +186,7 @@ class DAO_model extends CI_Model {
         $valor = '';
         $consulta = 'select count(produccion.PROD_CODIGO) as contador from produccion 
             inner join ' . $tipo . ' on produccion.PROD_CODIGO = ' . $tipo . '.PROD_CODIGO 
-            where `PROD_GRUPO_INVESTIGACION` ="' . $grupo . '"';        
+            where produccion.PROD_GRUPO_INVESTIGACION ="' . $grupo . '"';        
         $query = $this->db->query($consulta);
         foreach ($query->result_array() as $row) {
             $valor = $row['contador'];
