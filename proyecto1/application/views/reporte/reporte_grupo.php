@@ -23,7 +23,7 @@
 
         <?php
     } else {
-        echo form_open('jefe_departamento/reporte_grupo')
+        echo form_open('produccion/reporte_grupo')
         . form_label("Nombre Grupo:", "grupo")
         . form_input(array("id" => "grupo", "name" => "grupo"))
         . form_submit(array("id" => "btnConsultar", "value" => "Consultar"))

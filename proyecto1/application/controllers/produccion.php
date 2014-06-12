@@ -8,6 +8,8 @@ class Produccion extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('producciones/produccion_model', 'produccion');
+        $this->load->model('sistema/graficas', 'graficas');
+        $this->load->library('table');
     }
 
     public function index($criterio = 1) {
@@ -142,6 +144,192 @@ class Produccion extends CI_Controller {
         $data['vistas'] = array($vista);
         $this->data['bandera1'] = false;
         $this->load->view('home', $data);
+    }
+
+    /**
+     * 
+     * 
+     * Estadisticas 
+     * 
+     * 
+     * 
+     */
+
+    /**
+     * Obtener la informacion relativa a produccione dado un docente.
+     */
+    public function reporte_docente() {
+        $username = $this->input->post('login');
+        $tabla = null;
+        if ($username) {
+            $this->graficas->graficar_prod_docente($username);
+            $tabla = $this->graficas->query_prod_docente($username);
+        }
+        $vista = array(
+            'view' => $this->get_home(),
+            'vars' => ""
+        );
+        $vista2 = array(
+            'view' => 'reporte/reporte_docente',
+            'vars' => array('username' => $username,
+                'tabla' => $tabla)
+        );
+        $this->data['bandera'] = false;
+        $this->data['bandera1'] = false;
+        $this->data['vistas'] = array($vista, $vista2);
+        $this->load->view('home', $this->data);
+    }
+
+    /**
+     * Obtener la informacion de producciones de docentes entre un rago de fechas especificos
+     */
+    public function reporte_docente_fecha() {
+        $username = $this->input->post('login');
+        $dateFini = new DateTime($this->input->post('fini'));
+        $dateFfin = new DateTime($this->input->post('ffin'));
+        $fini = $dateFini->format('Y-m-d');
+        $ffin = $dateFfin->format('Y-m-d');
+
+        $tabla = null;
+        if ($username) {
+            $this->graficas->graficar_prod_docente_fecha($username, $fini, $ffin);
+            $tabla = $this->graficas->query_prod_docente($username, $fini, $ffin);
+        }
+        $vista = array(
+            'view' => $this->get_home(),
+            'vars' => ""
+        );
+        $vista2 = array(
+            'view' => 'reporte/reporte_docente_fecha',
+            'vars' => array(
+                'username' => $username,
+                'fini' => $fini,
+                'ffin' => $ffin,
+                'tabla' => $tabla)
+        );
+        $this->data['bandera'] = false;
+        $this->data['bandera1'] = false;
+        $this->data['vistas'] = array($vista, $vista2);
+        $this->load->view('home', $this->data);
+    }
+
+    /**
+     * obtener la informacion de todos los docentes listados en una tabla
+     * con el consolicdado de producciones
+     */
+    public function reporte_docente_total() {
+        $tabla = $this->graficas->query_prod_docente_total();
+        $vista = array(
+            'view' => $this->get_home(),
+            'vars' => ""
+        );
+        $vista2 = array(
+            'view' => 'reporte/reporte_docente_total',
+            'vars' => array('tabla' => $tabla)
+        );
+        $this->data['bandera'] = false;
+        $this->data['bandera1'] = false;
+        $this->data['vistas'] = array($vista, $vista2);
+        $this->load->view('home', $this->data);
+    }
+
+    /**
+     * Reportes del jefe de departamento
+     * Obtener la informacion relativa a produccione dado un grupo de investifacion.
+     */
+    public function reporte_grupo() {
+        $grupo = $this->input->post('grupo');
+        $tabla = null;
+        if ($grupo) {
+            $this->graficas->graficar_prod_grupo($grupo);
+            $tabla = $this->graficas->query_prod_grupo($grupo);
+        }
+        $vista = array(
+            'view' => $this->get_home(),
+            'vars' => ""
+        );
+        $vista2 = array(
+            'view' => 'reporte/reporte_grupo',
+            'vars' => array('grupo' => $grupo,
+                'tabla' => $tabla)
+        );
+        $this->data['bandera'] = false;
+        $this->data['bandera1'] = false;
+        $this->data['vistas'] = array($vista, $vista2);
+        $this->load->view('home', $this->data);
+    }
+
+    /**
+     * obtener informacion de un grupo de investigacion a partir de un rango de fechas
+     */
+    public function reporte_grupo_fecha() {
+        $grupo = $this->input->post('grupo');
+        $dateFini = new DateTime($this->input->post('fini'));
+        $dateFfin = new DateTime($this->input->post('ffin'));
+        $fini = $dateFini->format('Y-m-d');
+        $ffin = $dateFfin->format('Y-m-d');
+
+
+        $tabla = null;
+        if ($grupo) {
+            $this->graficas->graficar_prod_grupo_fecha($grupo, $fini, $ffin);
+            $tabla = $this->graficas->query_prod_grupo($grupo, $fini, $ffin);
+        }
+        $vista = array(
+            'view' => $this->get_home(),
+            'vars' => ""
+        );
+        $vista2 = array(
+            'view' => 'reporte/reporte_grupo_fecha',
+            'vars' => array(
+                'grupo' => $grupo,
+                'fini' => $fini,
+                'ffin' => $ffin,
+                'tabla' => $tabla)
+        );
+        $this->data['bandera'] = false;
+        $this->data['bandera1'] = false;
+        $this->data['vistas'] = array($vista, $vista2);
+        $this->load->view('home', $this->data);
+    }
+
+    /**
+     * obtener el consolidado de los grupos de investigacaion
+     */
+    public function reporte_grupo_total() {
+        $tabla = $this->graficas->query_prod_grupo_total();
+        $vista = array(
+            'view' => $this->get_home(),
+            'vars' => ""
+        );
+        $vista2 = array(
+            'view' => 'reporte/reporte_grupo_total',
+            'vars' => array('tabla' => $tabla)
+        );
+        $this->data['bandera'] = false;
+        $this->data['bandera1'] = false;
+        $this->data['vistas'] = array($vista, $vista2);
+        $this->load->view('home', $this->data);
+    }
+
+    //obtener el tipo de usuario y su controlador para saber donde renderizar
+    public function get_home() {
+        $tipo = $this->session->userdata("tipo");
+        $home = "";
+        foreach ($tipo as $value) {
+            switch ($value) {
+                case "docente":
+                    $home = "docente/home";
+                    break;
+                case "jefe_departamento":
+                    $home = "jefe_departamento/home";
+                    return $home;
+                case "administrador":
+                    $home = "administrador/home";
+                    break;
+            }
+        }
+        return $home;
     }
 
 }

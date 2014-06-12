@@ -265,7 +265,7 @@ class Graficas extends CI_Model {
      */
     public function query_prod_docente_total() {
         $sql = "
-            SELECT CONCAT(USU_APELLIDO, ' ',USU_NOMBRE) as nombre,
+            SELECT CONCAT(USU_APELLIDO, ' ',USU_NOMBRE) as Docente,
             COUNT( articulo.PROD_CODIGO ) AS Articulos,
             COUNT( monografia.PROD_CODIGO ) AS Monografias, 
             COUNT( reporte_tecnico.PROD_CODIGO ) AS Reportes
@@ -276,7 +276,7 @@ class Graficas extends CI_Model {
             INNER JOIN usuario_produccion ON produccion.PROD_CODIGO = usuario_produccion.PROD_CODIGO
             INNER JOIN usuario ON usuario.USU_CODIGO = usuario_produccion.USU_CODIGO
             GROUP BY usuario.USU_CODIGO
-            ORDER BY nombre ASC";
+            ORDER BY Docente ASC";
         return $this->db->query($sql);
     }
 

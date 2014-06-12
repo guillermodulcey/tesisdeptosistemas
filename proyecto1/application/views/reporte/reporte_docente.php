@@ -23,7 +23,7 @@
 
         <?php
     } else {
-        echo form_open('jefe_departamento/reporte_docente')
+        echo form_open('produccion/reporte_docente')
         . form_label("usuario:", "username")
         . form_input(array("id" => "login", "name" => "login"))
         . form_submit(array("id" => "btnConsultar", "value" => "Consultar"))

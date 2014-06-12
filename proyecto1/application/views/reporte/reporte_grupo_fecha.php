@@ -27,16 +27,16 @@
 
         <?php
     } else {
-        echo form_open('jefe_departamento/reporte_grupo_fecha')
+        echo form_open('produccion/reporte_grupo_fecha')
         . form_label("Grupo de Investigación:", "grupo")
         . form_input(array("id" => "grupo", "name" => "grupo"))
         . br()
         . "Escoja un rango de fechas: "
         . br()
-        . form_label("Fecha Inicio (YYYY-MM-DD):", "fini")
+        . form_label("Fecha Inicio:", "fini")
         . form_input(array("id" => "fini", "name" => "fini"))
         . br()
-        . form_label("Fecha Fin (YYYY-MM-DD):", "ffin")
+        . form_label("Fecha Fin:", "ffin")
         . form_input(array("id" => "ffin", "name" => "ffin"))
         . br()
         . form_submit(array("id" => "btnConsultar", "value" => "Consultar"))
@@ -44,3 +44,9 @@
     }
     ?>
 </div>
+<script>
+    $(function() {
+        $("#fini").datepicker();
+        $("#ffin").datepicker();
+    });
+</script>
