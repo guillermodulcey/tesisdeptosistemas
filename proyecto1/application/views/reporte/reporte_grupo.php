@@ -1,12 +1,12 @@
 <div id="formEstadistica">
     <?php
     //verificar que sea una consulta o una respuesta
-    if ($username) {
+    if ($grupo) {
         ?>
-        <h2 >Producciones por Docente</h2>
+        <h2 >Producciones por Grupo de Investigación</h2>
         <p>
             A continuación se presentan los totales de producciones que 
-            ha subido al sistema el docente: <?php echo $username; ?>   
+            ha subido al sistema los docentes que pertenecen al grupo de investigación <?php echo $grupo; ?>   
         </p>
         <br/><br/><p>Los resultados se resumen en la siguiente tabla: </p><br/><br/>
 
@@ -17,15 +17,15 @@
         ?>
 
         <div id="grafsJefe">
-            <img src="<?php echo base_url('img/grafica_de_barras_docente.png') ?>" alt="" border="0">
+            <img src="<?php echo base_url('img/grafica_de_barras_grupo.png') ?>" alt="" border="0">
             <button class="regresar" onclick="goBack()">Regresar</button>
         </div>
 
         <?php
     } else {
-        echo form_open('jefe_departamento/reporte_docente')
-        . form_label("usuario:", "username")
-        . form_input(array("id" => "login", "name" => "login"))
+        echo form_open('jefe_departamento/reporte_grupo')
+        . form_label("Nombre Grupo:", "grupo")
+        . form_input(array("id" => "grupo", "name" => "grupo"))
         . form_submit(array("id" => "btnConsultar", "value" => "Consultar"))
         . form_close();
     }

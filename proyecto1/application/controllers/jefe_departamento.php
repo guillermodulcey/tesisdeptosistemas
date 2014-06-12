@@ -105,7 +105,7 @@ class Jefe_Departamento extends CI_Controller {
         $username = $this->input->post('login');
         $tabla = null;
         if ($username) {
-            $this->graficas->prod_docente($username);
+            $this->graficas->graficar_prod_docente($username);
             $tabla = $this->graficas->query_prod_docente($username);
         }
         $vista = array(
@@ -114,12 +114,12 @@ class Jefe_Departamento extends CI_Controller {
         );
         $vista2 = array(
             'view' => 'reporte/reporte_docente',
-            'vars' => array('username' => $username, 'tabla' => $tabla)
+            'vars' => array('username' => $username,
+                'tabla' => $tabla)
         );
         $this->data['bandera'] = false;
         $this->data['bandera1'] = false;
         $this->data['vistas'] = array($vista, $vista2);
-//        $this->load->view('jefe_departamento/form_estadisticas');
         $this->load->view('home', $this->data);
     }
 
@@ -131,25 +131,26 @@ class Jefe_Departamento extends CI_Controller {
         $fini = $this->input->post('fini');
         $ffin = $this->input->post('ffin');
 
-        //$fini = '2014-06-01';
-        //$ffin = '2014-06-25';
-        //$username = 'docente1';
         $tabla = null;
         if ($username) {
-            $tabla = $this->graficas->graficar_docente_fecha($username, $fini, $ffin);
+            $this->graficas->graficar_prod_docente_fecha($username, $fini, $ffin);
+            $tabla = $this->graficas->query_prod_docente($username, $fini, $ffin);
         }
-        $vista2 = array(
-            'view' => 'jefe_departamento/reporte_docente_fecha',
-            'vars' => array("tabla" => $tabla)
-        );
         $vista = array(
             'view' => 'jefe_departamento/home',
             'vars' => ""
         );
+        $vista2 = array(
+            'view' => 'reporte/reporte_docente_fecha',
+            'vars' => array(
+                'username' => $username,
+                'fini' => $fini,
+                'ffin' => $ffin,
+                'tabla' => $tabla)
+        );
         $this->data['bandera'] = false;
         $this->data['bandera1'] = false;
         $this->data['vistas'] = array($vista, $vista2);
-//        $this->load->view('jefe_departamento/form_estadisticas');
         $this->load->view('home', $this->data);
     }
 
@@ -158,7 +159,19 @@ class Jefe_Departamento extends CI_Controller {
      * con el consolicdado de producciones
      */
     public function reporte_docente_total() {
-        
+        $tabla = $this->graficas->query_prod_docente_total();
+        $vista = array(
+            'view' => 'jefe_departamento/home',
+            'vars' => ""
+        );
+        $vista2 = array(
+            'view' => 'reporte/reporte_docente_total',
+            'vars' => array('tabla' => $tabla)
+        );
+        $this->data['bandera'] = false;
+        $this->data['bandera1'] = false;
+        $this->data['vistas'] = array($vista, $vista2);
+        $this->load->view('home', $this->data);
     }
 
     /**
@@ -166,21 +179,75 @@ class Jefe_Departamento extends CI_Controller {
      * Obtener la informacion relativa a produccione dado un grupo de investifacion.
      */
     public function reporte_grupo() {
-        
+        $grupo = $this->input->post('grupo');
+        $tabla = null;
+        if ($grupo) {
+            $this->graficas->graficar_prod_grupo($grupo);
+            $tabla = $this->graficas->query_prod_grupo($grupo);
+        }
+        $vista = array(
+            'view' => 'jefe_departamento/home',
+            'vars' => ""
+        );
+        $vista2 = array(
+            'view' => 'reporte/reporte_grupo',
+            'vars' => array('grupo' => $grupo,
+                'tabla' => $tabla)
+        );
+        $this->data['bandera'] = false;
+        $this->data['bandera1'] = false;
+        $this->data['vistas'] = array($vista, $vista2);
+        $this->load->view('home', $this->data);
     }
 
     /**
      * obtener informacion de un grupo de investigacion a partir de un rango de fechas
      */
     public function reporte_grupo_fecha() {
-        
+        $grupo = $this->input->post('grupo');
+        $fini = $this->input->post('fini');
+        $ffin = $this->input->post('ffin');
+
+        $tabla = null;
+        if ($grupo) {
+            $this->graficas->graficar_prod_grupo_fecha($grupo, $fini, $ffin);
+            $tabla = $this->graficas->query_prod_grupo($grupo, $fini, $ffin);
+        }
+        $vista = array(
+            'view' => 'jefe_departamento/home',
+            'vars' => ""
+        );
+        $vista2 = array(
+            'view' => 'reporte/reporte_grupo_fecha',
+            'vars' => array(
+                'grupo' => $grupo,
+                'fini' => $fini,
+                'ffin' => $ffin,
+                'tabla' => $tabla)
+        );
+        $this->data['bandera'] = false;
+        $this->data['bandera1'] = false;
+        $this->data['vistas'] = array($vista, $vista2);
+        $this->load->view('home', $this->data);
     }
 
     /**
      * obtener el consolidado de los grupos de investigacaion
      */
     public function reporte_grupo_total() {
-        
+        $tabla = $this->graficas->query_prod_grupo_total();
+        $vista = array(
+            'view' => 'jefe_departamento/home',
+            'vars' => ""
+        );
+        $vista2 = array(
+            'view' => 'reporte/reporte_grupo_total',
+            'vars' => array('tabla' => $tabla)
+        );
+        $this->data['bandera'] = false;
+        $this->data['bandera1'] = false;
+        $this->data['vistas'] = array($vista, $vista2);
+        $this->load->view('home', $this->data);
     }
 
 }

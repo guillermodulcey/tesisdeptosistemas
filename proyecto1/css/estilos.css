@@ -302,6 +302,13 @@ body {
 #formEstadistica form label {
     color: #755C5C;
 }
+#formEstadistica h2 {
+    font-size: 38px;
+    color: #0B2972;
+    padding-bottom: 5px;
+    padding-top: 20px;
+    text-align: center;
+}
 #barra_busqueda #buscarProduccion:focus, #formEstadistica #login:focus {
         border-radius: 5px;
         border: 1px solid #90B3EC;
@@ -773,4 +780,12 @@ center.visualizar{
 }
 .mostrar {
     display: none;
+}
+
+
+//estilos para reportes
+#reportes h2 {
+    font-size: 20px;
+    color: #0B2972;
+    padding: 10px 0 10px 10px;
 }

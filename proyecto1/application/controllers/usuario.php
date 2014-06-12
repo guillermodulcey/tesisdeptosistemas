@@ -80,11 +80,22 @@ class Usuario extends CI_Controller {
                         'nombre' => $nombre
                     );
                     $this->session->set_userdata($newdata);
-                    if (count($this->usuario->tipo_usuario) > 1) {
-                        redirect($this->usuario->tipo_usuario[1]);
-                    } else {
-                        redirect($this->usuario->tipo_usuario[0]);
+                    $tipo = $this->usuario->tipo_usuario;
+                    $home = base_url();
+                    foreach ($tipo as $value) {
+                        switch ($value) {
+                            case "docente":
+                                $home = site_url("docente");
+                                break;
+                            case "jefe_departamento":
+                                $home = site_url("jefe_departamento");
+                                redirect($home);
+                            case "administrador":
+                                $home = site_url("administrador");
+                                break;
+                        }
                     }
+                    redirect($home);
                 } else {
                     $errors = $this->tank_auth->get_error_message();
                     if (isset($errors['banned'])) {        // banned user
@@ -586,22 +597,21 @@ class Usuario extends CI_Controller {
 
     public function get_home() {
         $tipo = $this->session->userdata("tipo");
-        //echo "el tipo es: ";
-        var_dump($tipo);
-        switch ($tipo[0]) {
-            case "administrador":
-                redirect("administrador");
-                break;
-            case "docente":
-                redirect("docente");
-                break;
-            case "jefe":
-                redirect("jefe_departamento");
-                break;
-            default:
-                $this->index();
-                break;
+        $home = base_url();
+        foreach ($tipo as $value) {
+            switch ($value) {
+                case "docente":
+                    $home = site_url("docente");
+                    break;
+                case "jefe_departamento":
+                    $home = site_url("jefe_departamento");
+                    redirect($home);
+                case "administrador":
+                    $home = site_url("administrador");
+                    break;
+            }
         }
+        redirect($home);
     }
 
 }
