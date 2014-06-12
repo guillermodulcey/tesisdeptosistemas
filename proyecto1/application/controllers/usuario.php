@@ -461,7 +461,7 @@ class Usuario extends CI_Controller {
         $this->email->message($this->load->view('email/' . $type . '-html', $data, TRUE));
         //$this->email->set_alt_message($this->load->view('email/' . $type . '-txt', $data, TRUE));
         $this->email->send();
-        echo $this->email->print_debugger();
+        //echo $this->email->print_debugger();
     }
 
     /**
@@ -586,7 +586,7 @@ class Usuario extends CI_Controller {
 
     public function get_home() {
         $tipo = $this->session->userdata("tipo");
-        echo "el tipo es: ";
+        //echo "el tipo es: ";
         var_dump($tipo);
         switch ($tipo[0]) {
             case "administrador":

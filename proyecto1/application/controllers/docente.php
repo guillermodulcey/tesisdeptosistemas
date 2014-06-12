@@ -16,7 +16,7 @@ class Docente extends CI_Controller {
             $this->load->model('producciones/produccion_model', 'produccion');
             $this->load->model('usuarios/docente_model', 'docente');
             $this->load->model('sistema/dao_model', 'dao');
-            $this->load->model('usuarios/graficas', 'graficar');
+            $this->load->model('sistema/graficas', 'graficar');
         } else {
             show_404();
             die();

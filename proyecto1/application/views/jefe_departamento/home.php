@@ -16,10 +16,17 @@
     </div>    
     <br />
     <div class="menuEstadisticas">
-        <h3>Estadisticas de Publicaciones</h3>
+        <h3>Reportes Docentes </h3>
         <ul>
-            <li><?php echo anchor(site_url('jefe_departamento/estadisticas'), 'Estadisticas de Grupos') ?></li>
-            <li><?php echo anchor(site_url('jefe_departamento/estadisticas'), 'Estadisticas Docentes') ?></li>
-        </ul> 
+            <li><?php echo anchor(site_url('jefe_departamento/reporte_docente'), 'Reporte por Docente') ?></li>
+            <li><?php echo anchor(site_url('jefe_departamento/reporte_docente_fecha'), 'Rango de Fechas') ?></li>
+            <li><?php echo anchor(site_url('jefe_departamento/reporte_docente_total'), 'Consolidado Docente') ?></li>
+        </ul>
+        <h3>Reportes Grupos</h3>
+        <ul>
+            <li><?php echo anchor(site_url('jefe_departamento/reporte_grupo'), 'Reporte por Grupo') ?></li>
+            <li><?php echo anchor(site_url('jefe_departamento/reporte_grupo_fecha'), 'Rango de Fechas') ?></li>
+            <li><?php echo anchor(site_url('jefe_departamento/reporte_grupo_total'), 'Consolidado Grupo') ?></li>
+        </ul>
     </div>   
 </div>
